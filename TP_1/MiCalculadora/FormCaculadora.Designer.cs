@@ -61,6 +61,11 @@ namespace MiCalculadora
             // 
             this.cmbOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOperador.FormattingEnabled = true;
+            this.cmbOperador.Items.AddRange(new object[] {
+            "+",
+            "-",
+            "*",
+            "/"});
             this.cmbOperador.Location = new System.Drawing.Point(193, 62);
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.Size = new System.Drawing.Size(93, 46);
