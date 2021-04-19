@@ -1,0 +1,5 @@
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.pdb

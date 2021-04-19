@@ -1,6 +1,0 @@
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\bin\Debug\Entidades2.dll
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\bin\Debug\Entidades2.pdb
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\obj\Debug\Entidades2.csprojAssemblyReference.cache
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\obj\Debug\Entidades2.csproj.CoreCompileInputs.cache
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\obj\Debug\Entidades2.dll
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades2\obj\Debug\Entidades2.pdb
