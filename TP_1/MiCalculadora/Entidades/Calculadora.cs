@@ -8,8 +8,13 @@ namespace Entidades
 {
     public static class Calculadora
     {
-        //validará y realizará la operación pedida entre
-        //ambos números.
+        /// <summary>
+        /// Valida y realiza la operación pedida entre dos números.
+        /// </summary>
+        /// <param name="num1">Primer número.</param>
+        /// <param name="num2">Segundo número.</param>
+        /// <param name="operador">Operador.</param>
+        /// <returns>Resultado de la operación.</returns>
         public static double Operar(Numero num1, Numero num2, string operador)
         {
             double resultado = 0;
@@ -32,17 +37,18 @@ namespace Entidades
                         resultado = num1 / num2;
                         break;
                 }
-
                 return resultado;
             }
             else
             {
-
                 return -1;
             }
         }
-        //Deberá validar que el operador
-        //recibido sea +, -, / o*. Caso contrario retornará +.
+        /// <summary>
+        /// Valida que el operador recibido sea  +, -, / o*.
+        /// </summary>
+        /// <param name="operador">Operador a validar.</param>
+        /// <returns>El operador o en caso de que no sea válido, "+".</returns>
         private static string ValidarOperador(char operador)
         {
             if (operador.Equals('-') || operador.Equals('*') || operador.Equals('/'))
@@ -54,6 +60,5 @@ namespace Entidades
                 return "+";
             }
         }
-
     }
 }
