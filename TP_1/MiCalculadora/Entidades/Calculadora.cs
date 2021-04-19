@@ -20,11 +20,11 @@ namespace Entidades
             double resultado = 0;
             char operadorValido;
 
-            if (char.TryParse(operador, out operadorValido))//parseamos el string a char (lo pide así ValidarOperador)
+            if (char.TryParse(operador, out operadorValido) || operador == "")
             {
-                switch (ValidarOperador(operadorValido))//lo validamos
+                switch (ValidarOperador(operadorValido))
                 {
-                    case "+":
+                    case " ":
                         resultado = num1 + num2;
                         break;
                     case "-":
@@ -36,12 +36,15 @@ namespace Entidades
                     case "/":
                         resultado = num1 / num2;
                         break;
+                    default:
+                        resultado = num1 + num2;
+                        break;
                 }
                 return resultado;
             }
             else
             {
-                return -1;
+                return resultado;
             }
         }
         /// <summary>
@@ -51,7 +54,7 @@ namespace Entidades
         /// <returns>El operador o en caso de que no sea válido, "+".</returns>
         private static string ValidarOperador(char operador)
         {
-            if (operador.Equals('-') || operador.Equals('*') || operador.Equals('/'))
+            if (operador.Equals('-') || operador.Equals('*') || operador.Equals('/') || operador.Equals('+'))
             {
                 return operador.ToString();
             }
