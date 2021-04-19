@@ -23,10 +23,10 @@ namespace MiCalculadora
             InitializeComponent();
         }
         
-        private void Calculadora_Load(object sender, EventArgs e)
+        /*private void Calculadora_Load(object sender, EventArgs e)
         {
 
-        }
+        }*/
 
         /// <summary>
         /// Cierra el formulario.
