@@ -61,8 +61,64 @@ namespace Entidades
 
         public string DecimalBinario(string numero)
         {
-            return numero;
+            double dblNumero;
+            string resultado;
+            bool esEntero = false;
+
+            char[] charNumero = numero.ToCharArray();
+
+            foreach (char caracter in charNumero)
+            {
+                if (caracter.Equals(','))
+                {
+                    esEntero = false;
+                    break;
+                }
+                else
+                {
+                    esEntero = true;
+                }
+            }
+
+
+            if (double.TryParse(numero, out dblNumero) && esEntero) 
+            {
+                resultado = DecimalBinario(dblNumero);
+            }
+            else
+            {
+               resultado = "Valor inválido";
+            }
+            return resultado;
         }
+
+        public string DecimalBinario(double numero)
+        {
+            string resultado = null;
+            int numeroEntero = (int)numero;
+
+            if (numeroEntero > 0)
+            {
+                do
+                {
+                    if (numeroEntero % 2 == 1)
+                    {
+                        resultado = "1" + resultado;
+                    }
+                    else if (numeroEntero % 2 == 0)
+                    {
+                        resultado = "0" + resultado;
+                    }
+                    numeroEntero = numeroEntero / 2;
+                } while (numeroEntero != 0);
+            }
+            else
+            {
+                resultado = "Valor inválido";
+            }
+            return resultado;
+        }
+
 
         //El método privado EsBinario validará que la cadena de caracteres
         //esté compuesta SOLAMENTE por caracteres '0' o '1'.

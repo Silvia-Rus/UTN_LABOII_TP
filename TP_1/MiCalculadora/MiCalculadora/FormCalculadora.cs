@@ -34,6 +34,8 @@ namespace MiCalculadora
         //el resultado, de existir, a binario.
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
+            this.lblResultado.Text = new Numero().DecimalBinario(this.lblResultado.Text);
+
 
         }
         //El evento click del botón btnConvertirADecimal convertirá el resultado, de existir y
