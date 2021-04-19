@@ -43,11 +43,13 @@ namespace MiCalculadora
             // 
             // lblResultado
             // 
-            this.lblResultado.Location = new System.Drawing.Point(420, 9);
+            this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultado.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblResultado.Location = new System.Drawing.Point(12, 9);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(49, 43);
+            this.lblResultado.Size = new System.Drawing.Size(458, 43);
             this.lblResultado.TabIndex = 0;
-            this.lblResultado.Text = "LABEL";
+            this.lblResultado.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtNumero1
             // 
@@ -56,6 +58,7 @@ namespace MiCalculadora
             this.txtNumero1.Name = "txtNumero1";
             this.txtNumero1.Size = new System.Drawing.Size(165, 45);
             this.txtNumero1.TabIndex = 1;
+            this.txtNumero1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cmbOperador
             // 
@@ -78,6 +81,7 @@ namespace MiCalculadora
             this.txtNumero2.Name = "txtNumero2";
             this.txtNumero2.Size = new System.Drawing.Size(165, 45);
             this.txtNumero2.TabIndex = 3;
+            this.txtNumero2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnOperar
             // 

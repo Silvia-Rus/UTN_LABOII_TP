@@ -1,0 +1,4 @@
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades\obj\Debug\netcoreapp3.1\Entidades.csprojAssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades\obj\Debug\netcoreapp3.1\Entidades.AssemblyInfoInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades\obj\Debug\netcoreapp3.1\Entidades.AssemblyInfo.cs
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\Entidades\obj\Debug\netcoreapp3.1\Entidades.csproj.CoreCompileInputs.cache
