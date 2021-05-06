@@ -1,0 +1,18 @@
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\obj\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\Entidades\obj\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\obj\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\TP_1\Entidades\obj\Debug\Entidades.pdb

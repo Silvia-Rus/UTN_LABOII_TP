@@ -11,3 +11,16 @@
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_1\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.exe.config
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.exe
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\bin\Debug\MiCalculadora.pdb
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csprojAssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.Properties.Resources.resources
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csproj.GenerateResource.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.exe
+\\vmware-host\Shared Folders\Escritorio\MiCalculadora\MiCalculadora\obj\Debug\MiCalculadora.pdb
