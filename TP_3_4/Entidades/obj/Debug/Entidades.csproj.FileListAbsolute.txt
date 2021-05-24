@@ -1,0 +1,6 @@
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\bin\Debug\Entidades.dll
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\obj\Debug\Entidades.dll
+C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\obj\Debug\Entidades.pdb
