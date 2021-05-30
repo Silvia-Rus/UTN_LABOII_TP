@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace Formularios
 {
-    public partial class FrmAltaDocumento : Form
+    //public partial class FrmAltaDocumento : Form
+    public partial class FrmDocumento :  MetroFramework.Forms.MetroForm
     {
         public enum TipoDeFormAlta { articulo, libro, modificar }
         
-        public FrmAltaDocumento()
+        public FrmDocumento()
         {
             InitializeComponent();
         }
 
         
-        public FrmAltaDocumento(TipoDeFormAlta tipoDeFormAlta) : this()
+        public FrmDocumento(TipoDeFormAlta tipoDeFormAlta) : this()
         {
             if (tipoDeFormAlta.Equals(TipoDeFormAlta.articulo))
             {

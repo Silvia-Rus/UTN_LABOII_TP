@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Libro : Documento
+    public class Libro : Documento
     {
 
         /// <summary>
@@ -24,9 +24,9 @@ namespace Entidades
         /// <param name="id">Id del documento.</param>
         /// <param name="barcode">Código de barras del documento.</param>
         /// <param name="estadoEncuadernacion">Estado de encuadernación.</param>
-        public Libro(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode,
+        public Libro(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion)
-            : base() { }
+            : base(titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion) { }
        
     }
 }

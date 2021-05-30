@@ -17,42 +17,127 @@ namespace Entidades
         private string notas;
         private Encuadernacion estadoEncuadernacion;
         private PasosProceso pasoProceso;
+        private DateTime fechaIntroducción;
+        private DateTime fechaDistribucion;
+        private DateTime fechaGuillotinado;
+        private DateTime fechaRevision;
+        private DateTime fechaAprobacion;
 
+        #region Gets para el formato de la tabla
         /// <summary>
-        /// Propiedad que devuelve el tipo de documento.
+        /// Propiedad que devuelve el tipo de documento en formato string para la tabla.
         /// </summary>
-        string TipoDeDocumento
+        public string TipoDeDocumentoString
         {
             get
             {
-                return this.GetType().ToString();
+                StringBuilder sb = new StringBuilder();
+                if(this is Libro)
+                {
+                    sb.AppendLine("Libro");
+                }
+                else if(this is Articulo)
+                {
+                    sb.AppendLine("Artículo");
+                }
+                
+                return sb.ToString();
             }
         }
-        public Encuadernacion EstadoEncuadernacion
+
+        public string Titulo
+        {
+            get { return this.titulo; }
+        }
+
+        public string Autor
+        {
+            get { return this.autor; }
+        }
+
+        public short Anio
+        {
+            get { return this.anio; }
+        }
+
+        public string NumeroPaginasString
+        {
+            get           
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"{this.numeroPaginas} p.");            
+                return sb.ToString();            
+            }
+        }
+
+        public string Id
+        {
+            get { return this.id; }
+        }
+
+        public int Barcode
+        {
+            get { return this.barcode; }
+        }
+          
+        public string EstadoEncuadernacionString
         {
             get
             {
-                return this.estadoEncuadernacion;
+                string retorno = "";
+                StringBuilder sb = new StringBuilder();
+                if(this.estadoEncuadernacion == Encuadernacion.encuadernado)
+                {
+
+                    retorno = "Sí. NO guillotinar";
+                }
+                else if(this.estadoEncuadernacion == Encuadernacion.hojasSueltas)
+                {
+                    retorno =  "No";
+                }
+                else if(this.estadoEncuadernacion == Encuadernacion.paraGuillotinar)
+                {
+                    retorno = "Sí. Guillotinar";
+                }
+
+                return retorno;
+                              
             }
         }
+
         public PasosProceso FaseProceso
         {
             set
             {
-                FaseProceso = value;
+                this.pasoProceso = value;
             }
             get
             {
-                return this.FaseProceso;
+                return this.pasoProceso;
             }
         }
+
+
+        #endregion
+
+        public Encuadernacion EstadoEncuadernacion
+        {
+            get { return this.estadoEncuadernacion; }
+        }
+
+        public short NumeroPaginas
+        {
+            get { return this.numeroPaginas; }
+        }
+
 
         /// <summary>
         /// Constructor por defecto. Asigna el primer paso del proceso (introducido).
         /// </summary>
         public Documento()
         {
-            this.pasoProceso = PasosProceso.introducido;
+            this.pasoProceso = PasosProceso.Distribuir;
+            this.fechaIntroducción = DateTime.Now;
         }
         /// <summary>
         /// Constructor del documento. 
@@ -64,7 +149,7 @@ namespace Entidades
         /// <param name="id">Id del documento.</param>
         /// <param name="barcode">Código de barras del documento.</param>
         /// <param name="estadoEncuadernacion">Estado de encuadernación.</param>
-        public Documento(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, 
+        public Documento(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion) 
             : this()
         {
@@ -74,8 +159,16 @@ namespace Entidades
             this.numeroPaginas = numeroPaginas;
             this.id = id;
             this.barcode = barcode;
+            this.notas = notas;
             this.estadoEncuadernacion = estadoEncuadernacion;
         }
+
+        public Documento (PasosProceso paso)
+        {
+            this.FaseProceso = paso;
+        }
+
+       
 
         /*public override string ToString()
         {
@@ -99,12 +192,24 @@ namespace Entidades
 
             foreach (Documento item in documentos)
             {
-                if(item.id.Equals(d.id) || item.barcode == d.barcode)
+                //if(item.id.Equals(d.id) || item.barcode.Equals(d.barcode))
+                if (item.id.Equals(d.id) || item == d)
                 {                  
                     retorno = true;
                     break;
                 }
             }              
+            return retorno;
+        }
+
+        public static bool operator ==(Documento a, Documento b)
+        {
+            bool retorno = false;
+            if(a.barcode == b.barcode)
+            {
+                retorno = true;
+            }
+           
             return retorno;
         }
         /// <summary>
@@ -118,19 +223,11 @@ namespace Entidades
         {
             return !(documentos == d);
         }
-        /// <summary>
-        /// Suma un documento a una lista de documento en el caso de que no esté ya en ella.
-        /// </summary>
-        /// <param name="documentos">Lista a la que añadir el documento.</param>
-        /// <param name="d">Documento a añadir.</param>
-        /// <returns>Lista de documentos que entró por parámetro.</returns>
-        public static List<Documento> operator +(List<Documento> documentos, Documento d)
+
+        public static bool operator !=(Documento a, Documento b)
         {
-            if(documentos != d)
-            {
-                documentos.Add(d);
-            }
-            return documentos;
+            return !(a == b);
         }
+
     }
 }

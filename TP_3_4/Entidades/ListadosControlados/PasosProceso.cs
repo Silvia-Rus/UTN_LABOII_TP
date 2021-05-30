@@ -8,11 +8,11 @@ namespace Entidades
 {
     public enum PasosProceso
     {
-        introducido,
-        paraGuilotinar,
-        paraEscanear,
-        paraRevisar,
-        finalizado
+        Distribuir,
+        Guillotinar,
+        Escanear,
+        Revisar,
+        Aprobado
 
     }
 }

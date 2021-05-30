@@ -9,7 +9,7 @@ namespace Entidades
 {
     public class Procesador
     {
-        static private List<Documento> documentos;
+        private List<Documento> documentos;
         private string nombre;
 
         /// <summary>
@@ -17,8 +17,15 @@ namespace Entidades
         /// </summary>
         private Procesador()
         {
-            documentos = new List<Documento>();
+            this.documentos = new List<Documento>();
         }
+
+        public List<Documento> Documentos
+        {
+            get { return  this.documentos; }
+        }
+
+
 
         /// <summary>
         /// Constructor que le añade nombre al objeto.
@@ -38,15 +45,15 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if(documento.FaseProceso == PasosProceso.introducido)
+            if(documento.FaseProceso == PasosProceso.Distribuir)
             {              
                 if(documento.EstadoEncuadernacion == Encuadernacion.paraGuillotinar)
                 {
-                    documento.FaseProceso = PasosProceso.paraGuilotinar;
+                    documento.FaseProceso = PasosProceso.Guillotinar;
                 }
                 else if(documento.EstadoEncuadernacion == Encuadernacion.hojasSueltas || documento.EstadoEncuadernacion == Encuadernacion.encuadernado)
                 {
-                    documento.FaseProceso = PasosProceso.paraEscanear;
+                    documento.FaseProceso = PasosProceso.Escanear;
                 }
 
                 retorno = true;          
@@ -68,9 +75,9 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if(documento.FaseProceso == PasosProceso.paraGuilotinar)
+            if(documento.FaseProceso == PasosProceso.Guillotinar)
             {
-                documento.FaseProceso = PasosProceso.paraEscanear;
+                documento.FaseProceso = PasosProceso.Escanear;
                 retorno = true;
 
             }
@@ -85,9 +92,9 @@ namespace Entidades
         public bool Escanear(Documento documento)
         {
             bool retorno = false;
-            if (documento.FaseProceso == PasosProceso.paraEscanear)
+            if (documento.FaseProceso == PasosProceso.Escanear)
             {
-                documento.FaseProceso = PasosProceso.paraRevisar;
+                documento.FaseProceso = PasosProceso.Revisar;
                 retorno = true;
 
             }
@@ -105,15 +112,15 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if(documento.FaseProceso == PasosProceso.paraRevisar)
+            if(documento.FaseProceso == PasosProceso.Revisar)
             {
                 if (estaBienElPdf)
                 {
-                    documento.FaseProceso = PasosProceso.finalizado;
+                    documento.FaseProceso = PasosProceso.Aprobado;
                 }
                 else
                 {
-                    documento.FaseProceso = PasosProceso.paraEscanear;                   
+                    documento.FaseProceso = PasosProceso.Escanear;                   
                 }
                 retorno = true;
             }
@@ -130,12 +137,45 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if (documento.FaseProceso == PasosProceso.paraRevisar)
+            if (documento.FaseProceso == PasosProceso.Revisar)
             {
-                documento.FaseProceso = PasosProceso.finalizado;
+                documento.FaseProceso = PasosProceso.Aprobado;
                 retorno = true;
             }
             return retorno;
+        }
+
+        /// <summary>
+        /// Suma un documento a una lista de documento en el caso de que no esté ya en ella.
+        /// </summary>
+        /// <param name="documentos">Lista a la que añadir el documento.</param>
+        /// <param name="d">Documento a añadir.</param>
+        /// <returns>Lista de documentos que entró por parámetro.</returns>
+        public static bool operator +(Procesador p, Documento d)
+        {
+            bool retorno = false;
+            if (p.documentos != d)
+            {
+                p.documentos.Add(d);
+                retorno = true; ;
+            }
+            return retorno;
+        }
+
+        public List<Documento> ListaFiltrada(List<Documento> listaCompleta, PasosProceso paso)
+        {
+            List<Documento> listaFiltrada = new List<Documento>();
+
+            foreach (Documento item in listaCompleta)
+            {
+                if (item.FaseProceso == paso)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+
+            return listaFiltrada;
+
         }
     }
 }
