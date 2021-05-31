@@ -22,5 +22,33 @@ namespace Entidades
 
         }
 
+        /*public Articulo(string titulo, string autor, string anio, string numeroPaginas, string id, string barcode, string notas,
+            Encuadernacion encuadernacion, string fuente) : this(titulo, autor, short.Parse(anio), short.Parse(numeroPaginas), id, int.Parse(barcode), notas, encuadernacion, fuente)
+        {
+
+        }*/
+
+        public bool AniadirArticulo(Articulo a,
+                                        string titulo,
+                                        string autor,
+                                        string anio,
+                                        string numeroPaginas,
+                                        string id,
+                                        string barcode,
+                                        string notas,
+                                        string encuadernacion,
+                                        string fuente)
+        {
+            bool retorno = false;
+            if (int.TryParse(barcode, out int barcodeInt) &&
+               short.TryParse(anio, out short anioShort) &&
+               short.TryParse(numeroPaginas, out short numeroPaginasShort))
+            {
+                Encuadernacion encuadernacionConvertida = ConversorEncuadernacion(encuadernacion);
+                a = new Articulo(titulo, autor, anioShort, numeroPaginasShort, id, barcodeInt, notas, encuadernacionConvertida, fuente);
+                retorno = true;
+            }
+            return retorno;
+        }
     }
 }

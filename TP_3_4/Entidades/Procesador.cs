@@ -175,7 +175,17 @@ namespace Entidades
             }
 
             return listaFiltrada;
-
         }
+
+        
+
+
+
+            //PARÁMETROS
+            //todo lo que viene del form (son strings)
+            //crear el tipo de documento que sea con un parámetro
+
+        //usar los constructores...
+        //añadir a la lista
     }
 }

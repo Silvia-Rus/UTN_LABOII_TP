@@ -15,12 +15,12 @@ namespace Formularios
     public partial class FrmPrincipal : MetroFramework.Forms.MetroForm
     {
         Procesador procesador;
+        Libro libro;
+        Articulo articulo;
         
         public FrmPrincipal()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();           
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -60,6 +60,15 @@ namespace Formularios
             datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
             datagrid.Columns["EstadoEncuadernacionString"].HeaderText = "Encuadernado";
             datagrid.Columns["FaseProceso"].HeaderText = "Fase";
+
+            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            {
+                button.Name = "button";
+                button.HeaderText = "Button";
+                button.Text = "Button";
+                button.UseColumnTextForButtonValue = true; //dont forget this line
+                datagrid.Columns.Add(button);
+            }
 
         }
 
@@ -124,7 +133,7 @@ namespace Formularios
             {
                 //MessageBox.Show("elegiste libro");
 
-                frmAlta = new FrmDocumento(FrmDocumento.TipoDeFormAlta.libro);
+                frmAlta = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.libro);
                 //FrmAltaDocumento frmAlta = new FrmAltaDocumento(FrmAltaDocumento.TipoDeFormAlta.libro);
                 //frmAlta.ShowDialog();
             }
@@ -132,7 +141,7 @@ namespace Formularios
             {
                 //MessageBox.Show("elegiste artículo");
 
-                frmAlta = new FrmDocumento(FrmDocumento.TipoDeFormAlta.articulo);
+                frmAlta = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.articulo);
                 //FrmAltaDocumento frmAlta = new FrmAltaDocumento(FrmAltaDocumento.TipoDeFormAlta.articulo);
                 //frmAlta.ShowDialog();
             }
@@ -148,6 +157,10 @@ namespace Formularios
             if (DialogResult.OK == frmAlta.ShowDialog())
             {
                 MessageBox.Show("Documento grabado con éxito");
+
+                articulo = frmAlta.ObtenerArticulo; //obtenemos el libro
+                bool pudo = this.procesador + articulo;//lo sumamos a la lista
+                //HACER QUE SALGA EN EL DATAGRID
             }
             /*else
             {
@@ -156,6 +169,24 @@ namespace Formularios
 
         }
 
-       
+        private void txtBuscarPorCodebar_TextChanged(object sender, EventArgs e)
+        {
+            bool existe = false;
+            
+            foreach (var item in procesador.Documentos)
+            {
+                if(item.Barcode == int.Parse(txtBuscarPorCodebar.Text))
+                {
+                    existe = true;
+                    break;
+                }
+            }
+
+            if(existe)
+            {
+                MessageBox.Show("AHHHH");
+            }
+
+        }
     }
 }

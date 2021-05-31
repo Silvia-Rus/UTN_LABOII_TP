@@ -29,6 +29,7 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAccion = new System.Windows.Forms.Button();
             this.btnCancelarDocumento = new System.Windows.Forms.Button();
             this.lblTituloDocumento = new System.Windows.Forms.Label();
@@ -51,7 +52,9 @@ namespace Formularios
             this.cmbEncuadernacionDocumento = new System.Windows.Forms.ComboBox();
             this.tblPrincipalDocumento = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.procesadorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblPrincipalDocumento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procesadorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAccion
@@ -62,7 +65,7 @@ namespace Formularios
             this.btnAccion.TabIndex = 0;
             this.btnAccion.Text = "Grabar";
             this.btnAccion.UseVisualStyleBackColor = true;
-            this.btnAccion.Click += new System.EventHandler(this.btnGrabarDocumento_Click);
+            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // btnCancelarDocumento
             // 
@@ -175,6 +178,7 @@ namespace Formularios
             this.txtTituloDocumento.Name = "txtTituloDocumento";
             this.txtTituloDocumento.Size = new System.Drawing.Size(412, 20);
             this.txtTituloDocumento.TabIndex = 12;
+
             // 
             // txtAutorDocumento
             // 
@@ -227,6 +231,10 @@ namespace Formularios
             // 
             this.cmbEncuadernacionDocumento.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbEncuadernacionDocumento.FormattingEnabled = true;
+            this.cmbEncuadernacionDocumento.Items.AddRange(new object[] {
+            "No",
+            "Sí. NO guillotinar",
+            "Sí. Guillotinar"});
             this.cmbEncuadernacionDocumento.Location = new System.Drawing.Point(142, 150);
             this.cmbEncuadernacionDocumento.Name = "cmbEncuadernacionDocumento";
             this.cmbEncuadernacionDocumento.Size = new System.Drawing.Size(147, 21);
@@ -275,6 +283,10 @@ namespace Formularios
             this.tableLayoutPanel1.Size = new System.Drawing.Size(557, 27);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
+            // procesadorBindingSource
+            // 
+            this.procesadorBindingSource.DataSource = typeof(Entidades.Procesador);
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,6 +307,7 @@ namespace Formularios
             this.Load += new System.EventHandler(this.FrmAltaDocumento_Load);
             this.tblPrincipalDocumento.ResumeLayout(false);
             this.tblPrincipalDocumento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procesadorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,5 +337,6 @@ namespace Formularios
         private System.Windows.Forms.ComboBox cmbEncuadernacionDocumento;
         private System.Windows.Forms.TableLayoutPanel tblPrincipalDocumento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.BindingSource procesadorBindingSource;
     }
 }
