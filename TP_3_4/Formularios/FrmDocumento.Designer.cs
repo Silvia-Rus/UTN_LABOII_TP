@@ -29,7 +29,6 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnAccion = new System.Windows.Forms.Button();
             this.btnCancelarDocumento = new System.Windows.Forms.Button();
             this.lblTituloDocumento = new System.Windows.Forms.Label();
@@ -47,19 +46,19 @@ namespace Formularios
             this.txtAnioDocumento = new System.Windows.Forms.TextBox();
             this.txtIdentificadorDocumento = new System.Windows.Forms.TextBox();
             this.txtNumeroPaginasDocumento = new System.Windows.Forms.TextBox();
-            this.txtNotasDocumento = new System.Windows.Forms.RichTextBox();
+            this.rtbNotasDocumento = new System.Windows.Forms.RichTextBox();
             this.txtFuenteDocumento = new System.Windows.Forms.TextBox();
             this.cmbEncuadernacionDocumento = new System.Windows.Forms.ComboBox();
             this.tblPrincipalDocumento = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.procesadorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rtbHistorialDocumento = new System.Windows.Forms.RichTextBox();
+            this.lblHistorialDocumento = new System.Windows.Forms.Label();
             this.tblPrincipalDocumento.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.procesadorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAccion
             // 
-            this.btnAccion.Location = new System.Drawing.Point(155, 414);
+            this.btnAccion.Location = new System.Drawing.Point(155, 432);
             this.btnAccion.Name = "btnAccion";
             this.btnAccion.Size = new System.Drawing.Size(132, 48);
             this.btnAccion.TabIndex = 0;
@@ -69,7 +68,7 @@ namespace Formularios
             // 
             // btnCancelarDocumento
             // 
-            this.btnCancelarDocumento.Location = new System.Drawing.Point(310, 414);
+            this.btnCancelarDocumento.Location = new System.Drawing.Point(310, 432);
             this.btnCancelarDocumento.Name = "btnCancelarDocumento";
             this.btnCancelarDocumento.Size = new System.Drawing.Size(125, 48);
             this.btnCancelarDocumento.TabIndex = 1;
@@ -129,7 +128,7 @@ namespace Formularios
             // lblNotasDocumento
             // 
             this.lblNotasDocumento.AutoSize = true;
-            this.lblNotasDocumento.Location = new System.Drawing.Point(23, 293);
+            this.lblNotasDocumento.Location = new System.Drawing.Point(23, 316);
             this.lblNotasDocumento.Name = "lblNotasDocumento";
             this.lblNotasDocumento.Size = new System.Drawing.Size(38, 13);
             this.lblNotasDocumento.TabIndex = 7;
@@ -158,7 +157,7 @@ namespace Formularios
             // lblFuenteDocumento
             // 
             this.lblFuenteDocumento.AutoSize = true;
-            this.lblFuenteDocumento.Location = new System.Drawing.Point(24, 380);
+            this.lblFuenteDocumento.Location = new System.Drawing.Point(26, 289);
             this.lblFuenteDocumento.Name = "lblFuenteDocumento";
             this.lblFuenteDocumento.Size = new System.Drawing.Size(43, 13);
             this.lblFuenteDocumento.TabIndex = 10;
@@ -178,7 +177,6 @@ namespace Formularios
             this.txtTituloDocumento.Name = "txtTituloDocumento";
             this.txtTituloDocumento.Size = new System.Drawing.Size(412, 20);
             this.txtTituloDocumento.TabIndex = 12;
-
             // 
             // txtAutorDocumento
             // 
@@ -212,17 +210,17 @@ namespace Formularios
             this.txtNumeroPaginasDocumento.Size = new System.Drawing.Size(147, 20);
             this.txtNumeroPaginasDocumento.TabIndex = 16;
             // 
-            // txtNotasDocumento
+            // rtbNotasDocumento
             // 
-            this.txtNotasDocumento.Location = new System.Drawing.Point(23, 309);
-            this.txtNotasDocumento.Name = "txtNotasDocumento";
-            this.txtNotasDocumento.Size = new System.Drawing.Size(557, 55);
-            this.txtNotasDocumento.TabIndex = 18;
-            this.txtNotasDocumento.Text = "";
+            this.rtbNotasDocumento.Location = new System.Drawing.Point(26, 332);
+            this.rtbNotasDocumento.Name = "rtbNotasDocumento";
+            this.rtbNotasDocumento.Size = new System.Drawing.Size(278, 94);
+            this.rtbNotasDocumento.TabIndex = 18;
+            this.rtbNotasDocumento.Text = "";
             // 
             // txtFuenteDocumento
             // 
-            this.txtFuenteDocumento.Location = new System.Drawing.Point(79, 373);
+            this.txtFuenteDocumento.Location = new System.Drawing.Point(79, 286);
             this.txtFuenteDocumento.Name = "txtFuenteDocumento";
             this.txtFuenteDocumento.Size = new System.Drawing.Size(501, 20);
             this.txtFuenteDocumento.TabIndex = 19;
@@ -283,19 +281,35 @@ namespace Formularios
             this.tableLayoutPanel1.Size = new System.Drawing.Size(557, 27);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
-            // procesadorBindingSource
+            // rtbHistorialDocumento
             // 
-            this.procesadorBindingSource.DataSource = typeof(Entidades.Procesador);
+            this.rtbHistorialDocumento.Enabled = false;
+            this.rtbHistorialDocumento.Location = new System.Drawing.Point(310, 332);
+            this.rtbHistorialDocumento.Name = "rtbHistorialDocumento";
+            this.rtbHistorialDocumento.Size = new System.Drawing.Size(270, 94);
+            this.rtbHistorialDocumento.TabIndex = 23;
+            this.rtbHistorialDocumento.Text = "";
+            // 
+            // lblHistorialDocumento
+            // 
+            this.lblHistorialDocumento.AutoSize = true;
+            this.lblHistorialDocumento.Location = new System.Drawing.Point(307, 316);
+            this.lblHistorialDocumento.Name = "lblHistorialDocumento";
+            this.lblHistorialDocumento.Size = new System.Drawing.Size(47, 13);
+            this.lblHistorialDocumento.TabIndex = 24;
+            this.lblHistorialDocumento.Text = "Historial:";
             // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 472);
+            this.ClientSize = new System.Drawing.Size(977, 503);
+            this.Controls.Add(this.lblHistorialDocumento);
+            this.Controls.Add(this.rtbHistorialDocumento);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tblPrincipalDocumento);
             this.Controls.Add(this.txtFuenteDocumento);
-            this.Controls.Add(this.txtNotasDocumento);
+            this.Controls.Add(this.rtbNotasDocumento);
             this.Controls.Add(this.txtBarcodeDocumento);
             this.Controls.Add(this.lblFuenteDocumento);
             this.Controls.Add(this.lblNotasDocumento);
@@ -307,7 +321,6 @@ namespace Formularios
             this.Load += new System.EventHandler(this.FrmAltaDocumento_Load);
             this.tblPrincipalDocumento.ResumeLayout(false);
             this.tblPrincipalDocumento.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.procesadorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,11 +345,12 @@ namespace Formularios
         private System.Windows.Forms.TextBox txtAnioDocumento;
         private System.Windows.Forms.TextBox txtIdentificadorDocumento;
         private System.Windows.Forms.TextBox txtNumeroPaginasDocumento;
-        private System.Windows.Forms.RichTextBox txtNotasDocumento;
+        private System.Windows.Forms.RichTextBox rtbNotasDocumento;
         private System.Windows.Forms.TextBox txtFuenteDocumento;
         private System.Windows.Forms.ComboBox cmbEncuadernacionDocumento;
         private System.Windows.Forms.TableLayoutPanel tblPrincipalDocumento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.BindingSource procesadorBindingSource;
+        private System.Windows.Forms.RichTextBox rtbHistorialDocumento;
+        private System.Windows.Forms.Label lblHistorialDocumento;
     }
 }

@@ -13,6 +13,8 @@ namespace Entidades
 
         public Articulo() : base() { }
 
+        public string Fuente { get { return this.fuente; } }
+
         public Articulo(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion, string fuente)
             : base (titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion)
@@ -28,27 +30,33 @@ namespace Entidades
 
         }*/
 
-        public bool AniadirArticulo(Articulo a,
-                                        string titulo,
-                                        string autor,
-                                        string anio,
-                                        string numeroPaginas,
-                                        string id,
-                                        string barcode,
-                                        string notas,
-                                        string encuadernacion,
-                                        string fuente)
+        public static Articulo GenerarArticulo( string titulo,
+                                                string autor,
+                                                string anio,
+                                                string numeroPaginas,
+                                                string id,
+                                                string barcode,
+                                                string notas,
+                                                Encuadernacion encuadernacion,
+                                                string fuente)
         {
-            bool retorno = false;
-            if (int.TryParse(barcode, out int barcodeInt) &&
-               short.TryParse(anio, out short anioShort) &&
-               short.TryParse(numeroPaginas, out short numeroPaginasShort))
+
+
+            if (titulo.Length > 0 &&
+                ConversorBarcode(barcode) > -1 &&
+                short.TryParse(anio, out short anioShort) &&
+                short.TryParse(numeroPaginas, out short numeroPaginasShort) && numeroPaginasShort >0)
             {
-                Encuadernacion encuadernacionConvertida = ConversorEncuadernacion(encuadernacion);
-                a = new Articulo(titulo, autor, anioShort, numeroPaginasShort, id, barcodeInt, notas, encuadernacionConvertida, fuente);
-                retorno = true;
+                return new Articulo(titulo, autor, anioShort, numeroPaginasShort, id, ConversorBarcode(barcode), notas, encuadernacion, fuente);
+            
             }
-            return retorno;
+            else
+            {
+                Console.WriteLine("OJO NO GENERÓ NADA");
+            }
+            return null;
         }
+
+
     }
 }

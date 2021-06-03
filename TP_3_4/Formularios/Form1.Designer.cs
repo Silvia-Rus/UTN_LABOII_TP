@@ -33,12 +33,12 @@ namespace Formularios
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroScrollBar1 = new MetroFramework.Controls.MetroScrollBar();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.bUSCARNOSEQUEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.bUSCARNOSEQUEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroListView1 = new MetroFramework.Controls.MetroListView();
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
@@ -50,10 +50,18 @@ namespace Formularios
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.Historial = new MetroFramework.Controls.MetroTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.metroContextMenu1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.Historial.SuspendLayout();
+            this.metroTabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -85,6 +93,13 @@ namespace Formularios
             this.bUSCARNOSEQUEToolStripMenuItem});
             this.metroContextMenu1.Name = "metroContextMenu1";
             this.metroContextMenu1.Size = new System.Drawing.Size(175, 26);
+            // 
+            // bUSCARNOSEQUEToolStripMenuItem
+            // 
+            this.bUSCARNOSEQUEToolStripMenuItem.Name = "bUSCARNOSEQUEToolStripMenuItem";
+            this.bUSCARNOSEQUEToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.bUSCARNOSEQUEToolStripMenuItem.Text = "BUSCAR NOSEQUE";
+            this.bUSCARNOSEQUEToolStripMenuItem.Click += new System.EventHandler(this.bUSCARNOSEQUEToolStripMenuItem_Click);
             // 
             // metroComboBox1
             // 
@@ -122,13 +137,6 @@ namespace Formularios
             this.metroToolTip1.SetToolTip(this.metroTile1, "HOLA HOLA JEJEJE\r\n\r\n");
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
-            // 
-            // bUSCARNOSEQUEToolStripMenuItem
-            // 
-            this.bUSCARNOSEQUEToolStripMenuItem.Name = "bUSCARNOSEQUEToolStripMenuItem";
-            this.bUSCARNOSEQUEToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.bUSCARNOSEQUEToolStripMenuItem.Text = "BUSCAR NOSEQUE";
-            this.bUSCARNOSEQUEToolStripMenuItem.Click += new System.EventHandler(this.bUSCARNOSEQUEToolStripMenuItem_Click);
             // 
             // metroLabel2
             // 
@@ -227,7 +235,7 @@ namespace Formularios
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(444, 85);
+            this.metroPanel2.Location = new System.Drawing.Point(10, 10);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(200, 100);
             this.metroPanel2.TabIndex = 17;
@@ -235,12 +243,67 @@ namespace Formularios
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(197, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.BackgroundImage = global::Formularios.Properties.Resources.lupa;
+            this.metroButton2.Location = new System.Drawing.Point(350, 31);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(68, 62);
+            this.metroButton2.TabIndex = 19;
+            this.metroButton2.Text = "metroButton2";
+            this.metroButton2.UseSelectable = true;
+            // 
+            // Historial
+            // 
+            this.Historial.Controls.Add(this.tabPage1);
+            this.Historial.Controls.Add(this.metroTabPage1);
+            this.Historial.Location = new System.Drawing.Point(23, 63);
+            this.Historial.Name = "Historial";
+            this.Historial.SelectedIndex = 0;
+            this.Historial.Size = new System.Drawing.Size(575, 268);
+            this.Historial.TabIndex = 20;
+            this.Historial.UseSelectable = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(567, 226);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Documento";
+            // 
+            // metroTabPage1
+            // 
+            this.metroTabPage1.Controls.Add(this.metroPanel2);
+            this.metroTabPage1.HorizontalScrollbarBarColor = true;
+            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.HorizontalScrollbarSize = 10;
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage1.Name = "metroTabPage1";
+            this.metroTabPage1.Size = new System.Drawing.Size(567, 226);
+            this.metroTabPage1.TabIndex = 1;
+            this.metroTabPage1.Text = "Historial";
+            this.metroTabPage1.VerticalScrollbarBarColor = true;
+            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.metroPanel2);
+            this.Controls.Add(this.Historial);
+            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.metroProgressSpinner1);
@@ -264,6 +327,9 @@ namespace Formularios
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Historial.ResumeLayout(false);
+            this.metroTabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +357,10 @@ namespace Formularios
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroTabControl Historial;
+        private System.Windows.Forms.TabPage tabPage1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage1;
     }
 }

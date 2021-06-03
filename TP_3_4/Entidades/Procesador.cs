@@ -24,9 +24,6 @@ namespace Entidades
         {
             get { return  this.documentos; }
         }
-
-
-
         /// <summary>
         /// Constructor que le añade nombre al objeto.
         /// </summary>
@@ -47,15 +44,15 @@ namespace Entidades
 
             if(documento.FaseProceso == PasosProceso.Distribuir)
             {              
-                if(documento.EstadoEncuadernacion == Encuadernacion.paraGuillotinar)
+                if(documento.EstadoEncuadernacion == Encuadernacion.Si_Guillotinar)
                 {
                     documento.FaseProceso = PasosProceso.Guillotinar;
                 }
-                else if(documento.EstadoEncuadernacion == Encuadernacion.hojasSueltas || documento.EstadoEncuadernacion == Encuadernacion.encuadernado)
+                else if(documento.EstadoEncuadernacion == Encuadernacion.No || documento.EstadoEncuadernacion == Encuadernacion.Si_NoGuillotinar)
                 {
                     documento.FaseProceso = PasosProceso.Escanear;
                 }
-
+                documento.FechaDistribucion = DateTime.Now;
                 retorno = true;          
             }
             /*else
@@ -78,6 +75,8 @@ namespace Entidades
             if(documento.FaseProceso == PasosProceso.Guillotinar)
             {
                 documento.FaseProceso = PasosProceso.Escanear;
+                documento.FechaGuillotinado = DateTime.Now;
+
                 retorno = true;
 
             }
@@ -95,6 +94,8 @@ namespace Entidades
             if (documento.FaseProceso == PasosProceso.Escanear)
             {
                 documento.FaseProceso = PasosProceso.Revisar;
+                documento.FechaEscaneo = DateTime.Now;
+
                 retorno = true;
 
             }
@@ -177,15 +178,5 @@ namespace Entidades
             return listaFiltrada;
         }
 
-        
-
-
-
-            //PARÁMETROS
-            //todo lo que viene del form (son strings)
-            //crear el tipo de documento que sea con un parámetro
-
-        //usar los constructores...
-        //añadir a la lista
     }
 }

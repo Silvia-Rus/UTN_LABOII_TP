@@ -29,7 +29,6 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,15 +39,15 @@ namespace Formularios
             this.btnTerminados = new MetroFramework.Controls.MetroTile();
             this.btnTodos = new MetroFramework.Controls.MetroTile();
             this.tblCuerpo = new System.Windows.Forms.TableLayoutPanel();
+            this.gridDocumentos = new MetroFramework.Controls.MetroGrid();
             this.btnInformes = new MetroFramework.Controls.MetroButton();
             this.txtBuscarPorCodebar = new System.Windows.Forms.TextBox();
             this.cmbAniadirDocumento = new System.Windows.Forms.ComboBox();
-            this.gridDocumentos = new MetroFramework.Controls.MetroGrid();
-            this.documentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.picBuscarPorCodebar = new System.Windows.Forms.PictureBox();
             this.tblMenu.SuspendLayout();
             this.tblCuerpo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocumentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).BeginInit();
             this.SuspendLayout();
             // 
             // tblMenu
@@ -151,41 +150,6 @@ namespace Formularios
             this.tblCuerpo.TabIndex = 1;
             this.tblCuerpo.Paint += new System.Windows.Forms.PaintEventHandler(this.tblCuerpo_Paint);
             // 
-            // btnInformes
-            // 
-            this.btnInformes.BackColor = System.Drawing.Color.Black;
-            this.btnInformes.Location = new System.Drawing.Point(797, 378);
-            this.btnInformes.Name = "btnInformes";
-            this.btnInformes.Size = new System.Drawing.Size(138, 29);
-            this.btnInformes.Style = MetroFramework.MetroColorStyle.Black;
-            this.btnInformes.TabIndex = 3;
-            this.btnInformes.Text = "Informes ";
-            this.btnInformes.UseSelectable = true;
-            this.btnInformes.Click += new System.EventHandler(this.btnInformes_Click);
-            // 
-            // txtBuscarPorCodebar
-            // 
-            this.txtBuscarPorCodebar.Location = new System.Drawing.Point(754, 34);
-            this.txtBuscarPorCodebar.Name = "txtBuscarPorCodebar";
-            this.txtBuscarPorCodebar.Size = new System.Drawing.Size(181, 20);
-            this.txtBuscarPorCodebar.TabIndex = 4;
-            this.txtBuscarPorCodebar.Text = "Código de barras";
-            this.txtBuscarPorCodebar.TextChanged += new System.EventHandler(this.txtBuscarPorCodebar_TextChanged);
-            // 
-            // cmbAniadirDocumento
-            // 
-            this.cmbAniadirDocumento.FormattingEnabled = true;
-            this.cmbAniadirDocumento.Items.AddRange(new object[] {
-            "Libro",
-            "Artículo"});
-            this.cmbAniadirDocumento.Location = new System.Drawing.Point(723, 63);
-            this.cmbAniadirDocumento.Name = "cmbAniadirDocumento";
-            this.cmbAniadirDocumento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbAniadirDocumento.Size = new System.Drawing.Size(212, 21);
-            this.cmbAniadirDocumento.TabIndex = 5;
-            this.cmbAniadirDocumento.Text = "Añadir Documento";
-            this.cmbAniadirDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbAniadirDocumento_SelectedIndexChanged);
-            // 
             // gridDocumentos
             // 
             this.gridDocumentos.AllowUserToResizeRows = false;
@@ -230,9 +194,52 @@ namespace Formularios
             this.gridDocumentos.Size = new System.Drawing.Size(685, 231);
             this.gridDocumentos.TabIndex = 0;
             // 
-            // documentoBindingSource
+            // btnInformes
             // 
-            this.documentoBindingSource.DataSource = typeof(Entidades.Documento);
+            this.btnInformes.BackColor = System.Drawing.Color.Black;
+            this.btnInformes.Location = new System.Drawing.Point(797, 378);
+            this.btnInformes.Name = "btnInformes";
+            this.btnInformes.Size = new System.Drawing.Size(138, 29);
+            this.btnInformes.Style = MetroFramework.MetroColorStyle.Black;
+            this.btnInformes.TabIndex = 3;
+            this.btnInformes.Text = "Informes ";
+            this.btnInformes.UseSelectable = true;
+            this.btnInformes.Click += new System.EventHandler(this.btnInformes_Click);
+            // 
+            // txtBuscarPorCodebar
+            // 
+            this.txtBuscarPorCodebar.Location = new System.Drawing.Point(754, 34);
+            this.txtBuscarPorCodebar.Name = "txtBuscarPorCodebar";
+            this.txtBuscarPorCodebar.Size = new System.Drawing.Size(181, 20);
+            this.txtBuscarPorCodebar.TabIndex = 4;
+            this.txtBuscarPorCodebar.Text = "Código de barras";
+            this.txtBuscarPorCodebar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarPorCodebar_KeyPress);
+            // 
+            // cmbAniadirDocumento
+            // 
+            this.cmbAniadirDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAniadirDocumento.FormattingEnabled = true;
+            this.cmbAniadirDocumento.Items.AddRange(new object[] {
+            "Libro",
+            "Artículo"});
+            this.cmbAniadirDocumento.Location = new System.Drawing.Point(723, 63);
+            this.cmbAniadirDocumento.Name = "cmbAniadirDocumento";
+            this.cmbAniadirDocumento.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbAniadirDocumento.Size = new System.Drawing.Size(212, 21);
+            this.cmbAniadirDocumento.TabIndex = 5;
+            this.cmbAniadirDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbAniadirDocumento_SelectedIndexChanged);
+            // 
+            // picBuscarPorCodebar
+            // 
+            this.picBuscarPorCodebar.Image = global::Formularios.Properties.Resources.lupa;
+            this.picBuscarPorCodebar.InitialImage = global::Formularios.Properties.Resources.lupa;
+            this.picBuscarPorCodebar.Location = new System.Drawing.Point(728, 34);
+            this.picBuscarPorCodebar.Name = "picBuscarPorCodebar";
+            this.picBuscarPorCodebar.Size = new System.Drawing.Size(20, 20);
+            this.picBuscarPorCodebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBuscarPorCodebar.TabIndex = 6;
+            this.picBuscarPorCodebar.TabStop = false;
+            this.picBuscarPorCodebar.Click += new System.EventHandler(this.picBuscarPorCodebar_Click);
             // 
             // FrmPrincipal
             // 
@@ -240,6 +247,7 @@ namespace Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 481);
+            this.Controls.Add(this.picBuscarPorCodebar);
             this.Controls.Add(this.cmbAniadirDocumento);
             this.Controls.Add(this.txtBuscarPorCodebar);
             this.Controls.Add(this.btnInformes);
@@ -252,7 +260,7 @@ namespace Formularios
             this.tblMenu.ResumeLayout(false);
             this.tblCuerpo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridDocumentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,8 +280,8 @@ namespace Formularios
         private System.Windows.Forms.ComboBox cmbAniadirDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoEncuadernacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn faseProcesoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource documentoBindingSource;
         private MetroFramework.Controls.MetroGrid gridDocumentos;
+        private System.Windows.Forms.PictureBox picBuscarPorCodebar;
         //private System.Windows.Forms.BindingSource documentoBindingSource;
     }
 }

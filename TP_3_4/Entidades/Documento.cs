@@ -22,9 +22,10 @@ namespace Entidades
         private string notas;
         private Encuadernacion estadoEncuadernacion;
         private PasosProceso pasoProceso;
-        private DateTime fechaIntroducción;
+        private DateTime fechaIntroduccion;
         private DateTime fechaDistribucion;
         private DateTime fechaGuillotinado;
+        private DateTime fechaEscaneo;
         private DateTime fechaRevision;
         private DateTime fechaAprobacion;
 
@@ -55,6 +56,8 @@ namespace Entidades
 
         public short Anio { get { return this.anio; } }
 
+        public Encuadernacion Encuadernado { get { return this.estadoEncuadernacion;  } }
+
         public string NumeroPaginasString
         {
             get           
@@ -68,55 +71,11 @@ namespace Entidades
         public string Id { get { return this.id; }}
 
         public int Barcode { get { return this.barcode; } }
-          
-        public string EstadoEncuadernacionString
-        {
-            get
-            {
-                string retorno = "";
-                StringBuilder sb = new StringBuilder();
-                if(this.estadoEncuadernacion == Encuadernacion.encuadernado)
-                {
-                    retorno = "Sí. NO guillotinar";
-                }
-                else if(this.estadoEncuadernacion == Encuadernacion.hojasSueltas)
-                {
-                    retorno =  "No";
-                }
-                else if(this.estadoEncuadernacion == Encuadernacion.paraGuillotinar)
-                {
-                    retorno = "Sí. Guillotinar";
-                }
-                return retorno;                             
-            }
-            set
-            {
-                if(value.Equals("Sí. NO guillotinar"))
-                {
-                    this.estadoEncuadernacion = Encuadernacion.encuadernado;
-                }
-                else if(value.Equals("No"))
-                {
-                    this.estadoEncuadernacion = Encuadernacion.hojasSueltas;
-                }
-                else if (value.Equals("Sí. Guillotinar"))
-                {
-                    this.estadoEncuadernacion = Encuadernacion.paraGuillotinar;
-                }
-            }
-        }
+                
+        public PasosProceso FaseProceso {set {this.pasoProceso = value;} get {return this.pasoProceso;}}
 
-        public PasosProceso FaseProceso
-        {
-            set
-            {
-                this.pasoProceso = value;
-            }
-            get
-            {
-                return this.pasoProceso;
-            }
-        }
+
+
 
 
         #endregion
@@ -125,59 +84,22 @@ namespace Entidades
         public Encuadernacion EstadoEncuadernacion { get { return this.estadoEncuadernacion;}}
 
         public short NumeroPaginas {get { return this.numeroPaginas; }}
+
+        public string Notas { get { return this.notas; } }
+
+
+
+        public DateTime FechaIntroduccion { get { return this.fechaIntroduccion; } }
+        public DateTime FechaDistribucion { set { this.fechaDistribucion = value; } get { return this.fechaDistribucion; } }
+        public DateTime FechaGuillotinado { set { this.fechaGuillotinado = value; } get { return this.fechaGuillotinado; } }
+    
+        public DateTime FechaEscaneo { set { this.fechaEscaneo = value; } get { return this.fechaEscaneo; } }
+        public DateTime FechaRevision { set { this.fechaRevision = value; } get { return this.fechaRevision; } }
+        public DateTime FechaAprobacion { set { this.fechaAprobacion = value; } get { return this.fechaAprobacion; } }
+
+
+
         #endregion
-
-        public Encuadernacion ConversorEncuadernacion(string origen)
-        {
-            Encuadernacion retorno = Encuadernacion.paraGuillotinar;
-
-            if (origen.Equals("Sí. NO guillotinar"))
-            {
-                retorno = Encuadernacion.encuadernado;
-            }
-            else if (origen.Equals("No"))
-            {
-                retorno = Encuadernacion.hojasSueltas;
-            }
-            else if (origen.Equals("Sí. Guillotinar"))
-            {
-                retorno = Encuadernacion.paraGuillotinar;
-            }
-
-            return retorno;
-        }
-
-        /*public virtual bool AniadirDocumento(Documento documento,
-                                     string titulo,
-                                     string autor,
-                                     string anio,
-                                     string numeroPaginas,
-                                     string id,
-                                     string barcode,
-                                     string notas,
-                                     string encuadernacion,
-                                     string fuente)
-        {
-
-
-            if(int.TryParse(barcode, out int barcodeInt) &&
-               short.TryParse(anio, out short anioShort)  &&
-                short.TryParse(numeroPaginas, out short numeroPaginasShort))
-            {
-                Encuadernacion encuadernacionConvertida = ConversorEncuadernacion(encuadernacion);
-                if(tipo.Equals("Libro"))
-                {                 
-                    documentoGenerado = new Libro(titulo, autor, anioShort, numeroPaginasShort, id, barcodeInt, notas, encuadernacionConvertida);
-                }
-                else if(tipo.Equals("Artículo"))
-                {
-                    documentoGenerado = new Articulo(titulo, autor, anioShort, numeroPaginasShort, id, barcodeInt, notas, encuadernacionConvertida, fuente);
-                }
-
-            }
-
-            return documentoGenerado;
-        }*/
 
         /// <summary>
         /// Constructor por defecto. Asigna el primer paso del proceso (introducido).
@@ -185,7 +107,8 @@ namespace Entidades
         public Documento()
         {
             this.pasoProceso = PasosProceso.Distribuir;
-            this.fechaIntroducción = DateTime.Now;
+            this.fechaIntroduccion = DateTime.Now;
+
         }
         /// <summary>
         /// Constructor del documento. 
@@ -217,8 +140,6 @@ namespace Entidades
 
         }
 
-
-
         public Documento (PasosProceso paso)
         {
             this.FaseProceso = paso;
@@ -244,30 +165,25 @@ namespace Entidades
         /// <param name="documentos"></param>
         /// <param name="d"></param>
         /// <returns>Devuelve verdadero si el documento está en el listado. False si no.</returns>
-        public static bool operator ==(List<Documento> documentos, Documento d)
-        {
-            bool retorno = false;
-
-            foreach (Documento item in documentos)
-            {
-                //if(item.id.Equals(d.id) || item.barcode.Equals(d.barcode))
-                if ((item.id.Equals(d.id) || item == d))
-                {                  
-                    retorno = true;
-                    break;
-                }
-            }              
-            return retorno;
-        }
+       
 
         public static bool operator ==(Documento a, Documento b)
         {
+
             bool retorno = false;
-            if(a.barcode == b.barcode)
+                     
+            if (a is null || b is null)
             {
-                retorno = true;
+                retorno = false;
             }
-           
+            else
+            {
+                if (a.barcode == b.barcode)
+                {
+                    retorno = true;
+                }
+            }
+
             return retorno;
         }
         /// <summary>
@@ -287,5 +203,77 @@ namespace Entidades
             return !(a == b);
         }
         #endregion
+
+        public static int ConversorBarcode(string b)
+        {
+            int retorno = -1;
+
+            if(int.TryParse(b, out int barcode) && barcode > -1)
+            {
+                retorno = barcode;
+            }
+
+            return retorno;
+        }
+
+        public static Documento GetByBarcode (List<Documento> lista, string barcode)
+        {
+            Documento retorno = null; 
+
+            if(ConversorBarcode(barcode) > -1)
+            {
+                foreach (Documento item in lista)
+                {
+                    if (item.Barcode == ConversorBarcode(barcode))
+                    {
+                        retorno = item;
+                        break;
+                    }
+                }
+            }
+            return retorno;
+        }
+
+        public static bool operator ==(List<Documento> documentos, Documento d)
+        {
+            bool retorno = false;
+
+            if (!(documentos is null) && !(d is null))
+            {
+                foreach (Documento item in documentos)
+                {
+
+                    if ((item.id.Equals(d.id) || item == d))
+                    {
+                        retorno = true;
+                        break;
+                    }
+
+                }
+            }
+
+           
+            return retorno;
+        }
+
+
+        public string HistorialProceso
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"Fecha de carga: {this.fechaIntroduccion}.");
+                sb.AppendLine($"Fecha de distribución: {this.FechaDistribucion}.");
+                sb.AppendLine($"Fecha de guillotinado: {this.FechaGuillotinado}.");
+                sb.AppendLine($"Fecha de escaneo: {this.FechaEscaneo}.");
+                sb.AppendLine($"Fecha de revisión: {this.FechaRevision}");
+                sb.AppendLine($"Fecha de aprobación: {this.FechaAprobacion}.");
+
+
+
+
+                return sb.ToString();
+            }
+        }
     }
 }

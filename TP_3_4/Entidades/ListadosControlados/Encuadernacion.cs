@@ -8,8 +8,8 @@ namespace Entidades
 {
     public enum Encuadernacion
     {
-        hojasSueltas,
-        encuadernado,
-        paraGuillotinar
+        No,
+        Si_NoGuillotinar,
+        Si_Guillotinar,
     }
 }
