@@ -15,9 +15,12 @@ namespace Formularios
     public partial class FrmPrincipal : MetroFramework.Forms.MetroForm
     {
         Procesador procesador;
-        Libro libro;
-        Articulo articulo;
+        Libro libro; //quitarlo cuando se solucione el obtener nosequé
+        Articulo articulo; //quitarlo cuando se solucione el obtener nosequé
         Documento miDoc;
+        List<Documento> listaFiltrada = new List<Documento>();
+
+
 
 
 
@@ -32,7 +35,7 @@ namespace Formularios
             this.procesador = new Procesador("Procesador");
             bool pudo = this.procesador + new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
             pudo = this.procesador + new Libro("Yerma", "Lorca", 1995, 54, "0001", 1235, "uuu", Encuadernacion.No);
-            pudo = this.procesador + new Libro("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar);
+            pudo = this.procesador + new Articulo("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar, "fuente");
 
             /*if (pudo)
             {
@@ -42,15 +45,17 @@ namespace Formularios
             {
                 MessageBox.Show($"NOOOOO PUDO {this.procesador.Documentos}" );
             }*/
-
             DataGridViewButtonColumn button = new DataGridViewButtonColumn();
             button.Name = "button";
-            button.HeaderText = "Fase";
-            foreach(Documento d in procesador.Documentos)
+            button.HeaderText = "";
+            foreach (Documento d in procesador.Documentos)
             {
                 button.Text = d.FaseProceso.ToString();
-            }         
+            }
             button.UseColumnTextForButtonValue = true; //dont forget this line
+
+
+
             gridDocumentos.Columns.Add(button);
             FormatoDataGrid(gridDocumentos, procesador.Documentos);
         }
@@ -62,10 +67,8 @@ namespace Formularios
 
         public void FormatoDataGrid (DataGridView datagrid, List<Documento> lista)
         {
-
             //borra la lista por las dudas
-            datagrid.DataSource = null;
-            
+            datagrid.DataSource = null;         
             //le pasamos la lista
             datagrid.DataSource = lista;
             //ocultamos la primera columna
@@ -85,16 +88,12 @@ namespace Formularios
             datagrid.Columns["FechaRevision"].Visible = false;
             datagrid.Columns["FechaAprobacion"].Visible = false;
             datagrid.Columns["HistorialProceso"].Visible = false;
-
-
             //cabeceras
             datagrid.Columns["TipoDeDocumentoString"].HeaderText = "Tipo";
             datagrid.Columns["Anio"].HeaderText = "Año";
             datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
             //datagrid.Columns[""].HeaderText = "Encuadernado";
 
-
- 
         }
 
         private void btnTodos_Click(object sender, EventArgs e)
@@ -106,7 +105,7 @@ namespace Formularios
         private void btnDistribuir_Click(object sender, EventArgs e)
         {
             //Listar los que están para distribuir
-            List<Documento> listaFiltrada = new List<Documento>();
+
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Distribuir);
             FormatoDataGrid(gridDocumentos, listaFiltrada);
         }
@@ -114,25 +113,23 @@ namespace Formularios
         private void btnGuillotinar_Click(object sender, EventArgs e)
         {
             //Listar los que están para guillotinar
-            List<Documento> listaFiltrada = new List<Documento>();
+
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Guillotinar);
-            //FormatoDataGrid(gridDocumentos, listaFiltrada);
+            FormatoDataGrid(gridDocumentos, listaFiltrada);
         }
 
         private void btnEscanear_Click(object sender, EventArgs e)
         {
             //Listar los que están para escanear
-            List<Documento> listaFiltrada = new List<Documento>();
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Escanear);
-            //FormatoDataGrid(gridDocumentos, listaFiltrada);
+            FormatoDataGrid(gridDocumentos, listaFiltrada);
         }
 
         private void btnTerminados_Click(object sender, EventArgs e)
         {
             //Listar los que ya están terminados
-            List<Documento> listaFiltrada = new List<Documento>();
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
-            //FormatoDataGrid(gridDocumentos, listaFiltrada);
+            FormatoDataGrid(gridDocumentos, listaFiltrada);
         }
 
         private void btnInformes_Click(object sender, EventArgs e)
@@ -155,15 +152,15 @@ namespace Formularios
                 if (DialogResult.OK == frmAlta.ShowDialog())
                 {
                     libro = (Libro)frmAlta.ObtenerDoc; //obtenemos el libro
-                    if (!(libro is null))
-                    {
-                        if (this.procesador + articulo)
-                        {
-                            
-                            MessageBox.Show("Artículo grabado con éxito.");
-                        }
+                    if (!(libro is null) && this.procesador + libro)
+                    {                         
+                         MessageBox.Show("Libro grabado con éxito.");
                     }
-                }
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema grabando el libro.");
+                    }
+                }          
             }
             else if (cmbAniadirDocumento.Text == "Artículo")
             {
@@ -171,15 +168,14 @@ namespace Formularios
                 if (DialogResult.OK == frmAlta.ShowDialog())
                 {
                     articulo = (Articulo)frmAlta.ObtenerDoc; //obtenemos el libro
-                    if(!(articulo is null))
+                    if (!(articulo is null) && this.procesador + articulo)
                     {
-                        if(this.procesador + articulo)
-                        {
-                            MessageBox.Show("Artículo grabado con éxito.");
-                        }
-
+                        MessageBox.Show("Artículo grabado con éxito.");
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema grabando el artículo.");
+                    }
                 }
             }
             else
@@ -193,64 +189,90 @@ namespace Formularios
         private void picBuscarPorCodebar_Click(object sender, EventArgs e)
         {
             miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-            if(miDoc is null)
+            FrmDocumento frmModificar =LanzarFormModificacion(miDoc);
+            if (DialogResult.OK == frmModificar.ShowDialog())                                                                                                    
             {
-                MessageBox.Show("nononono");
+
+                MessageBox.Show("Documento modificado con éxito.");
+                FormatoDataGrid(gridDocumentos, procesador.Documentos);
+
+            }
+            //else { MessageBox.Show("SALIÓ"); }
+        }
+
+        private void txtBuscarPorCodebar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
+                FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
+                if (DialogResult.OK == frmModificar.ShowDialog())
+                {
+                    MessageBox.Show("Documento modificado con éxito.");
+                    FormatoDataGrid(gridDocumentos, procesador.Documentos);
+                }
+            }
+        }
+
+        public FrmDocumento LanzarFormModificacion(Documento documento)
+        {
+            FrmDocumento frmModificacion = null;
+            if (documento is null)
+            {
+                MessageBox.Show("El documento no existe.");
+            }
+            else
+            {             
+                if (documento is Articulo)
+                {
+                    frmModificacion = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.modificarArticulo, documento);                  
+                }
+                else
+                {
+                    frmModificacion = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.modificarLibro, documento);
+                }
+                ImprimirDatosDocumento(frmModificacion, documento);
+            }
+            return frmModificacion;
+        }
+
+        public void  ImprimirDatosDocumento(FrmDocumento form, Documento documento)
+        {
+            form.Titulo = documento.Titulo;
+            form.Autor = documento.Autor;
+            form.Anio = documento.Anio.ToString();
+            form.Id = documento.Id;
+            form.NumeroPaginas = documento.NumeroPaginas.ToString();
+            form.Encuadernacion = documento.EstadoEncuadernacion.ToString();
+            form.Barcode = documento.Barcode.ToString();
+            form.Notas = documento.Notas;
+            form.Historial = documento.HistorialProceso;
+            if(documento is Articulo)
+            {
+                Articulo docAux = (Articulo)documento;
+                form.Fuente = docAux.Fuente;
+            }
+        }
+
+        private void gridDocumentos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Documento aux = procesador.Documentos[gridDocumentos.CurrentRow.Index];
+            if (gridDocumentos.CurrentCell.ColumnIndex == 0)
+            {
+                MessageBox.Show("TOCO LOS BOTONES OMG");
+                Procesador.Proceso(aux);
             }
             else
             {
-                FrmDocumento frmModificacion;
-                if(miDoc is Articulo)
+                FrmDocumento frmModificar = LanzarFormModificacion(aux);
+                if (DialogResult.OK == frmModificar.ShowDialog())
                 {
-                    frmModificacion = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.modificarArticulo);
-                    Articulo miDocAux = (Articulo)miDoc;
-                    frmModificacion.Fuente = miDocAux.Fuente;
-                }
-                else
-                {
-                    frmModificacion = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.modificarLibro);
-                }
-
-                frmModificacion.Titulo = miDoc.Titulo;
-                frmModificacion.Autor = miDoc.Autor;
-                frmModificacion.Anio = miDoc.Anio.ToString();
-                frmModificacion.Id = miDoc.Id;
-                frmModificacion.NumeroPaginas = miDoc.NumeroPaginas.ToString();
-                frmModificacion.Encuadernacion = miDoc.EstadoEncuadernacion.ToString();
-                frmModificacion.Barcode = miDoc.Barcode.ToString();
-                frmModificacion.Notas = miDoc.Notas;
-
-                frmModificacion.Historial = miDoc.HistorialProceso;
-
-              
-                frmModificacion.ShowDialog();
-            }
- 
-        }
-
-    
-        private void txtBuscarPorCodebar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-            if(e.KeyChar==Convert.ToChar(Keys.Enter))
-            {
-
-                miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-                if (miDoc is null)
-                {
-                    MessageBox.Show("nononono");
-                }
-                else
-                {
-                    FrmDocumento frmModificacion;
-
-                    frmModificacion = new FrmDocumento(FrmDocumento.TipoDeFormDocumento.modificarArticulo);
-                    frmModificacion.ShowDialog();
-
+                    MessageBox.Show("Documento modificado con éxito.");
+                    FormatoDataGrid(gridDocumentos, procesador.Documentos);
                 }
             }
+
+
         }
-
-
     }
 }

@@ -29,6 +29,7 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAccion = new System.Windows.Forms.Button();
             this.btnCancelarDocumento = new System.Windows.Forms.Button();
             this.lblTituloDocumento = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@ namespace Formularios
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rtbHistorialDocumento = new System.Windows.Forms.RichTextBox();
             this.lblHistorialDocumento = new System.Windows.Forms.Label();
+            this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.tblPrincipalDocumento.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -352,5 +354,6 @@ namespace Formularios
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.RichTextBox rtbHistorialDocumento;
         private System.Windows.Forms.Label lblHistorialDocumento;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender1;
     }
 }

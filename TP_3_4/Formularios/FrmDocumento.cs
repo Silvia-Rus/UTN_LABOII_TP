@@ -21,13 +21,7 @@ namespace Formularios
 
         Documento miDoc;
 
-
         public Documento ObtenerDoc { get { return miDoc; } }
-
-        public Libro ObtenerLibro { get { return libro; } }
-
-        public Articulo ObtenerArticulo { get { return articulo; } }
-
         public string Titulo { set { txtTituloDocumento.Text = value; } }
         public string Autor { set { txtAutorDocumento.Text = value; } }
         public string Anio { set { txtAnioDocumento.Text = value; } }
@@ -40,15 +34,12 @@ namespace Formularios
         public string Historial { set { rtbHistorialDocumento.Text = value; } }
 
 
-
-
-
         public FrmDocumento()
         {
             InitializeComponent();
         }
 
-        
+        //PONER IF DOC ES NULL?
         public FrmDocumento(TipoDeFormDocumento tipoDeFormDocumento) : this()
         {
             if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.altaArticulo))
@@ -65,97 +56,127 @@ namespace Formularios
                 this.txtFuenteDocumento.Visible = false;
                 this.btnAccion.Click += new System.EventHandler(this.btnAccionAnadirLibro_Click);
             }
-            else if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarArticulo))
-            {
-                //lo que se tiene que ver para modificar
-                this.btnAccion.Text = "Modificar";
-                this.txtBarcodeDocumento.Enabled = false;
-                this.btnAccion.Click += new System.EventHandler(this.btnAccionModificar_Click);
-                
-            }
-            else if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarLibro))
-            {
-                //lo que se tiene que ver para modificar
-                this.btnAccion.Text = "Modificar";
-                this.txtBarcodeDocumento.Enabled = false;
-                this.lblFuenteDocumento.Visible = false;
-                this.txtFuenteDocumento.Visible = false;
-                this.btnAccion.Click += new System.EventHandler(this.btnAccionModificar_Click);
-
-            }
-
         }
+
+        public FrmDocumento(TipoDeFormDocumento tipoDeFormDocumento, Documento documento) : this(tipoDeFormDocumento)
+        {
+           if(!(documento is null))
+           {
+                this.btnAccion.Text = "Modificar";
+                this.txtBarcodeDocumento.Enabled = false;
+                this.btnAccion.Click += new System.EventHandler(this.btnAccionModificar_Click);
+                this.miDoc = documento;
+
+                if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarArticulo))
+                {
+                    //lo que se tiene que ver para modificar
+                    this.lblFuenteDocumento.Visible = false;
+                    this.txtFuenteDocumento.Visible = false;
+                }
+           }
+        }
+
 
         private void FrmAltaDocumento_Load(object sender, EventArgs e)
         {
-
-            //datos
+           //datos
             this.cmbEncuadernacionDocumento.DataSource = Enum.GetValues(typeof(Encuadernacion));
         }
 
         private void btnCancelarDocumento_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-
         }
 
         private void btnAccion_Click(object sender, EventArgs e)
         {
-            //acción por defecto del botón Acción
-
-            //si los campos están ok
             this.DialogResult = DialogResult.OK;
-
-            //si no 
-
-            //MessageBox.Show("Revise los campos");
-
         }
-
-
 
         private void btnAccionAnadirArticulo_Click(object sender, EventArgs e)
         {
-
-            Encuadernacion encuadernado = Entidades.Encuadernacion.No;
-            if (cmbEncuadernacionDocumento.SelectedIndex != -1)
-            {
-
-                foreach (Encuadernacion item in Enum.GetValues(typeof(Encuadernacion)))
-                {
-                    if (cmbEncuadernacionDocumento.SelectedIndex == (int)item)
-                    {
-                        encuadernado = item;
-                    }
-                }
-
-                this.DialogResult = DialogResult.None;
-                miDoc = Articulo.GenerarArticulo(txtTituloDocumento.Text, txtAutorDocumento.Text, txtAnioDocumento.Text, txtNumeroPaginasDocumento.Text, txtIdentificadorDocumento.Text, txtBarcodeDocumento.Text, rtbNotasDocumento.Text, encuadernado, txtFuenteDocumento.Text);
-
-                if (miDoc != null)
+            this.DialogResult = DialogResult.None;
+            miDoc = Articulo.GenerarArticulo(txtTituloDocumento.Text,
+                                                                txtAutorDocumento.Text,
+                                                                txtAnioDocumento.Text,
+                                                                txtNumeroPaginasDocumento.Text,
+                                                                txtIdentificadorDocumento.Text,
+                                                                txtBarcodeDocumento.Text,
+                                                                rtbNotasDocumento.Text,
+                                                                cmbEncuadernacionDocumento.SelectedIndex,
+                                                                txtFuenteDocumento.Text);
+                if(!(miDoc is null))
                 {
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     MessageBox.Show("Revise los campos");
+                    this.DialogResult = DialogResult.None;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Revise los campos");
-            }
-                
         }
 
         private void btnAccionAnadirLibro_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ANDA EL BOTÓN DE GRABAR LIBRO");
+            this.DialogResult = DialogResult.None;
+            miDoc = Documento.GenerarDocumento("Libro",
+                                                txtTituloDocumento.Text,
+                                                txtAutorDocumento.Text,
+                                                txtAnioDocumento.Text,
+                                                txtNumeroPaginasDocumento.Text,
+                                                txtIdentificadorDocumento.Text,
+                                                txtBarcodeDocumento.Text,
+                                                rtbNotasDocumento.Text,
+                                                cmbEncuadernacionDocumento.SelectedIndex);
+            if (!(miDoc is null))
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Revise los campos");
+                this.DialogResult = DialogResult.None;
+            }
         }
 
         private void btnAccionModificar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ANDA EL BOTÓN DE MODIFICAR LIBRO");
+            if(miDoc is Articulo)
+            {
+                this.DialogResult = DialogResult.None;
+
+               if( Articulo.ModificarArticulo(miDoc,
+                                           txtTituloDocumento.Text,
+                                           txtAutorDocumento.Text,
+                                           txtAnioDocumento.Text,
+                                           txtNumeroPaginasDocumento.Text,
+                                           txtIdentificadorDocumento.Text,
+                                           rtbNotasDocumento.Text,
+                                           cmbEncuadernacionDocumento.SelectedIndex,
+                                           txtFuenteDocumento.Text))
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+             
+            }
+            else if (miDoc is Libro)
+            {
+                this.DialogResult = DialogResult.None;
+
+                if (Documento.ModificarDocumento(miDoc,
+                                            txtTituloDocumento.Text,
+                                            txtAutorDocumento.Text,
+                                            txtAnioDocumento.Text,
+                                            txtNumeroPaginasDocumento.Text,
+                                            txtIdentificadorDocumento.Text,
+                                            rtbNotasDocumento.Text,
+                                            cmbEncuadernacionDocumento.SelectedIndex))
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+
+            }
         }
+
     }
 }

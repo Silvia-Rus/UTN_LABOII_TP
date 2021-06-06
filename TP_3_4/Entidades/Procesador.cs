@@ -38,11 +38,11 @@ namespace Entidades
         /// </summary>
         /// <param name="documento">Documento a distribuir.</param>
         /// <returns>Devuelve verdadero si el documento cumple las condiciones para ser distribuido.</returns>
-        public bool Distribuir(Documento documento)
+        public static bool Distribuir(Documento documento)
         {
             bool retorno = false;
 
-            if(documento.FaseProceso == PasosProceso.Distribuir)
+            if(documento.FaseProceso == PasosProceso.Distribuir && (!(documento is null)))
             {              
                 if(documento.EstadoEncuadernacion == Encuadernacion.Si_Guillotinar)
                 {
@@ -68,7 +68,7 @@ namespace Entidades
         /// </summary>
         /// <param name="documento">Documento a guillotinar.</param>
         /// <returns>Verdadero si el documento estaba para guillotinar. Falso si no.</returns>
-        public bool Guillotinar(Documento documento)
+        public static bool  Guillotinar(Documento documento)
         {
             bool retorno = false;
 
@@ -88,7 +88,7 @@ namespace Entidades
         /// </summary>
         /// <param name="documento">Documento a escanear.</param>
         /// <returns>Verdadero si el documento estaba para escanear. Falso si no.</returns>
-        public bool Escanear(Documento documento)
+        public static bool Escanear(Documento documento)
         {
             bool retorno = false;
             if (documento.FaseProceso == PasosProceso.Escanear)
@@ -109,7 +109,7 @@ namespace Entidades
         /// <param name="estaBienElPdf">Documento a guillotinado.</param>
         /// <returns>Verdadero si el documento estaba para guillotinar. Falso si no.</returns>
 
-        public bool Revisar(Documento documento, bool estaBienElPdf)
+        public static bool Revisar(Documento documento, bool estaBienElPdf)
         {
             bool retorno = false;
 
@@ -118,10 +118,12 @@ namespace Entidades
                 if (estaBienElPdf)
                 {
                     documento.FaseProceso = PasosProceso.Aprobado;
+                    documento.FechaRevision = DateTime.Now;
                 }
                 else
                 {
-                    documento.FaseProceso = PasosProceso.Escanear;                   
+                    documento.FaseProceso = PasosProceso.Escanear;
+                    documento.FechaEscaneo = DateTime.MinValue;
                 }
                 retorno = true;
             }
@@ -134,16 +136,37 @@ namespace Entidades
         /// <param name="documento">Documento que se da por finalizado.</param>
         /// <returns></returns>
 
-        public bool Finalizar(Documento documento)
+        public static bool Finalizar(Documento documento)
         {
             bool retorno = false;
 
             if (documento.FaseProceso == PasosProceso.Revisar)
             {
                 documento.FaseProceso = PasosProceso.Aprobado;
+                documento.FechaAprobacion = DateTime.Now;
                 retorno = true;
             }
             return retorno;
+        }
+
+        public static void Proceso(Documento documento)
+        {
+            if (documento.FaseProceso == PasosProceso.Distribuir)
+            {
+                Distribuir(documento);
+            }
+            else if (documento.FaseProceso == PasosProceso.Guillotinar)
+            {
+                Guillotinar(documento);
+            }
+            else if (documento.FaseProceso == PasosProceso.Escanear)
+            {
+                Escanear(documento);
+            }
+            else if (documento.FaseProceso == PasosProceso.Aprobado)
+            {
+                Finalizar(documento);
+            }
         }
 
         /// <summary>

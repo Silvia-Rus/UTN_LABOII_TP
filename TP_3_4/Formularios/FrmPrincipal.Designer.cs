@@ -193,6 +193,7 @@ namespace Formularios
             this.gridDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDocumentos.Size = new System.Drawing.Size(685, 231);
             this.gridDocumentos.TabIndex = 0;
+            this.gridDocumentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDocumentos_CellClick);
             // 
             // btnInformes
             // 

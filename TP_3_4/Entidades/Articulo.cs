@@ -13,7 +13,7 @@ namespace Entidades
 
         public Articulo() : base() { }
 
-        public string Fuente { get { return this.fuente; } }
+        public string Fuente { get { return this.fuente; } set { this.fuente = value;  } }
 
         public Articulo(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion, string fuente)
@@ -30,6 +30,8 @@ namespace Entidades
 
         }*/
 
+        public Articulo(string titulo) { }
+
         public static Articulo GenerarArticulo( string titulo,
                                                 string autor,
                                                 string anio,
@@ -37,25 +39,49 @@ namespace Entidades
                                                 string id,
                                                 string barcode,
                                                 string notas,
-                                                Encuadernacion encuadernacion,
+                                                int encIndex,
                                                 string fuente)
         {
-
-
-            if (titulo.Length > 0 &&
-                ConversorBarcode(barcode) > -1 &&
-                short.TryParse(anio, out short anioShort) &&
-                short.TryParse(numeroPaginas, out short numeroPaginasShort) && numeroPaginasShort >0)
+            if (ConversorBarcode(barcode) > -1 && ValidadorEntradaDatos(titulo, anio, numeroPaginas, encIndex))
             {
-                return new Articulo(titulo, autor, anioShort, numeroPaginasShort, id, ConversorBarcode(barcode), notas, encuadernacion, fuente);
-            
+                return new Articulo(titulo, autor, ConversorAnio(anio), ConversorPaginas(numeroPaginas), id, ConversorBarcode(barcode), notas, getEncuadernado(encIndex), fuente);       
             }
             else
             {
-                Console.WriteLine("OJO NO GENERÓ NADA");
+                Console.WriteLine("Error generando un nuevo artículo");
             }
-            return null;
+
+            return null ;
+
         }
+
+        public static bool ModificarArticulo(Documento art,
+                                                string titulo,
+                                               string autor,
+                                               string anio,
+                                               string numeroPaginas,
+                                               string id,
+                                               string notas,
+                                               int encIndex,
+                                               string fuente) 
+        {
+            bool retorno = false;
+            if (ValidadorEntradaDatos(titulo, anio, numeroPaginas, encIndex) &&
+                ModificarDocumento(art, titulo, autor, anio, numeroPaginas, id, notas, encIndex))
+            {
+                Articulo docAux = (Articulo)art;
+                docAux.Fuente = fuente;
+                retorno = true;
+
+            }
+            else
+            {
+                Console.WriteLine("Error generando un nuevo artículo");
+            }
+            return retorno;
+
+        }
+
 
 
     }
