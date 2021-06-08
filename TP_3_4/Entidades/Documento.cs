@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 //para serializar
 using System.Runtime.Serialization.Formatters.Binary; //para guardar en binario
 using System.IO;                                      //Input/Output. para hacer el stream
-
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
     [Serializable]
+    [XmlInclude(typeof(Articulo))]
+    [XmlInclude(typeof(Libro))]
+
     public abstract class Documento
     {
         private string titulo;

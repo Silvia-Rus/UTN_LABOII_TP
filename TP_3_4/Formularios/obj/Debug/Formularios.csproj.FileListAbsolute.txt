@@ -30,3 +30,5 @@ C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Consola.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Consola.exe.config
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.FrmDocumento.resources
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Serializador.pdb

@@ -8,6 +8,7 @@ namespace Entidades
 {
     public enum PasosProceso
     {
+        Todos,
         Distribuir,
         Guillotinar,
         Escanear,

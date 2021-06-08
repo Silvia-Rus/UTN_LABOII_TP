@@ -1,0 +1,6 @@
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\bin\Debug\Serializador.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\obj\Debug\Serializador.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\obj\Debug\Serializador.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\obj\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Serializador\obj\Debug\Serializador.pdb

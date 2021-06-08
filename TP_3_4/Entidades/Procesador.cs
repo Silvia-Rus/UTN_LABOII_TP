@@ -42,7 +42,7 @@ namespace Entidades
         {
             bool retorno = false;
 
-            if(documento.FaseProceso == PasosProceso.Distribuir && (!(documento is null)))
+            if(!(documento is null))
             {              
                 if(documento.EstadoEncuadernacion == Encuadernacion.Si_Guillotinar)
                 {
@@ -163,10 +163,10 @@ namespace Entidades
             {
                 Escanear(documento);
             }
-            else if (documento.FaseProceso == PasosProceso.Aprobado)
+            /*else if (documento.FaseProceso == PasosProceso.Aprobado)
             {
                 Finalizar(documento);
-            }
+            }*/
         }
 
         /// <summary>

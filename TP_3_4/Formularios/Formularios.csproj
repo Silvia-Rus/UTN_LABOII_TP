@@ -152,6 +152,10 @@
       <Project>{fdfbc3fa-5e08-4957-9045-26da127deb59}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Serializador\Serializador.csproj">
+      <Project>{c176550b-9d94-4450-ae3f-a5b6fa759fd5}</Project>
+      <Name>Serializador</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lupa.png" />
