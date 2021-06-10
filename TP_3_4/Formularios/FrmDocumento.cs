@@ -75,14 +75,11 @@ namespace Formularios
                 }
            }
         }
-
-
         private void FrmAltaDocumento_Load(object sender, EventArgs e)
         {
            //datos
             this.cmbEncuadernacionDocumento.DataSource = Enum.GetValues(typeof(Encuadernacion));
         }
-
         private void btnCancelarDocumento_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -156,8 +153,7 @@ namespace Formularios
                                            txtFuenteDocumento.Text))
                 {
                     this.DialogResult = DialogResult.OK;
-                }
-             
+                }           
             }
             else if (miDoc is Libro)
             {

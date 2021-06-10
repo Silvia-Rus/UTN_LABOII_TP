@@ -13,7 +13,7 @@ namespace Entidades
 
         public Articulo() : base() { }
 
-        public string Fuente { get { return this.fuente; } set { this.fuente = value;  } }
+        public string Fuente { get { return this.fuente; } set { this.fuente = value; } }
 
         public Articulo(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion, string fuente)
@@ -22,6 +22,7 @@ namespace Entidades
             //this.tipoId = tipoId;
             this.fuente = fuente;
 
+
         }
 
         /*public Articulo(string titulo, string autor, string anio, string numeroPaginas, string id, string barcode, string notas,
@@ -29,8 +30,6 @@ namespace Entidades
         {
 
         }*/
-
-        public Articulo(string titulo) { }
 
         public static Articulo GenerarArticulo( string titulo,
                                                 string autor,

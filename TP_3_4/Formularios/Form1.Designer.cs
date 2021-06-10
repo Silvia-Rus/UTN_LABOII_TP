@@ -55,6 +55,7 @@ namespace Formularios
             this.Historial = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroListView2 = new MetroFramework.Controls.MetroListView();
             this.metroContextMenu1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -269,7 +270,7 @@ namespace Formularios
             this.Historial.Location = new System.Drawing.Point(23, 63);
             this.Historial.Name = "Historial";
             this.Historial.SelectedIndex = 0;
-            this.Historial.Size = new System.Drawing.Size(575, 268);
+            this.Historial.Size = new System.Drawing.Size(168, 165);
             this.Historial.TabIndex = 20;
             this.Historial.UseSelectable = true;
             // 
@@ -277,7 +278,7 @@ namespace Formularios
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(567, 226);
+            this.tabPage1.Size = new System.Drawing.Size(160, 123);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Documento";
             // 
@@ -296,11 +297,24 @@ namespace Formularios
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // metroListView2
+            // 
+            this.metroListView2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListView2.FullRowSelect = true;
+            this.metroListView2.Location = new System.Drawing.Point(387, 55);
+            this.metroListView2.Name = "metroListView2";
+            this.metroListView2.OwnerDraw = true;
+            this.metroListView2.Size = new System.Drawing.Size(303, 254);
+            this.metroListView2.TabIndex = 21;
+            this.metroListView2.UseCompatibleStateImageBehavior = false;
+            this.metroListView2.UseSelectable = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.metroListView2);
             this.Controls.Add(this.Historial);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.pictureBox1);
@@ -362,5 +376,6 @@ namespace Formularios
         private MetroFramework.Controls.MetroTabControl Historial;
         private System.Windows.Forms.TabPage tabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
+        private MetroFramework.Controls.MetroListView metroListView2;
     }
 }

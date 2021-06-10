@@ -190,13 +190,20 @@ namespace Entidades
         {
             List<Documento> listaFiltrada = new List<Documento>();
 
-            foreach (Documento item in listaCompleta)
+            if(paso == PasosProceso.Todos)
             {
-                if (item.FaseProceso == paso)
-                {
-                    listaFiltrada.Add(item);
-                }
+                listaFiltrada = listaCompleta;
             }
+            else
+            {
+                foreach (Documento item in listaCompleta)
+                {
+                    if (item.FaseProceso == paso)
+                    {
+                        listaFiltrada.Add(item);
+                    }
+                }
+            }         
 
             return listaFiltrada;
         }

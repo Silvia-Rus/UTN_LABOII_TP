@@ -29,22 +29,23 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
             this.btnDistribuir = new MetroFramework.Controls.MetroTile();
             this.btnGuillotinar = new MetroFramework.Controls.MetroTile();
             this.btnEscanear = new MetroFramework.Controls.MetroTile();
             this.btnTodos = new MetroFramework.Controls.MetroTile();
             this.btnTerminados = new MetroFramework.Controls.MetroTile();
+            this.btnRevisar = new MetroFramework.Controls.MetroTile();
             this.tblCuerpo = new System.Windows.Forms.TableLayoutPanel();
             this.gridDocumentos = new MetroFramework.Controls.MetroGrid();
             this.btnInformes = new MetroFramework.Controls.MetroButton();
             this.txtBuscarPorCodebar = new System.Windows.Forms.TextBox();
             this.cmbAniadirDocumento = new System.Windows.Forms.ComboBox();
             this.picBuscarPorCodebar = new System.Windows.Forms.PictureBox();
-            this.btnRevisar = new MetroFramework.Controls.MetroTile();
+            this.txtAvisoSuperior = new MetroFramework.Controls.MetroTextBox();
             this.tblMenu.SuspendLayout();
             this.tblCuerpo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocumentos)).BeginInit();
@@ -122,7 +123,7 @@ namespace Formularios
             this.btnTodos.Size = new System.Drawing.Size(171, 39);
             this.btnTodos.Style = MetroFramework.MetroColorStyle.Lime;
             this.btnTodos.TabIndex = 0;
-            this.btnTodos.Text = "TODOS";
+            this.btnTodos.Text = "Lista completa";
             this.btnTodos.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnTodos.UseSelectable = true;
             this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
@@ -135,10 +136,23 @@ namespace Formularios
             this.btnTerminados.Size = new System.Drawing.Size(171, 42);
             this.btnTerminados.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnTerminados.TabIndex = 4;
-            this.btnTerminados.Text = "Terminados";
+            this.btnTerminados.Text = "Aprobados";
             this.btnTerminados.UseSelectable = true;
             this.btnTerminados.UseStyleColors = true;
             this.btnTerminados.Click += new System.EventHandler(this.btnTerminados_Click);
+            // 
+            // btnRevisar
+            // 
+            this.btnRevisar.ActiveControl = null;
+            this.btnRevisar.Location = new System.Drawing.Point(3, 183);
+            this.btnRevisar.Name = "btnRevisar";
+            this.btnRevisar.Size = new System.Drawing.Size(171, 39);
+            this.btnRevisar.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnRevisar.TabIndex = 5;
+            this.btnRevisar.Text = "4 - Revisar";
+            this.btnRevisar.UseSelectable = true;
+            this.btnRevisar.UseStyleColors = true;
+            this.btnRevisar.Click += new System.EventHandler(this.btnRevisar_Click);
             // 
             // tblCuerpo
             // 
@@ -159,23 +173,23 @@ namespace Formularios
             this.gridDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridDocumentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gridDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDocumentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDocumentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gridDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridDocumentos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDocumentos.DefaultCellStyle = dataGridViewCellStyle14;
             this.gridDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDocumentos.EnableHeadersVisualStyles = false;
             this.gridDocumentos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -183,14 +197,14 @@ namespace Formularios
             this.gridDocumentos.Location = new System.Drawing.Point(3, 3);
             this.gridDocumentos.Name = "gridDocumentos";
             this.gridDocumentos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDocumentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDocumentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.gridDocumentos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDocumentos.Size = new System.Drawing.Size(685, 264);
@@ -244,18 +258,39 @@ namespace Formularios
             this.picBuscarPorCodebar.TabStop = false;
             this.picBuscarPorCodebar.Click += new System.EventHandler(this.picBuscarPorCodebar_Click);
             // 
-            // btnRevisar
+            // txtAvisoSuperior
             // 
-            this.btnRevisar.ActiveControl = null;
-            this.btnRevisar.Location = new System.Drawing.Point(3, 183);
-            this.btnRevisar.Name = "btnRevisar";
-            this.btnRevisar.Size = new System.Drawing.Size(171, 39);
-            this.btnRevisar.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnRevisar.TabIndex = 5;
-            this.btnRevisar.Text = "4 - Revisar";
-            this.btnRevisar.UseSelectable = true;
-            this.btnRevisar.UseStyleColors = true;
-            this.btnRevisar.Click += new System.EventHandler(this.btnRevisar_Click);
+            // 
+            // 
+            // 
+            this.txtAvisoSuperior.CustomButton.Image = null;
+            this.txtAvisoSuperior.CustomButton.Location = new System.Drawing.Point(428, 1);
+            this.txtAvisoSuperior.CustomButton.Name = "";
+            this.txtAvisoSuperior.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtAvisoSuperior.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtAvisoSuperior.CustomButton.TabIndex = 1;
+            this.txtAvisoSuperior.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtAvisoSuperior.CustomButton.UseSelectable = true;
+            this.txtAvisoSuperior.CustomButton.Visible = false;
+            this.txtAvisoSuperior.Enabled = false;
+            this.txtAvisoSuperior.Lines = new string[0];
+            this.txtAvisoSuperior.Location = new System.Drawing.Point(313, 90);
+            this.txtAvisoSuperior.MaxLength = 32767;
+            this.txtAvisoSuperior.Name = "txtAvisoSuperior";
+            this.txtAvisoSuperior.PasswordChar = '\0';
+            this.txtAvisoSuperior.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtAvisoSuperior.SelectedText = "";
+            this.txtAvisoSuperior.SelectionLength = 0;
+            this.txtAvisoSuperior.SelectionStart = 0;
+            this.txtAvisoSuperior.ShortcutsEnabled = true;
+            this.txtAvisoSuperior.Size = new System.Drawing.Size(450, 23);
+            this.txtAvisoSuperior.Style = MetroFramework.MetroColorStyle.Red;
+            this.txtAvisoSuperior.TabIndex = 7;
+            this.txtAvisoSuperior.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAvisoSuperior.UseSelectable = true;
+            this.txtAvisoSuperior.UseStyleColors = true;
+            this.txtAvisoSuperior.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtAvisoSuperior.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // FrmPrincipal
             // 
@@ -263,6 +298,7 @@ namespace Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 481);
+            this.Controls.Add(this.txtAvisoSuperior);
             this.Controls.Add(this.picBuscarPorCodebar);
             this.Controls.Add(this.cmbAniadirDocumento);
             this.Controls.Add(this.txtBuscarPorCodebar);
@@ -299,6 +335,7 @@ namespace Formularios
         private MetroFramework.Controls.MetroGrid gridDocumentos;
         private System.Windows.Forms.PictureBox picBuscarPorCodebar;
         private MetroFramework.Controls.MetroTile btnRevisar;
+        private MetroFramework.Controls.MetroTextBox txtAvisoSuperior;
         //private System.Windows.Forms.BindingSource documentoBindingSource;
     }
 }

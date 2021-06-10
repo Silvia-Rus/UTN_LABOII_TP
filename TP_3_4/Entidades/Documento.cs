@@ -34,6 +34,8 @@ namespace Entidades
         private DateTime fechaAprobacion;
 
         #region Gets y sets para el formato de la tabla
+
+        public PasosProceso FaseProceso { set { this.pasoProceso = value; } get { return this.pasoProceso; } }
         /// <summary>
         /// Propiedad que devuelve el tipo de documento en formato string para la tabla.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Entidades
 
         public string Id { get { return this.id; } set { this.id = value; } }
         public int Barcode { get { return this.barcode; } }              
-        public PasosProceso FaseProceso {set {this.pasoProceso = value;} get {return this.pasoProceso;}}
+
         #endregion
 
         #region Resto de gets y sets
@@ -338,19 +340,20 @@ namespace Entidades
                     if(this.FechaGuillotinado != DateTime.MinValue)
                     {
                         sb.AppendLine($"Fecha de guillotinado: {this.FechaGuillotinado}.");
-                        if(this.FechaEscaneo != DateTime.MinValue)
+                    }
+
+                        if (this.FechaEscaneo != DateTime.MinValue)
                         {
                             sb.AppendLine($"Fecha de escaneo: {this.FechaEscaneo}.");
-                            if(this.FechaRevision != DateTime.MinValue)
+                            if (this.FechaRevision != DateTime.MinValue)
                             {
                                 sb.AppendLine($"Fecha de revisión: {this.FechaRevision}");
-                                if(this.FechaAprobacion != DateTime.MinValue)
+                                if (this.FechaAprobacion != DateTime.MinValue)
                                 {
                                     sb.AppendLine($"Fecha de aprobación: {this.FechaAprobacion}.");
                                 }
                             }
-                        }
-                    }
+                        }                                  
                 }
                 return sb.ToString();
             }

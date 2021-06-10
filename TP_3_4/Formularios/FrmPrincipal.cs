@@ -20,6 +20,7 @@ namespace Formularios
         Documento miDoc;
         List<Documento> listaFiltrada;
         string ultimoPresionado;
+        DataGridViewButtonColumn button;
 
 
         public FrmPrincipal()
@@ -27,43 +28,41 @@ namespace Formularios
             InitializeComponent();
             this.procesador = new Procesador("Procesador");
             listaFiltrada = new List<Documento>();
+            button =  new DataGridViewButtonColumn();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-            ultimoPresionado = "btnTodos";
+
+            FormatoButton(gridDocumentos, button);
 
             bool pudo = this.procesador + new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
             pudo = this.procesador + new Libro("Yerma", "Lorca", 1995, 54, "0001", 1235, "uuu", Encuadernacion.No);
             pudo = this.procesador + new Articulo("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar, "fuente");
 
+            //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
+            ultimoPresionado = "btnTodos";
+            RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
+
+        }
+
+        private void FormatoButton(DataGridView datagrid, DataGridViewButtonColumn button)
+        {
             button.Name = "button";
             button.HeaderText = "";
 
-            foreach (Documento d in procesador.Documentos)
-            {
-                button.Text = d.FaseProceso.ToString();
-            }
-
             button.UseColumnTextForButtonValue = true; //dont forget this line
 
-            gridDocumentos.Columns.Add(button);
 
-            FormatoDataGrid(gridDocumentos, procesador.Documentos);
+            datagrid.Columns.Add(button);
         }
-
-        //el click del boton
-        //1 - Busca el documento que tiene el barcode de la currentrow
-        //2 - le cambia el estado Fase Proceso
-
-
-        public void FormatoDataGrid(DataGridView datagrid, List<Documento> lista)
+        private void FormatoDataGrid(DataGridView datagrid, List<Documento> lista, DataGridViewButtonColumn button)
         {
             //borra la lista por las dudas
             datagrid.DataSource = null;
-
             datagrid.DataSource = lista;
+
+            button.Text = "-->";
             //ocultamos la primera columna
             datagrid.RowHeadersVisible = false;
             //autoajustar al contenido
@@ -72,6 +71,7 @@ namespace Formularios
             //ocultar columnas
             datagrid.Columns["EstadoEncuadernacion"].Visible = false;
             datagrid.Columns["FaseProceso"].Visible = true;
+            //int index = datagrid.Columns["FaseProceso"].Index;
             datagrid.Columns["NumeroPaginas"].Visible = false;
             datagrid.Columns["Notas"].Visible = false;
             datagrid.Columns["FechaIntroduccion"].Visible = false;
@@ -85,12 +85,14 @@ namespace Formularios
             datagrid.Columns["TipoDeDocumentoString"].HeaderText = "Tipo";
             datagrid.Columns["Anio"].HeaderText = "Año";
             datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
-
+            datagrid.Columns["FaseProceso"].HeaderText = "Acción";
         }
 
         private void btnTodos_Click(object sender, EventArgs e)
         {
-            FormatoDataGrid(gridDocumentos, procesador.Documentos);
+            //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
+            ultimoPresionado = ((Button)sender).Name;
+            RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
         }
 
         private void btnDistribuir_Click(object sender, EventArgs e)
@@ -99,10 +101,32 @@ namespace Formularios
             RefrescarDatagrid(gridDocumentos, PasosProceso.Distribuir);
         }
 
-        private void RefrescarDatagrid(DataGridView grilla, PasosProceso paso)
+        private void RefrescarDatagrid(DataGridView datagrid, PasosProceso paso)
         {
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, paso);
-            FormatoDataGrid(grilla, listaFiltrada);
+            if(listaFiltrada.Count < 1)
+            {
+                datagrid.Visible = false;
+                txtAvisoSuperior.Visible = true;
+                if (paso == PasosProceso.Aprobado)
+                {
+                    txtAvisoSuperior.Text = "No hay nada aprobado todavía.";
+                }
+                else
+                {
+                    txtAvisoSuperior.Text = $"No hay nada en la pila para {paso.ToString().ToLower()}.";
+                }
+                
+            }
+            else
+            {
+                datagrid.Visible = true;
+                txtAvisoSuperior.Visible = false;
+                FormatoDataGrid(datagrid, listaFiltrada, button);
+
+            }
+            
+            
         }
 
 
@@ -110,6 +134,7 @@ namespace Formularios
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Guillotinar);
+
         }
 
         private void btnEscanear_Click(object sender, EventArgs e)
@@ -137,14 +162,16 @@ namespace Formularios
 
             if (gridDocumentos.CurrentCell.ColumnIndex == 0)
             {
-                if (aux.FaseProceso == PasosProceso.Escanear)
+                if (aux.FaseProceso == PasosProceso.Revisar)
                 {
                     Procesador.Revisar(aux, true);
+
                 }
                 else
                 {
                     Procesador.Proceso(aux);
                 }
+
             }
             else
             {
@@ -187,7 +214,6 @@ namespace Formularios
                 case "btnTerminados":
                     RefrescarDatagrid(gridDocumentos, PasosProceso.Aprobado);
                     break;
-
             }
         }
         private void btnInformes_Click(object sender, EventArgs e)
@@ -213,7 +239,6 @@ namespace Formularios
 
 
         }
-
 
 
         private void cmbAniadirDocumento_SelectedIndexChanged(object sender, EventArgs e)
@@ -256,22 +281,25 @@ namespace Formularios
             {
                 frmAlta = new FrmDocumento();
             }
-            FormatoDataGrid(gridDocumentos, procesador.Documentos); //HACER QUE SALGA EN EL DATAGRID
+            FormatoDataGrid(gridDocumentos, procesador.Documentos, button); //HACER QUE SALGA EN EL DATAGRID
             //FormatoDataGrid(gridDocumentos, procesador.Documentos, PasosProceso.Todos); //HACER QUE SALGA EN EL DATAGRID
         }
 
         private void picBuscarPorCodebar_Click(object sender, EventArgs e)
         {
             miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-            FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
-            if (DialogResult.OK == frmModificar.ShowDialog())
+            if(!(miDoc is null))
             {
+                FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
+                if (DialogResult.OK == frmModificar.ShowDialog())
+                {
 
-                MessageBox.Show("Documento modificado con éxito.");
-                FormatoDataGrid(gridDocumentos, procesador.Documentos);
+                    MessageBox.Show("Documento modificado con éxito.");
+                    FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
 
-            }
-            //else { MessageBox.Show("SALIÓ"); }
+                }
+            }          
+            else { MessageBox.Show("El Documento no existe."); }
         }
 
         private void txtBuscarPorCodebar_KeyPress(object sender, KeyPressEventArgs e)
@@ -279,13 +307,21 @@ namespace Formularios
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-                FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
-                if (DialogResult.OK == frmModificar.ShowDialog())
+
+                if(!(miDoc is null))
                 {
-                    MessageBox.Show("Documento modificado con éxito.");
-                    FormatoDataGrid(gridDocumentos, procesador.Documentos);
+                    FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
+                    if (DialogResult.OK == frmModificar.ShowDialog())
+                    {
+                        MessageBox.Show("Documento modificado con éxito.");
+                        FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
+                    }
                 }
+                else { MessageBox.Show("El Documento no existe."); }
+
             }
+            
+
         }
 
         public FrmDocumento LanzarFormModificacion(Documento documento)
