@@ -16,13 +16,15 @@ namespace Entidades
         public string Fuente { get { return this.fuente; } set { this.fuente = value; } }
 
         public Articulo(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
+                         Encuadernacion estadoEncuadernacion) : base(titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion)
+        { }
+
+
+        public Articulo(string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                          Encuadernacion estadoEncuadernacion, string fuente)
             : base (titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion)
         {
-            //this.tipoId = tipoId;
             this.fuente = fuente;
-
-
         }
 
         /*public Articulo(string titulo, string autor, string anio, string numeroPaginas, string id, string barcode, string notas,
@@ -31,7 +33,7 @@ namespace Entidades
 
         }*/
 
-        public static Articulo GenerarArticulo( string titulo,
+        /*public static Articulo GenerarArticulo( string titulo,
                                                 string autor,
                                                 string anio,
                                                 string numeroPaginas,
@@ -52,8 +54,27 @@ namespace Entidades
 
             return null ;
 
-        }
+        }*/
 
+        public static Articulo GenerarArticulo(string titulo,
+                                                string autor,
+                                                string anio,
+                                                string numeroPaginas,
+                                                string id,
+                                                string barcode,
+                                                string notas,
+                                                int encIndex,
+                                                string fuente)
+        {
+            Articulo articulo = (Articulo)GenerarDocumento("Articulo",titulo, autor, anio, numeroPaginas, id, barcode, notas, encIndex);
+            if(!(articulo is null))
+            {
+                articulo.Fuente = fuente;
+
+            }
+            return articulo;
+
+        }
         public static bool ModificarArticulo(Documento art,
                                                 string titulo,
                                                string autor,
@@ -65,13 +86,11 @@ namespace Entidades
                                                string fuente) 
         {
             bool retorno = false;
-            if (ValidadorEntradaDatos(titulo, anio, numeroPaginas, encIndex) &&
-                ModificarDocumento(art, titulo, autor, anio, numeroPaginas, id, notas, encIndex))
+            if (ModificarDocumento(art, titulo, autor, anio, numeroPaginas, id, notas, encIndex))
             {
                 Articulo docAux = (Articulo)art;
                 docAux.Fuente = fuente;
                 retorno = true;
-
             }
             else
             {
@@ -80,8 +99,5 @@ namespace Entidades
             return retorno;
 
         }
-
-
-
     }
 }

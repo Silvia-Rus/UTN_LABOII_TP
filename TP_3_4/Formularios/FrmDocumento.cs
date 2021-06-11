@@ -116,7 +116,7 @@ namespace Formularios
         private void btnAccionAnadirLibro_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;
-            miDoc = Documento.GenerarDocumento("Libro",
+            miDoc = (Libro)Documento.GenerarDocumento("Libro",
                                                 txtTituloDocumento.Text,
                                                 txtAutorDocumento.Text,
                                                 txtAnioDocumento.Text,

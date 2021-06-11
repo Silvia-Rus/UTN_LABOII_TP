@@ -35,7 +35,8 @@ namespace Entidades
 
         #region Gets y sets para el formato de la tabla
 
-        public PasosProceso FaseProceso { set { this.pasoProceso = value; } get { return this.pasoProceso; } }
+        public PasosProceso FaseProceso { get { return this.pasoProceso; } set { this.pasoProceso = value; } 
+        }
         /// <summary>
         /// Propiedad que devuelve el tipo de documento en formato string para la tabla.
         /// </summary>
@@ -75,7 +76,7 @@ namespace Entidades
         }
 
         public string Id { get { return this.id; } set { this.id = value; } }
-        public int Barcode { get { return this.barcode; } }              
+        public int Barcode { set { this.barcode = value; } get { return this.barcode; } }              
 
         #endregion
 
@@ -85,7 +86,7 @@ namespace Entidades
         public string Notas { set { this.notas = value; } get { return this.notas; } }
 
 
-        public DateTime FechaIntroduccion { get { return this.fechaIntroduccion; } }
+        public DateTime FechaIntroduccion { set { this.FechaIntroduccion = value; } get { return this.fechaIntroduccion; }  }
         public DateTime FechaDistribucion { set { this.fechaDistribucion = value; } get { return this.fechaDistribucion; } }
         public DateTime FechaGuillotinado { set { this.fechaGuillotinado = value; } get { return this.fechaGuillotinado; } }  
         public DateTime FechaEscaneo { set { this.fechaEscaneo = value; } get { return this.fechaEscaneo; } }
@@ -271,7 +272,7 @@ namespace Entidades
             return retorno;
         }
 
-        public static Documento GenerarDocumento(string tipo,
+        public  static Documento GenerarDocumento(string tipo,
                                                 string titulo,
                                                 string autor,
                                                 string anio,
@@ -289,10 +290,15 @@ namespace Entidades
                     return new Libro(titulo, autor, ConversorAnio(anio), ConversorPaginas(numeroPaginas), id, ConversorBarcode(barcode), notas, getEncuadernado(encIndex));
 
                 }
+                else if (tipo.Equals("Articulo"))
+                {
+                    return new Articulo(titulo, autor, ConversorAnio(anio), ConversorPaginas(numeroPaginas), id, ConversorBarcode(barcode), notas, getEncuadernado(encIndex));
+
+                }
             }
             else
             {
-                Console.WriteLine("Error generando un nuevo artículo");
+                Console.WriteLine("Error generando un nuevo Documento");
             }
 
             return null;
@@ -341,7 +347,6 @@ namespace Entidades
                     {
                         sb.AppendLine($"Fecha de guillotinado: {this.FechaGuillotinado}.");
                     }
-
                         if (this.FechaEscaneo != DateTime.MinValue)
                         {
                             sb.AppendLine($"Fecha de escaneo: {this.FechaEscaneo}.");

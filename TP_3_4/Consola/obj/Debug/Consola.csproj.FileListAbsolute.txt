@@ -8,3 +8,5 @@
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.csproj.CopyComplete
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\bin\Debug\Serializador.pdb

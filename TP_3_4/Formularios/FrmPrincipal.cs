@@ -36,9 +36,28 @@ namespace Formularios
 
             FormatoButton(gridDocumentos, button);
 
-            bool pudo = this.procesador + new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
+            /*bool pudo = this.procesador + new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
             pudo = this.procesador + new Libro("Yerma", "Lorca", 1995, 54, "0001", 1235, "uuu", Encuadernacion.No);
-            pudo = this.procesador + new Articulo("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar, "fuente");
+            pudo = this.procesador + new Articulo("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar, "fuente");*/
+
+
+            List<Documento> listaDeserializadora = new List<Documento>();
+            Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
+
+            try
+            {
+                miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\rus.xml", out listaDeserializadora);
+
+            }
+            catch (Exception exc)
+            {
+               MessageBox.Show(exc.Message);
+            }
+
+            this.procesador.Documentos = listaDeserializadora;
+
+
+          
 
             //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
             ultimoPresionado = "btnTodos";

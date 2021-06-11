@@ -56,7 +56,7 @@ namespace Serializador
         {
             bool retorno = false;
             datos = default;
-            string pathArchivo = pathBase + @"\ImportXML\";
+            //string pathArchivo = pathBase + @"\ImportXML\";
             try
             {
                 if (ruta != null)

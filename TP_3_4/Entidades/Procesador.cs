@@ -23,6 +23,8 @@ namespace Entidades
         public List<Documento> Documentos
         {
             get { return  this.documentos; }
+            
+            set { this.documentos = value; }
         }
         /// <summary>
         /// Constructor que le añade nombre al objeto.
