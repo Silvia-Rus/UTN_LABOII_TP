@@ -28,26 +28,5 @@ namespace Entidades
                          Encuadernacion estadoEncuadernacion)
             : base(titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion) { }
 
-
-        public static Libro GenerarLibro(
-                                       string titulo,
-                                       string autor,
-                                       string anio,
-                                       string numeroPaginas,
-                                       string id,
-                                       string barcode,
-                                       string notas,
-                                       Encuadernacion encuadernacion)
-        {
-            if (titulo.Length > 0 &&
-                ConversorBarcode(barcode) > -1 &&
-                short.TryParse(anio, out short anioShort) &&
-                short.TryParse(numeroPaginas, out short numeroPaginasShort))
-            {
-                return new Libro(titulo, autor, anioShort, numeroPaginasShort, id, ConversorBarcode(barcode), notas, encuadernacion);
-            }
-            return null;
-        }
-
     }
 }

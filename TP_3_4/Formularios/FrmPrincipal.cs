@@ -123,9 +123,7 @@ namespace Formularios
                 datagrid.Visible = true;
                 txtAvisoSuperior.Visible = false;
                 FormatoDataGrid(datagrid, listaFiltrada, button);
-
-            }
-            
+            }           
             
         }
 
@@ -164,14 +162,21 @@ namespace Formularios
             {
                 if (aux.FaseProceso == PasosProceso.Revisar)
                 {
-                    Procesador.Revisar(aux, true);
-
+                    DialogResult dialogResult = MessageBox.Show("¿Está correcto el PDF?", "Revisión", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Procesador.Revisar(aux, true);
+                    }
+                    else
+                    {
+                        Procesador.Revisar(aux, false);
+                        MessageBox.Show("El documento vuelve al escaner.");
+                    }
                 }
                 else
                 {
                     Procesador.Proceso(aux);
                 }
-
             }
             else
             {
@@ -181,9 +186,7 @@ namespace Formularios
                     MessageBox.Show("Documento modificado con éxito.");
                 }
             }
-
             RecargarDatagridSegunBoton();
-
         }
 
         void RecargarDatagridSegunBoton()
@@ -224,11 +227,11 @@ namespace Formularios
 
                 if (miVariable.Exportar(procesador.Documentos))
                 {
-                    MessageBox.Show("PUDO");
+                    MessageBox.Show("Exportado con éxito. Disponible en MisDocumentos/RusApp.");
                 }
                 else
                 {
-                    MessageBox.Show("NO PUDO");
+                    MessageBox.Show("Problemas al exportar.");
                 }
             }
             catch (Exception exc)
@@ -236,7 +239,7 @@ namespace Formularios
 
 
             }
-
+            
 
         }
 
@@ -287,8 +290,13 @@ namespace Formularios
 
         private void picBuscarPorCodebar_Click(object sender, EventArgs e)
         {
-            miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-            if(!(miDoc is null))
+            BuscarPorCodebar(txtBuscarPorCodebar.Text);        
+        }
+
+        private void BuscarPorCodebar(string codebar)
+        {
+            miDoc = Documento.GetByBarcode(procesador.Documentos, codebar);
+            if (!(miDoc is null))
             {
                 FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
                 if (DialogResult.OK == frmModificar.ShowDialog())
@@ -298,7 +306,7 @@ namespace Formularios
                     FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
 
                 }
-            }          
+            }
             else { MessageBox.Show("El Documento no existe."); }
         }
 
@@ -306,21 +314,8 @@ namespace Formularios
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                miDoc = Documento.GetByBarcode(procesador.Documentos, txtBuscarPorCodebar.Text);
-
-                if(!(miDoc is null))
-                {
-                    FrmDocumento frmModificar = LanzarFormModificacion(miDoc);
-                    if (DialogResult.OK == frmModificar.ShowDialog())
-                    {
-                        MessageBox.Show("Documento modificado con éxito.");
-                        FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
-                    }
-                }
-                else { MessageBox.Show("El Documento no existe."); }
-
-            }
-            
+                BuscarPorCodebar(txtBuscarPorCodebar.Text);
+            }          
 
         }
 
