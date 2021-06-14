@@ -18,7 +18,7 @@ namespace TestUnitarios
         Procesador procesador = new Procesador("Procesador de prueba");
 
         /// <summary>
-        /// Valida la igualdad entre dos documentos con el mismo barcode.
+        /// Valida la igualdad entre dos documentos con el mismo barcode. 
         /// </summary>
         [TestMethod]
         public void TestOperadorIgualadorDocumentos_True()
@@ -48,7 +48,7 @@ namespace TestUnitarios
             Assert.IsFalse(libroTres == articuloDos);
         }
         /// <summary>
-        /// Valida que no se puede añadir un documento a una lista en la que ya hay uno que tiene el mismo barcode, el mismo id o los dos.
+        /// Valida que no se puede añadir un documento a una lista en la que ya hay uno que tiene el mismo barcode, el mismo id o los dos. //IMPLEMENTACIÓN TEMA 16 - TEST UNITARIOS
         /// </summary>
         [TestMethod]
         public void TestAniadirDocALista_False()
