@@ -67,7 +67,7 @@ namespace Formularios
                 this.btnAccion.Click += new System.EventHandler(this.btnAccionModificar_Click);
                 this.miDoc = documento;
 
-                if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarArticulo))
+                if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarLibro))
                 {
                     //lo que se tiene que ver para modificar
                     this.lblFuenteDocumento.Visible = false;

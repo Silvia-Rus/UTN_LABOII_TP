@@ -305,7 +305,7 @@ namespace Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 503);
+            this.ClientSize = new System.Drawing.Size(611, 503);
             this.Controls.Add(this.lblHistorialDocumento);
             this.Controls.Add(this.rtbHistorialDocumento);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -319,6 +319,7 @@ namespace Formularios
             this.Controls.Add(this.btnCancelarDocumento);
             this.Controls.Add(this.btnAccion);
             this.Name = "FrmDocumento";
+            this.Resizable = false;
             this.Text = "Documento";
             this.Load += new System.EventHandler(this.FrmAltaDocumento_Load);
             this.tblPrincipalDocumento.ResumeLayout(false);

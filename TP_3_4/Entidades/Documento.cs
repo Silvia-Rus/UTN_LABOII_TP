@@ -35,8 +35,7 @@ namespace Entidades
 
         #region Gets y sets para el formato de la tabla
 
-        public PasosProceso FaseProceso { get { return this.pasoProceso; } set { this.pasoProceso = value; } 
-        }
+        public PasosProceso FaseProceso { get { return this.pasoProceso; } set { this.pasoProceso = value; } }
         /// <summary>
         /// Propiedad que devuelve el tipo de documento en formato string para la tabla.
         /// </summary>
@@ -57,6 +56,8 @@ namespace Entidades
             }
         }
 
+        public int Barcode { set { this.barcode = value; } get { return this.barcode; } }
+
         public string Titulo {get { return this.titulo; } set { this.titulo = value; } }
 
         public string Autor { get { return this.autor; } set { this.autor = value;  } }
@@ -76,7 +77,7 @@ namespace Entidades
         }
 
         public string Id { get { return this.id; } set { this.id = value; } }
-        public int Barcode { set { this.barcode = value; } get { return this.barcode; } }              
+             
 
         #endregion
 
@@ -86,14 +87,12 @@ namespace Entidades
         public string Notas { set { this.notas = value; } get { return this.notas; } }
 
 
-        public DateTime FechaIntroduccion { set { this.FechaIntroduccion = value; } get { return this.fechaIntroduccion; }  }
+        public DateTime FechaIntroduccion  { set { this.FechaIntroduccion = value; } get { return this.fechaIntroduccion; } }
         public DateTime FechaDistribucion { set { this.fechaDistribucion = value; } get { return this.fechaDistribucion; } }
         public DateTime FechaGuillotinado { set { this.fechaGuillotinado = value; } get { return this.fechaGuillotinado; } }  
         public DateTime FechaEscaneo { set { this.fechaEscaneo = value; } get { return this.fechaEscaneo; } }
         public DateTime FechaRevision { set { this.fechaRevision = value; } get { return this.fechaRevision; } }
         public DateTime FechaAprobacion { set { this.fechaAprobacion = value; } get { return this.fechaAprobacion; } }
-
-
 
         #endregion
 
@@ -222,7 +221,7 @@ namespace Entidades
             return retorno;
         }
 
-        public  static bool ValidadorEntradaDatos(string titulo, string anio, string numeroPaginas, int encIndice)
+        private static bool ValidadorEntradaDatos(string titulo, string anio, string numeroPaginas, int encIndice)
         {
             bool retorno = false;
 

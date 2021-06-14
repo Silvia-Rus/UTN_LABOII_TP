@@ -117,10 +117,12 @@ namespace Entidades
 
             if(documento.FaseProceso == PasosProceso.Revisar)
             {
+                documento.FechaRevision = DateTime.Now;
                 if (estaBienElPdf)
                 {
                     documento.FaseProceso = PasosProceso.Aprobado;
-                    documento.FechaRevision = DateTime.Now;
+                    documento.FechaAprobacion = DateTime.Now;
+
                 }
                 else
                 {

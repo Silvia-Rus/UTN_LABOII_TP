@@ -36,17 +36,18 @@ namespace Formularios
 
             FormatoButton(gridDocumentos, button);
 
-            /*bool pudo = this.procesador + new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
-            pudo = this.procesador + new Libro("Yerma", "Lorca", 1995, 54, "0001", 1235, "uuu", Encuadernacion.No);
-            pudo = this.procesador + new Articulo("Bodas de sangre", "Lorca", 1995, 54, "0002", 1236, "uuu", Encuadernacion.Si_Guillotinar, "fuente");*/
-
+            /*bool pudo = this.procesador + new Articulo("Keldysh Rotation in the Large-N Expansion ", "Horava,Petr, et. al", 2010, 3, "arXiv:2010.10671", 4, "", Encuadernacion.No);
+            pudo = this.procesador + new Articulo("Entropic Proof of a Weak Gravity Conjecture", "Fihser, Zachary, et. al", 2017, 4, "arXiv:1706.08257", 3, "", Encuadernacion.Si_Guillotinar);
+            pudo = this.procesador + new Libro("Cien años de Soledad", "García Márquez, Gabriel", 2017, 154, "9788439732471", 2, "", Encuadernacion.Si_NoGuillotinar);
+            pudo = this.procesador +  new Libro("Crónica de una muerte anunciada", "García Márquez, Gabriel", 2018, 136, "9788466346825", 1, "", Encuadernacion.Si_NoGuillotinar);
+            */
 
             List<Documento> listaDeserializadora = new List<Documento>();
             Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
 
             try
             {
-                miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\rus.xml", out listaDeserializadora);
+                miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\Inicio.xml", out listaDeserializadora);
 
             }
             catch (Exception exc)
@@ -57,7 +58,7 @@ namespace Formularios
             this.procesador.Documentos = listaDeserializadora;
 
 
-          
+
 
             //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
             ultimoPresionado = "btnTodos";
@@ -105,6 +106,7 @@ namespace Formularios
             datagrid.Columns["Anio"].HeaderText = "Año";
             datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
             datagrid.Columns["FaseProceso"].HeaderText = "Acción";
+            datagrid.Columns["Barcode"].HeaderText = "BCode";
         }
 
         private void btnTodos_Click(object sender, EventArgs e)
@@ -123,6 +125,7 @@ namespace Formularios
         private void RefrescarDatagrid(DataGridView datagrid, PasosProceso paso)
         {
             listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, paso);
+            //PONER LA EXCEPCIÓN AQUÍ
             if(listaFiltrada.Count < 1)
             {
                 datagrid.Visible = false;
@@ -242,24 +245,24 @@ namespace Formularios
         {
             try
             {
+                
                 Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
+                listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
 
-                if (miVariable.Exportar(procesador.Documentos))
+                if (listaFiltrada.Count > 0 && miVariable.Exportar(listaFiltrada))
                 {
                     MessageBox.Show("Exportado con éxito. Disponible en MisDocumentos/RusApp.");
                 }
                 else
                 {
-                    MessageBox.Show("Problemas al exportar.");
+                    MessageBox.Show("Problemas al exportar.\n\n Aségurese de que hay documentos Aprobados.");
                 }
             }
             catch (Exception exc)
             {
-
-
+                MessageBox.Show(exc.Message);
             }
             
-
         }
 
 
