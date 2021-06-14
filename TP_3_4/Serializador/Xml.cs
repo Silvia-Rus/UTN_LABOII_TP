@@ -15,11 +15,18 @@ namespace Serializador
 
         readonly string pathBase;
 
+        /// <summary>
+        /// Constructor con la ruta básica.
+        /// </summary>
         public Xml()
         {
             pathBase = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\RusApp\";
         }
-
+        /// <summary>
+        /// Exporta en xml los datos que entran por parámetro.
+        /// </summary>
+        /// <param name="datos"></param>
+        /// <returns></returns>
         public bool Exportar(T datos)
         {
             bool retorno = false;
@@ -51,12 +58,17 @@ namespace Serializador
             }
             return retorno;
         }
-
+        /// <summary>
+        /// Importa los datos en xml que encuentra en la ruta que entra por parámetro.
+        /// </summary>
+        /// <param name="ruta"></param>
+        /// <param name="datos"></param>
+        /// <returns></returns>
         public bool Importar(string ruta, out T datos)
         {
             bool retorno = false;
             datos = default;
-            //string pathArchivo = pathBase + @"\ImportXML\";
+
             try
             {
                 if (ruta != null)

@@ -16,30 +16,64 @@ namespace Formularios
     {
         public enum TipoDeFormDocumento { altaArticulo, altaLibro, modificarArticulo, modificarLibro }
 
-        Libro libro;
-        Articulo articulo;
-
         Documento miDoc;
 
+        /// <summary>
+        /// Devuelve los documentos generados.
+        /// </summary>
         public Documento ObtenerDoc { get { return miDoc; } }
+        /// <summary>
+        /// Añade un título a un documento.
+        /// </summary>
         public string Titulo { set { txtTituloDocumento.Text = value; } }
+        /// <summary>
+        /// Añade un autor a un documento.
+        /// </summary>
         public string Autor { set { txtAutorDocumento.Text = value; } }
+        /// <summary>
+        /// Añade un año a un documento.
+        /// </summary>
         public string Anio { set { txtAnioDocumento.Text = value; } }
+        /// <summary>
+        /// Añade un número de páginas a un documento.
+        /// </summary>
         public string NumeroPaginas { set { txtNumeroPaginasDocumento.Text = value; } }
+        /// <summary>
+        /// Añade un barcode a un documento.
+        /// </summary>
         public string Barcode { set { txtBarcodeDocumento.Text = value; } }
+        /// <summary>
+        /// Añade notas al documento.
+        /// </summary>
         public string Notas { set { rtbNotasDocumento.Text = value;  } }
+        /// <summary>
+        /// Añade la fuente al artículo.
+        /// </summary>
         public string Fuente { set { txtFuenteDocumento.Text = value; } }
+        /// <summary>
+        /// Añade un id al documento.
+        /// </summary>
         public string Id { set { txtIdentificadorDocumento.Text = value; } }
+        /// <summary>
+        /// Añade la encuadernación a un documento.
+        /// </summary>
         public string Encuadernacion { set { cmbEncuadernacionDocumento.Text = value; } }
+        /// <summary>
+        /// Añade el historial de revisión de un documento.
+        /// </summary>
         public string Historial { set { rtbHistorialDocumento.Text = value; } }
 
-
+        /// <summary>
+        /// Inicializa el formulario.
+        /// </summary>
         public FrmDocumento()
         {
             InitializeComponent();
         }
-
-        //PONER IF DOC ES NULL?
+        /// <summary>
+        /// Constructor sobrecargado con los tipos de formulario de alta.
+        /// </summary>
+        /// <param name="tipoDeFormDocumento"></param>
         public FrmDocumento(TipoDeFormDocumento tipoDeFormDocumento) : this()
         {
             if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.altaArticulo))
@@ -57,7 +91,11 @@ namespace Formularios
                 this.btnAccion.Click += new System.EventHandler(this.btnAccionAnadirLibro_Click);
             }
         }
-
+        /// <summary>
+        /// Constructor sobrecargado con los tipos de formulario de modificación y el documento a modificar.
+        /// </summary>
+        /// <param name="tipoDeFormDocumento">Form a lanzar.</param>
+        /// <param name="documento">Documento a modificar.</param>
         public FrmDocumento(TipoDeFormDocumento tipoDeFormDocumento, Documento documento) : this(tipoDeFormDocumento)
         {
            if(!(documento is null))
@@ -69,27 +107,43 @@ namespace Formularios
 
                 if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.modificarLibro))
                 {
-                    //lo que se tiene que ver para modificar
                     this.lblFuenteDocumento.Visible = false;
                     this.txtFuenteDocumento.Visible = false;
                 }
            }
         }
+        /// <summary>
+        /// Carga el formulario y configura el combo del estado de encuadernación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAltaDocumento_Load(object sender, EventArgs e)
         {
-           //datos
             this.cmbEncuadernacionDocumento.DataSource = Enum.GetValues(typeof(Encuadernacion));
         }
+        /// <summary>
+        /// Cancela la operación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelarDocumento_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
+        /// <summary>
+        /// Devuelve ok.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAccion_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }
-
+        /// <summary>
+        /// Genera un artículo nuevo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAccionAnadirArticulo_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;
@@ -112,7 +166,11 @@ namespace Formularios
                     this.DialogResult = DialogResult.None;
                 }
         }
-
+        /// <summary>
+        /// Genera un libro nuevo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAccionAnadirLibro_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;
@@ -135,7 +193,11 @@ namespace Formularios
                 this.DialogResult = DialogResult.None;
             }
         }
-
+        /// <summary>
+        /// Modifica el documento mostrado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAccionModificar_Click(object sender, EventArgs e)
         {
             if(miDoc is Articulo)

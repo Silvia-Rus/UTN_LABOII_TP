@@ -17,7 +17,9 @@ namespace TestUnitarios
 
         Procesador procesador = new Procesador("Procesador de prueba");
 
-
+        /// <summary>
+        /// Valida la igualdad entre dos documentos con el mismo barcode.
+        /// </summary>
         [TestMethod]
         public void TestOperadorIgualadorDocumentos_True()
         {
@@ -30,7 +32,9 @@ namespace TestUnitarios
             //Barcode iguales. Un libro y un artículo
             Assert.IsTrue(libroUno == articuloUno);
         }
-
+        /// <summary>
+        /// Valida la desigualdad entre dos documentos con distinto barcode.
+        /// </summary>
         [TestMethod]
         public void TestOperadorIgualadorDocumentos_False()
         {
@@ -43,11 +47,12 @@ namespace TestUnitarios
             //Barcode distintos. Un libro y un artículo
             Assert.IsFalse(libroTres == articuloDos);
         }
-
+        /// <summary>
+        /// Valida que no se puede añadir un documento a una lista en la que ya hay uno que tiene el mismo barcode, el mismo id o los dos.
+        /// </summary>
         [TestMethod]
         public void TestAniadirDocALista_False()
         {
-
             procesador.Documentos.Add(articuloUno);
             procesador.Documentos.Add(libroDos);
 
@@ -61,7 +66,9 @@ namespace TestUnitarios
             Assert.IsFalse(procesador + libroUno);
 
         }
-
+        /// <summary>
+        /// Valida que  se puede añadir un documento a una lista en la que ya hay uno que tiene el mismo barcode, el mismo id o los dos.
+        /// </summary>
         [TestMethod]
         public void TestAniadirDocALista_True()
         {
@@ -69,7 +76,6 @@ namespace TestUnitarios
 
             Assert.IsTrue(procesador + articuloUno);
             Assert.IsTrue(procesador + libroDos);
-
         }
 
     }

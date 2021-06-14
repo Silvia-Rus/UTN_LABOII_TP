@@ -12,19 +12,13 @@ namespace Entidades
         private List<Documento> documentos;
         private string nombre;
 
+        #region Constructores
         /// <summary>
         /// Constructor que inicia la lista.
         /// </summary>
         private Procesador()
         {
             this.documentos = new List<Documento>();
-        }
-
-        public List<Documento> Documentos
-        {
-            get { return  this.documentos; }
-            
-            set { this.documentos = value; }
         }
         /// <summary>
         /// Constructor que le añade nombre al objeto.
@@ -34,7 +28,19 @@ namespace Entidades
         {
             this.nombre = nombre;
         }
-
+        #endregion
+        #region Propiedades
+        /// <summary>
+        /// Set y get de la lista de documentos.
+        /// </summary>
+        public List<Documento> Documentos
+        {
+            get { return  this.documentos; }
+            
+            set { this.documentos = value; }
+        }
+        #endregion
+        #region Procesador
         /// <summary>
         /// Con los documentos recién cargados, se distribuyen a la guillotina si procede o se llevan directamente a escanear.
         /// </summary>
@@ -57,14 +63,8 @@ namespace Entidades
                 documento.FechaDistribucion = DateTime.Now;
                 retorno = true;          
             }
-            /*else
-            {
-                NOOOOOO
-            }*/         
-
             return retorno;
-        }
-        
+        }       
         /// <summary>
         /// Da por guilloltinado el documento que pasa por parámtero  y lo pasa a la fase de escaneo previa validación de que está para guillotinar.
         /// </summary>
@@ -80,11 +80,9 @@ namespace Entidades
                 documento.FechaGuillotinado = DateTime.Now;
 
                 retorno = true;
-
             }
             return retorno;
         }
-
         /// <summary>
         /// Da por escaneado el documento que pasa por parámtero  y lo pasa a la fase de revisión previa validación de que está para escanear.
         /// </summary>
@@ -99,7 +97,6 @@ namespace Entidades
                 documento.FechaEscaneo = DateTime.Now;
 
                 retorno = true;
-
             }
             return retorno;
         }
@@ -110,7 +107,6 @@ namespace Entidades
         /// <param name="documento">Documento a guillotinado.</param>
         /// <param name="estaBienElPdf">Documento a guillotinado.</param>
         /// <returns>Verdadero si el documento estaba para guillotinar. Falso si no.</returns>
-
         public static bool Revisar(Documento documento, bool estaBienElPdf)
         {
             bool retorno = false;
@@ -122,7 +118,6 @@ namespace Entidades
                 {
                     documento.FaseProceso = PasosProceso.Aprobado;
                     documento.FechaAprobacion = DateTime.Now;
-
                 }
                 else
                 {
@@ -130,8 +125,7 @@ namespace Entidades
                     documento.FechaEscaneo = DateTime.MinValue;
                 }
                 retorno = true;
-            }
-           
+            }        
             return retorno;
         }
         /// <summary>
@@ -139,7 +133,6 @@ namespace Entidades
         /// </summary>
         /// <param name="documento">Documento que se da por finalizado.</param>
         /// <returns></returns>
-
         public static bool Finalizar(Documento documento)
         {
             bool retorno = false;
@@ -152,7 +145,10 @@ namespace Entidades
             }
             return retorno;
         }
-
+        /// <summary>
+        /// Procesa el documento que entra por parámtero dependiendo de la fase en la que está.
+        /// </summary>
+        /// <param name="documento">Documento a procesar.</param>
         public static void Proceso(Documento documento)
         {
             if (documento.FaseProceso == PasosProceso.Distribuir)
@@ -167,12 +163,10 @@ namespace Entidades
             {
                 Escanear(documento);
             }
-            /*else if (documento.FaseProceso == PasosProceso.Aprobado)
-            {
-                Finalizar(documento);
-            }*/
         }
+        #endregion
 
+        #region Operadores
         /// <summary>
         /// Suma un documento a una lista de documento en el caso de que no esté ya en ella.
         /// </summary>
@@ -189,28 +183,39 @@ namespace Entidades
             }
             return retorno;
         }
-
+        #endregion
+        /// <summary>
+        /// Filtra una lista que entra por parámetro según el paso.
+        /// </summary>
+        /// <param name="listaCompleta">LLista a devolver.</param>
+        /// <param name="paso">Paso por el que se quiere filtrar.</param>
+        /// <returns>Lista con todos los documentos cuyo paso es el que entra por parámetro.</returns>
         public List<Documento> ListaFiltrada(List<Documento> listaCompleta, PasosProceso paso)
         {
             List<Documento> listaFiltrada = new List<Documento>();
 
-            if(paso == PasosProceso.Todos)
+            if(listaCompleta.Count > 0)
             {
-                listaFiltrada = listaCompleta;
+                if (paso == PasosProceso.Todos)
+                {
+                    listaFiltrada = listaCompleta;
+                }
+                else
+                {
+                    foreach (Documento item in listaCompleta)
+                    {
+                        if (item.FaseProceso == paso)
+                        {
+                            listaFiltrada.Add(item);
+                        }
+                    }
+                }
             }
             else
             {
-                foreach (Documento item in listaCompleta)
-                {
-                    if (item.FaseProceso == paso)
-                    {
-                        listaFiltrada.Add(item);
-                    }
-                }
-            }         
-
+                Console.WriteLine("La lista introducida está vacía.");
+            }
             return listaFiltrada;
         }
-
     }
 }

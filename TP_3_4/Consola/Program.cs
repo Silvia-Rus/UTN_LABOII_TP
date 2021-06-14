@@ -12,33 +12,20 @@ namespace Consola
     {
         static void Main(string[] args)
         {
-            
-            Libro a = new Libro("La casa de Bernarda Alba", "Lorca", 1995, 54, "0000", 1234, "uuu", Encuadernacion.No);
-            Libro b = new Libro("Yerma", "Lorca", 1995, 54, "0001", 1235, "uuu", Encuadernacion.No);
+            //Prueba: el método generar documentos, genera o no genera.
+            Libro libro = new Libro();
+            Articulo articulo = new Articulo();
 
-            Procesador procesador = new Procesador("Procesador");
+            libro = (Libro)Documento.GenerarDocumento("Libro", "Título Libro", "Autor Libro", "1956", "50", "id", "35", "notas", 1);
+            articulo = (Articulo)Documento.GenerarDocumento("Articulo", "Título Artículo", "Autor Artículo", "1956", "50", "id", "35", "notas", 1);
 
-            bool pudo = procesador + a;
-            pudo = procesador + b;
+            Console.WriteLine("---LIBRO---");
+            Console.WriteLine(Documento.ImprimirDocumento(libro));
 
-            List<Documento> listaPrueba = new List<Documento>();
-
-            Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
-
-            try
-            {
-                miVariable.Importar(Environment.CurrentDirectory + @"\ImportXML\rus.xml", out listaPrueba);
-
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Console.WriteLine("---ARTÍCULO---");
+            Console.WriteLine(Documento.ImprimirDocumento(articulo));
 
             Console.ReadKey();
-
-
-
         }
     }
 }

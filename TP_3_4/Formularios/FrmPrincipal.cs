@@ -15,14 +15,17 @@ namespace Formularios
     public partial class FrmPrincipal : MetroFramework.Forms.MetroForm
     {
         Procesador procesador;
-        Libro libro; //quitarlo cuando se solucione el obtener nosequé
-        Articulo articulo; //quitarlo cuando se solucione el obtener nosequé
+        Libro libro; 
+        Articulo articulo; 
         Documento miDoc;
         List<Documento> listaFiltrada;
         string ultimoPresionado;
         DataGridViewButtonColumn button;
 
-
+        #region Controles
+        /// <summary>
+        /// Iniciliaza el fromulario. Inicializa el Procesador, la listafiltrada auxiliar y el botón del datagrid.
+        /// </summary>
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -30,25 +33,20 @@ namespace Formularios
             listaFiltrada = new List<Documento>();
             button =  new DataGridViewButtonColumn();
         }
-
+        /// <summary>
+        /// Carga el formato del botón y desserializa los registros de prueba.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
             FormatoButton(gridDocumentos, button);
-
-            /*bool pudo = this.procesador + new Articulo("Keldysh Rotation in the Large-N Expansion ", "Horava,Petr, et. al", 2010, 3, "arXiv:2010.10671", 4, "", Encuadernacion.No);
-            pudo = this.procesador + new Articulo("Entropic Proof of a Weak Gravity Conjecture", "Fihser, Zachary, et. al", 2017, 4, "arXiv:1706.08257", 3, "", Encuadernacion.Si_Guillotinar);
-            pudo = this.procesador + new Libro("Cien años de Soledad", "García Márquez, Gabriel", 2017, 154, "9788439732471", 2, "", Encuadernacion.Si_NoGuillotinar);
-            pudo = this.procesador +  new Libro("Crónica de una muerte anunciada", "García Márquez, Gabriel", 2018, 136, "9788466346825", 1, "", Encuadernacion.Si_NoGuillotinar);
-            */
-
             List<Documento> listaDeserializadora = new List<Documento>();
             Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
 
             try
             {
                 miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\Inicio.xml", out listaDeserializadora);
-
             }
             catch (Exception exc)
             {
@@ -56,128 +54,76 @@ namespace Formularios
             }
 
             this.procesador.Documentos = listaDeserializadora;
-
-
-
-
-            //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
             ultimoPresionado = "btnTodos";
             RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
-
         }
-
-        private void FormatoButton(DataGridView datagrid, DataGridViewButtonColumn button)
-        {
-            button.Name = "button";
-            button.HeaderText = "";
-
-            button.UseColumnTextForButtonValue = true; //dont forget this line
-
-
-            datagrid.Columns.Add(button);
-        }
-        private void FormatoDataGrid(DataGridView datagrid, List<Documento> lista, DataGridViewButtonColumn button)
-        {
-            //borra la lista por las dudas
-            datagrid.DataSource = null;
-            datagrid.DataSource = lista;
-
-            button.Text = "-->";
-            //ocultamos la primera columna
-            datagrid.RowHeadersVisible = false;
-            //autoajustar al contenido
-            datagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            datagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            //ocultar columnas
-            datagrid.Columns["EstadoEncuadernacion"].Visible = false;
-            datagrid.Columns["FaseProceso"].Visible = true;
-            //int index = datagrid.Columns["FaseProceso"].Index;
-            datagrid.Columns["NumeroPaginas"].Visible = false;
-            datagrid.Columns["Notas"].Visible = false;
-            datagrid.Columns["FechaIntroduccion"].Visible = false;
-            datagrid.Columns["FechaDistribucion"].Visible = false;
-            datagrid.Columns["FechaGuillotinado"].Visible = false;
-            datagrid.Columns["FechaEscaneo"].Visible = false;
-            datagrid.Columns["FechaRevision"].Visible = false;
-            datagrid.Columns["FechaAprobacion"].Visible = false;
-            datagrid.Columns["HistorialProceso"].Visible = false;
-            //cabeceras
-            datagrid.Columns["TipoDeDocumentoString"].HeaderText = "Tipo";
-            datagrid.Columns["Anio"].HeaderText = "Año";
-            datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
-            datagrid.Columns["FaseProceso"].HeaderText = "Acción";
-            datagrid.Columns["Barcode"].HeaderText = "BCode";
-        }
-
+        /// <summary>
+        /// Muestra la grilla con todos los documentos en el sistema. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnTodos_Click(object sender, EventArgs e)
         {
-            //FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
         }
-
+        /// <summary>
+        /// Muestra la grilla con los documentoss a distribuir. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnDistribuir_Click(object sender, EventArgs e)
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Distribuir);
         }
-
-        private void RefrescarDatagrid(DataGridView datagrid, PasosProceso paso)
-        {
-            listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, paso);
-            //PONER LA EXCEPCIÓN AQUÍ
-            if(listaFiltrada.Count < 1)
-            {
-                datagrid.Visible = false;
-                txtAvisoSuperior.Visible = true;
-                if (paso == PasosProceso.Aprobado)
-                {
-                    txtAvisoSuperior.Text = "No hay nada aprobado todavía.";
-                }
-                else
-                {
-                    txtAvisoSuperior.Text = $"No hay nada en la pila para {paso.ToString().ToLower()}.";
-                }
-                
-            }
-            else
-            {
-                datagrid.Visible = true;
-                txtAvisoSuperior.Visible = false;
-                FormatoDataGrid(datagrid, listaFiltrada, button);
-            }           
-            
-        }
-
-
+        /// <summary>
+        /// Muestra la grilla con los documentos a guillotinar. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnGuillotinar_Click(object sender, EventArgs e)
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Guillotinar);
-
         }
-
+        /// <summary>
+        /// Muestra la grilla con todos los documentos a escanear. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnEscanear_Click(object sender, EventArgs e)
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Escanear);
         }
-
+        /// <summary>
+        /// Muestra la grilla con todos los registros en el sistema. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnRevisar_Click(object sender, EventArgs e)
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Revisar);
         }
-
+        /// <summary>
+        /// Muestra la grilla con todos los registros aprobados. Cambia el último botón presionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
         private void btnTerminados_Click(object sender, EventArgs e)
         {
             ultimoPresionado = ((Button)sender).Name;
             RefrescarDatagrid(gridDocumentos, PasosProceso.Aprobado);
         }
-
+        /// <summary>
+        /// Modifica el registro seleccionado en la tabla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridDocumentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             Documento aux = (Documento)gridDocumentos.CurrentRow.DataBoundItem;
 
             if (gridDocumentos.CurrentCell.ColumnIndex == 0)
@@ -210,42 +156,15 @@ namespace Formularios
             }
             RecargarDatagridSegunBoton();
         }
-
-        void RecargarDatagridSegunBoton()
-        {
-
-            switch (ultimoPresionado)
-            {
-                case "btnDistribuir":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Distribuir);
-                    break;
-
-                case "btnEscanear":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Escanear);
-                    break;
-
-                case "btnGuillotinar":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Guillotinar);
-                    break;
-
-                case "btnTodos":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
-                    break;
-
-                case "btnRevisar":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Revisar);
-                    break;
-
-                case "btnTerminados":
-                    RefrescarDatagrid(gridDocumentos, PasosProceso.Aprobado);
-                    break;
-            }
-        }
+        /// <summary>
+        /// Descarga un listado en formato xml todos los registros de los documentos aprobados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnInformes_Click(object sender, EventArgs e)
         {
             try
             {
-                
                 Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
                 listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
 
@@ -262,10 +181,12 @@ namespace Formularios
             {
                 MessageBox.Show(exc.Message);
             }
-            
         }
-
-
+        /// <summary>
+        /// Añadir documentos nuevos después de selección del tipo desde el desplegable.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbAniadirDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             FrmDocumento frmAlta;
@@ -306,15 +227,149 @@ namespace Formularios
             {
                 frmAlta = new FrmDocumento();
             }
-            FormatoDataGrid(gridDocumentos, procesador.Documentos, button); //HACER QUE SALGA EN EL DATAGRID
-            //FormatoDataGrid(gridDocumentos, procesador.Documentos, PasosProceso.Todos); //HACER QUE SALGA EN EL DATAGRID
+            FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
         }
-
+        /// <summary>
+        /// Busca en la lista de documentos el barcode introducido en el label de texto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void picBuscarPorCodebar_Click(object sender, EventArgs e)
         {
-            BuscarPorCodebar(txtBuscarPorCodebar.Text);        
+            BuscarPorCodebar(txtBuscarPorCodebar.Text);
+        }
+        /// <summary>
+        /// Busca en la lista de documentos el barcode introducido en el label de texto cuando das enter.        
+        /// /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBuscarPorCodebar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                BuscarPorCodebar(txtBuscarPorCodebar.Text);
+            }
+
+        }
+        #endregion
+
+        #region Formato DataGrid
+        /// <summary>
+        /// Añade un botón al datagrid y le da formato.
+        /// </summary>
+        /// <param name="datagrid">datagrid al que añadir el botón.</param>
+        /// <param name="button">Botón a añadir.</param>
+        private void FormatoButton(DataGridView datagrid, DataGridViewButtonColumn button)
+        {
+            button.Name = "button";
+            button.HeaderText = "";
+            button.Text = "-->";
+            button.UseColumnTextForButtonValue = true;
+            datagrid.Columns.Add(button);
+        }
+        /// <summary>
+        /// Le da formato al datagrid. 
+        /// </summary>
+        /// <param name="datagrid">Datagrid que formatear.</param>
+        /// <param name="lista">Lista que se añade al datagrid.</param>
+        /// <param name="button">Botón del datagrid.</param>
+        private void FormatoDataGrid(DataGridView datagrid, List<Documento> lista, DataGridViewButtonColumn button)
+        {
+            //borra la lista por las dudas
+            datagrid.DataSource = null;
+            datagrid.DataSource = lista;          
+            //oculta la primera columna
+            datagrid.RowHeadersVisible = false;
+            //autoajustar al contenido
+            datagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            datagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //ocultar columnas
+            datagrid.Columns["EstadoEncuadernacion"].Visible = false;
+            datagrid.Columns["FaseProceso"].Visible = true;
+            //int index = datagrid.Columns["FaseProceso"].Index;
+            datagrid.Columns["NumeroPaginas"].Visible = false;
+            datagrid.Columns["Notas"].Visible = false;
+            datagrid.Columns["FechaIntroduccion"].Visible = false;
+            datagrid.Columns["FechaDistribucion"].Visible = false;
+            datagrid.Columns["FechaGuillotinado"].Visible = false;
+            datagrid.Columns["FechaEscaneo"].Visible = false;
+            datagrid.Columns["FechaRevision"].Visible = false;
+            datagrid.Columns["FechaAprobacion"].Visible = false;
+            datagrid.Columns["HistorialProceso"].Visible = false;
+            //cabeceras
+            datagrid.Columns["TipoDeDocumentoString"].HeaderText = "Tipo";
+            datagrid.Columns["Anio"].HeaderText = "Año";
+            datagrid.Columns["NumeroPaginasString"].HeaderText = "Nº pág.";
+            datagrid.Columns["FaseProceso"].HeaderText = "Acción";
+            datagrid.Columns["Barcode"].HeaderText = "BCode";
+        }
+        /// <summary>
+        /// Refresca el datagrid según el paso de los documentos contenidos en la lista. 
+        /// </summary>
+        /// <param name="datagrid"></param>
+        /// <param name="paso"></param>
+        private void RefrescarDatagrid(DataGridView datagrid, PasosProceso paso)
+        {
+            listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, paso);
+            if (listaFiltrada.Count < 1)
+            {
+                datagrid.Visible = false;
+                txtAvisoSuperior.Visible = true;
+                if (paso == PasosProceso.Aprobado)
+                {
+                    txtAvisoSuperior.Text = "No hay nada aprobado todavía.";
+                }
+                else
+                {
+                    txtAvisoSuperior.Text = $"No hay nada en la pila para {paso.ToString().ToLower()}.";
+                }
+            }
+            else
+            {
+                datagrid.Visible = true;
+                txtAvisoSuperior.Visible = false;
+                FormatoDataGrid(datagrid, listaFiltrada, button);
+            }
+        }
+        /// <summary>
+        /// Recarga el datagrid según el botón pulsado.
+        /// </summary>
+        void RecargarDatagridSegunBoton()
+        {
+            switch (ultimoPresionado)
+            {
+                case "btnDistribuir":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Distribuir);
+                    break;
+
+                case "btnEscanear":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Escanear);
+                    break;
+
+                case "btnGuillotinar":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Guillotinar);
+                    break;
+
+                case "btnTodos":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
+                    break;
+
+                case "btnRevisar":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Revisar);
+                    break;
+
+                case "btnTerminados":
+                    RefrescarDatagrid(gridDocumentos, PasosProceso.Aprobado);
+                    break;
+            }
         }
 
+        #endregion
+
+        /// <summary>
+        /// Busca un documento del cual el código de barras entra por parámetro y lanza el form para que lo modifiquemos.
+        /// </summary>
+        /// <param name="codebar"></param>
         private void BuscarPorCodebar(string codebar)
         {
             miDoc = Documento.GetByBarcode(procesador.Documentos, codebar);
@@ -326,21 +381,15 @@ namespace Formularios
 
                     MessageBox.Show("Documento modificado con éxito.");
                     FormatoDataGrid(gridDocumentos, procesador.Documentos, button);
-
                 }
             }
             else { MessageBox.Show("El Documento no existe."); }
         }
-
-        private void txtBuscarPorCodebar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                BuscarPorCodebar(txtBuscarPorCodebar.Text);
-            }          
-
-        }
-
+        /// <summary>
+        /// Lanza el form de modificación de un documento que entra por parámetro.
+        /// </summary>
+        /// <param name="documento">Documento que queremos modificar.</param>
+        /// <returns></returns>
         public FrmDocumento LanzarFormModificacion(Documento documento)
         {
             FrmDocumento frmModificacion = null;
@@ -362,7 +411,11 @@ namespace Formularios
             }
             return frmModificacion;
         }
-
+        /// <summary>
+        /// Imprime los datos de un documento que entra por parámetro en un form.
+        /// </summary>
+        /// <param name="form">Al que queremos mandar los datos del documento.</param>
+        /// <param name="documento">Documento del que queremos imprimir los datos.</param>
         public void ImprimirDatosDocumento(FrmDocumento form, Documento documento)
         {
             form.Titulo = documento.Titulo;
@@ -380,6 +433,5 @@ namespace Formularios
                 form.Fuente = docAux.Fuente;
             }
         }
-
     }
 }
