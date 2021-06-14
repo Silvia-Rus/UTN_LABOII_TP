@@ -9,12 +9,6 @@ C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.csproj
 C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
 C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.exe
 C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.pdb
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.AssemblyReference.cache
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.FrmDocumento.resources
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.FrmPrincipal.resources
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.Properties.Resources.resources
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
-\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Formularios.exe.config
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Formularios.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Formularios.pdb
@@ -28,6 +22,12 @@ C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Consola.exe.config
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Entidades.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\bin\Debug\Serializador.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.FrmDocumento.resources
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.FrmPrincipal.resources
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.Properties.Resources.resources
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.csproj.CopyComplete
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Formularios\obj\Debug\Formularios.pdb
