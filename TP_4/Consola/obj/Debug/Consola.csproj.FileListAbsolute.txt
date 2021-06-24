@@ -10,3 +10,15 @@
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.csproj.CopyComplete
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Consola\obj\Debug\Consola.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Consola.exe.config
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Consola.exe
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Consola.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\bin\Debug\Serializador.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\obj\Debug\Consola.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\obj\Debug\Consola.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\obj\Debug\Consola.csproj.CopyComplete
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\obj\Debug\Consola.exe
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Consola\obj\Debug\Consola.pdb

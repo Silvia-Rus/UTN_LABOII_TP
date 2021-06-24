@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;                                      
 using System.Xml;
 using System.Xml.Serialization;
+using Serializador;
 
 namespace Entidades
 {
@@ -486,6 +487,21 @@ namespace Entidades
                         break;
                     }
                 }
+            }
+            return retorno;
+        }
+        /// <summary>
+        /// Expprta a XML un listado de documentos.
+        /// </summary>
+        /// <param name="datos">El listado de documentos a exportar.</param>
+        /// <returns>True si los exportó (la lista tiene contenido). False si no.</returns>
+        public static bool ExportarDocumentos(List<Documento> datos)
+        {
+            bool retorno = false;
+            Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
+            if (datos.Count > 0 && miVariable.Exportar(datos))
+            {
+                retorno = true;
             }
             return retorno;
         }

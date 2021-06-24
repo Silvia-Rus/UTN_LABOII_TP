@@ -10,3 +10,12 @@ C:\Users\Silvia Rus\source\repos\TP_3_4\Entidades\obj\Debug\Entidades.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Entidades\obj\Debug\Entidades.dll
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_3_4\Entidades\obj\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\obj\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\obj\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\bin\Debug\Serializador.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Entidades\obj\Debug\Entidades.csproj.CopyComplete

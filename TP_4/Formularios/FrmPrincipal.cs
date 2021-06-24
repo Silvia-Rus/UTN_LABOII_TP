@@ -222,10 +222,9 @@ namespace Formularios
         {
             try
             {
-                Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
                 listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
-
-                if (listaFiltrada.Count > 0 && miVariable.Exportar(listaFiltrada))
+                
+                if(Documento.ExportarDocumentos(listaFiltrada))
                 {
                     MessageBox.Show("Exportado con éxito. Disponible en MisDocumentos/RusApp.");
                 }
@@ -237,11 +236,8 @@ namespace Formularios
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }
+            }         
         }
-        /// <summary>
-       
-        /// <summary>
         /// Busca en la lista de documentos el barcode introducido en el label de texto.
         /// </summary>
         /// <param name="sender"></param>
