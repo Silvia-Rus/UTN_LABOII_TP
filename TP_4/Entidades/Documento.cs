@@ -342,7 +342,7 @@ namespace Entidades
         /// <param name="notas">Notas del documentos.</param>
         /// <param name="encIndex">ïndice del combobox del estado de encuadernación.</param>
         /// <returns>El documento formado.</returns>
-        public  static Documento GenerarDocumento(string tipo,
+        public static Documento GenerarDocumento(string tipo,
                                                 string titulo,
                                                 string autor,
                                                 string anio,

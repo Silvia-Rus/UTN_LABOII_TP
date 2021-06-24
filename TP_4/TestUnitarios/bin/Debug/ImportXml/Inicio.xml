@@ -1,0 +1,46 @@
+
+<ArrayOfDocumento xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Documento xsi:type="Articulo">
+<FaseProceso>Distribuir</FaseProceso>
+<Titulo>Keldysh Rotation in the Large-N Expansion </Titulo>
+<Autor>Horava,Petr, et. al</Autor>
+<Anio>2010</Anio>
+<Encuadernado>No</Encuadernado>
+<Id>arXiv:2010.10671</Id>
+<Barcode>4</Barcode>
+<NumeroPaginas>3</NumeroPaginas>
+</Documento>
+<Documento xsi:type="Articulo">
+<FaseProceso>Distribuir</FaseProceso>
+<Titulo>Entropic Proof of a Weak Gravity Conjecture</Titulo>
+<Autor>Fihser, Zachary, et. al</Autor>
+<Anio>2017</Anio>
+<Encuadernado>Si_Guillotinar</Encuadernado>
+<Id>arXiv:1706.08257</Id>
+<Barcode>3</Barcode>
+<NumeroPaginas>4</NumeroPaginas>
+<Notas>Expurgar.</Notas>
+</Documento>
+<Documento xsi:type="Libro">
+<FaseProceso>Distribuir</FaseProceso>
+<Titulo>Cien años de Soledad</Titulo>
+<Autor>García Márquez, Gabriel</Autor>
+<Anio>2017</Anio>
+<Encuadernado>Si_NoGuillotinar</Encuadernado>
+<Id>9788439732471</Id>
+<Barcode>2</Barcode>
+<NumeroPaginas>154</NumeroPaginas>
+<Notas>Ejemplar único. Devolver.</Notas>
+</Documento>
+<Documento xsi:type="Libro">
+<FaseProceso>Distribuir</FaseProceso>
+<Titulo>Crónica de una muerte anunciada</Titulo>
+<Autor>García Márquez, Gabriel</Autor>
+<Anio>2018</Anio>
+<Encuadernado>Si_NoGuillotinar</Encuadernado>
+<Id>9788466346825</Id>
+<Barcode>1</Barcode>
+<NumeroPaginas>136</NumeroPaginas>
+<Notas>Ejemplar único. Devolver.</Notas>
+</Documento>
+</ArrayOfDocumento>

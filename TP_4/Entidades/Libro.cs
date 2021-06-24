@@ -28,5 +28,7 @@ namespace Entidades
                          Encuadernacion estadoEncuadernacion)
             : base(titulo, autor, anio, numeroPaginas, id, barcode, notas, estadoEncuadernacion) { }
 
+
+
     }
 }

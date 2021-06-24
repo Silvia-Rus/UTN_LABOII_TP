@@ -11,13 +11,15 @@ namespace TestUnitarios
     {
         Procesador procesador = new Procesador("Procesador para Test Unitarios");
         Libro articuloPrueba = (Libro)Documento.GenerarDocumento("Libro", "Yerma", "García Lorca, Federico", "2015", "35", "9788467045017", "1", "", 1);
+        Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
+        List<Documento> listaDeserializadora = new List<Documento>();
         /// <summary>
         /// Testea el serializador.
         /// </summary>
         [TestMethod]
         public void TestExportar()
         {
-            Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
+
             Assert.IsTrue(miVariable.Exportar(procesador.Documentos));
         }
         /// <summary>
@@ -37,9 +39,16 @@ namespace TestUnitarios
             procesador.Documentos.Add(articuloPrueba);
             Assert.IsTrue(Documento.ExportarDocumentos(procesador.Documentos));
         }
-
-
-
+        /// <summary>
+        /// Testea el método de importación.
+        /// </summary>
+        [TestMethod]
+        public void TestImportar()
+        {
+            Assert.IsTrue(miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\Inicio.xml", out listaDeserializadora));
+            Assert.ThrowsException<Exception>(()=>miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\XMLQueNoExiste.xml", out listaDeserializadora));
+      
+        }
 
     }
 }
