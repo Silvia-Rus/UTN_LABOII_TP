@@ -308,6 +308,12 @@ namespace Entidades
             }
             return retorno;
         }
+
+
+
+
+
+
         /// <summary>
         /// Valida todos los datos que entran por parámetro.
         /// </summary>

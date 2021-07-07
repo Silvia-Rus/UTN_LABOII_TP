@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Articulo.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="Informes.cs" />
     <Compile Include="ListadosControlados\Encuadernacion.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="ListadosControlados\TipoId.cs" />

@@ -11,7 +11,6 @@ using Entidades;
 
 namespace Formularios
 {
-    //public partial class FrmAltaDocumento : Form
     public partial class FrmDocumento :  MetroFramework.Forms.MetroForm
     {
         public enum TipoDeFormDocumento { altaArticulo, altaLibro, modificarArticulo, modificarLibro }
@@ -81,6 +80,7 @@ namespace Formularios
                 //lo que se tiene que ver para los artículos
                 this.Text = "Alta de Artículo";
                 this.btnAccion.Click += new System.EventHandler(this.btnAccionAnadirArticulo_Click);
+                //ESTE ES EL EVENTO     ///ESTE ES EL MANEJADOR    //ESTE TIENE UN SENDER Y EN EVENTARGS QUE REQUIERE EL CLICK
             }
             else if (tipoDeFormDocumento.Equals(TipoDeFormDocumento.altaLibro))
             {

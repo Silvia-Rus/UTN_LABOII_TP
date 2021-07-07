@@ -46,6 +46,8 @@ namespace TestUnitarios
         public void TestImportar()
         {
             Assert.IsTrue(miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\Inicio.xml", out listaDeserializadora));
+            
+            
             Assert.ThrowsException<Exception>(()=>miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\XMLQueNoExiste.xml", out listaDeserializadora));
       
         }

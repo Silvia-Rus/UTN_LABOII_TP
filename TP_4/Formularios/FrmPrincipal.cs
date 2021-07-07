@@ -444,6 +444,11 @@ namespace Formularios
             }
         }
 
-      
+        private void btnCifras_Click(object sender, EventArgs e)
+        {
+            listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
+            FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaFiltrada);
+            frmEstadisticas.ShowDialog();
+        }
     }
 }

@@ -29,9 +29,9 @@ namespace Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
             this.btnDistribuir = new MetroFramework.Controls.MetroTile();
             this.btnGuillotinar = new MetroFramework.Controls.MetroTile();
@@ -48,13 +48,14 @@ namespace Formularios
             this.lblSuperior = new MetroFramework.Controls.MetroLabel();
             this.btnAgregarArticulo = new MetroFramework.Controls.MetroButton();
             this.btnAgregarLibro = new MetroFramework.Controls.MetroButton();
-            this.picBuscarPorCodebar = new System.Windows.Forms.PictureBox();
             this.tblAgregarDocumentos = new System.Windows.Forms.TableLayoutPanel();
+            this.picBuscarPorCodebar = new System.Windows.Forms.PictureBox();
+            this.btnCifras = new MetroFramework.Controls.MetroButton();
             this.tblMenu.SuspendLayout();
             this.tblCuerpo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocumentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).BeginInit();
             this.tblAgregarDocumentos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).BeginInit();
             this.SuspendLayout();
             // 
             // tblMenu
@@ -82,9 +83,9 @@ namespace Formularios
             // btnDistribuir
             // 
             this.btnDistribuir.ActiveControl = null;
-            this.btnDistribuir.Location = new System.Drawing.Point(3, 48);
+            this.btnDistribuir.Location = new System.Drawing.Point(3, 47);
             this.btnDistribuir.Name = "btnDistribuir";
-            this.btnDistribuir.Size = new System.Drawing.Size(171, 39);
+            this.btnDistribuir.Size = new System.Drawing.Size(171, 38);
             this.btnDistribuir.Style = MetroFramework.MetroColorStyle.Magenta;
             this.btnDistribuir.TabIndex = 1;
             this.btnDistribuir.Text = "1 - Distribuir";
@@ -95,9 +96,9 @@ namespace Formularios
             // btnGuillotinar
             // 
             this.btnGuillotinar.ActiveControl = null;
-            this.btnGuillotinar.Location = new System.Drawing.Point(3, 93);
+            this.btnGuillotinar.Location = new System.Drawing.Point(3, 91);
             this.btnGuillotinar.Name = "btnGuillotinar";
-            this.btnGuillotinar.Size = new System.Drawing.Size(171, 39);
+            this.btnGuillotinar.Size = new System.Drawing.Size(171, 38);
             this.btnGuillotinar.Style = MetroFramework.MetroColorStyle.Yellow;
             this.btnGuillotinar.TabIndex = 2;
             this.btnGuillotinar.Text = "2 - Guillotinar";
@@ -109,9 +110,9 @@ namespace Formularios
             // btnEscanear
             // 
             this.btnEscanear.ActiveControl = null;
-            this.btnEscanear.Location = new System.Drawing.Point(3, 138);
+            this.btnEscanear.Location = new System.Drawing.Point(3, 135);
             this.btnEscanear.Name = "btnEscanear";
-            this.btnEscanear.Size = new System.Drawing.Size(171, 39);
+            this.btnEscanear.Size = new System.Drawing.Size(171, 38);
             this.btnEscanear.Style = MetroFramework.MetroColorStyle.Purple;
             this.btnEscanear.TabIndex = 3;
             this.btnEscanear.Text = "3 - Escanear";
@@ -125,7 +126,7 @@ namespace Formularios
             this.btnTodos.BackColor = System.Drawing.Color.White;
             this.btnTodos.Location = new System.Drawing.Point(3, 3);
             this.btnTodos.Name = "btnTodos";
-            this.btnTodos.Size = new System.Drawing.Size(171, 39);
+            this.btnTodos.Size = new System.Drawing.Size(171, 38);
             this.btnTodos.Style = MetroFramework.MetroColorStyle.Lime;
             this.btnTodos.TabIndex = 0;
             this.btnTodos.Text = "Lista completa";
@@ -136,7 +137,7 @@ namespace Formularios
             // btnTerminados
             // 
             this.btnTerminados.ActiveControl = null;
-            this.btnTerminados.Location = new System.Drawing.Point(3, 228);
+            this.btnTerminados.Location = new System.Drawing.Point(3, 223);
             this.btnTerminados.Name = "btnTerminados";
             this.btnTerminados.Size = new System.Drawing.Size(171, 42);
             this.btnTerminados.Style = MetroFramework.MetroColorStyle.Orange;
@@ -149,9 +150,9 @@ namespace Formularios
             // btnRevisar
             // 
             this.btnRevisar.ActiveControl = null;
-            this.btnRevisar.Location = new System.Drawing.Point(3, 183);
+            this.btnRevisar.Location = new System.Drawing.Point(3, 179);
             this.btnRevisar.Name = "btnRevisar";
-            this.btnRevisar.Size = new System.Drawing.Size(171, 39);
+            this.btnRevisar.Size = new System.Drawing.Size(171, 38);
             this.btnRevisar.Style = MetroFramework.MetroColorStyle.Green;
             this.btnRevisar.TabIndex = 5;
             this.btnRevisar.Text = "4 - Revisar";
@@ -171,7 +172,7 @@ namespace Formularios
             this.tblCuerpo.Name = "tblCuerpo";
             this.tblCuerpo.RowCount = 1;
             this.tblCuerpo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblCuerpo.Size = new System.Drawing.Size(700, 268);
+            this.tblCuerpo.Size = new System.Drawing.Size(700, 270);
             this.tblCuerpo.TabIndex = 1;
             // 
             // gridDocumentos
@@ -181,23 +182,23 @@ namespace Formularios
             this.gridDocumentos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridDocumentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gridDocumentos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDocumentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDocumentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridDocumentos.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDocumentos.DefaultCellStyle = dataGridViewCellStyle2;
             this.gridDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDocumentos.EnableHeadersVisualStyles = false;
             this.gridDocumentos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -205,17 +206,17 @@ namespace Formularios
             this.gridDocumentos.Location = new System.Drawing.Point(3, 3);
             this.gridDocumentos.Name = "gridDocumentos";
             this.gridDocumentos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDocumentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDocumentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gridDocumentos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDocumentos.Size = new System.Drawing.Size(694, 262);
+            this.gridDocumentos.Size = new System.Drawing.Size(694, 264);
             this.gridDocumentos.TabIndex = 0;
             this.gridDocumentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDocumentos_CellDoubleClick);
             // 
@@ -223,7 +224,7 @@ namespace Formularios
             // 
             this.btnInformes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInformes.BackColor = System.Drawing.Color.Black;
-            this.btnInformes.Location = new System.Drawing.Point(813, 419);
+            this.btnInformes.Location = new System.Drawing.Point(813, 421);
             this.btnInformes.Name = "btnInformes";
             this.btnInformes.Size = new System.Drawing.Size(131, 29);
             this.btnInformes.Style = MetroFramework.MetroColorStyle.Black;
@@ -332,19 +333,6 @@ namespace Formularios
             this.btnAgregarLibro.UseStyleColors = true;
             this.btnAgregarLibro.Click += new System.EventHandler(this.btnAgregarLibro_Click);
             // 
-            // picBuscarPorCodebar
-            // 
-            this.picBuscarPorCodebar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBuscarPorCodebar.Image = global::Formularios.Properties.Resources.lupa;
-            this.picBuscarPorCodebar.InitialImage = global::Formularios.Properties.Resources.lupa;
-            this.picBuscarPorCodebar.Location = new System.Drawing.Point(689, 24);
-            this.picBuscarPorCodebar.Name = "picBuscarPorCodebar";
-            this.picBuscarPorCodebar.Size = new System.Drawing.Size(20, 20);
-            this.picBuscarPorCodebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBuscarPorCodebar.TabIndex = 6;
-            this.picBuscarPorCodebar.TabStop = false;
-            this.picBuscarPorCodebar.Click += new System.EventHandler(this.picBuscarPorCodebar_Click);
-            // 
             // tblAgregarDocumentos
             // 
             this.tblAgregarDocumentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -360,12 +348,37 @@ namespace Formularios
             this.tblAgregarDocumentos.Size = new System.Drawing.Size(257, 32);
             this.tblAgregarDocumentos.TabIndex = 13;
             // 
+            // picBuscarPorCodebar
+            // 
+            this.picBuscarPorCodebar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picBuscarPorCodebar.Image = global::Formularios.Properties.Resources.lupa;
+            this.picBuscarPorCodebar.InitialImage = global::Formularios.Properties.Resources.lupa;
+            this.picBuscarPorCodebar.Location = new System.Drawing.Point(689, 24);
+            this.picBuscarPorCodebar.Name = "picBuscarPorCodebar";
+            this.picBuscarPorCodebar.Size = new System.Drawing.Size(20, 20);
+            this.picBuscarPorCodebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBuscarPorCodebar.TabIndex = 6;
+            this.picBuscarPorCodebar.TabStop = false;
+            this.picBuscarPorCodebar.Click += new System.EventHandler(this.picBuscarPorCodebar_Click);
+            // 
+            // btnCifras
+            // 
+            this.btnCifras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCifras.Location = new System.Drawing.Point(676, 421);
+            this.btnCifras.Name = "btnCifras";
+            this.btnCifras.Size = new System.Drawing.Size(131, 29);
+            this.btnCifras.TabIndex = 14;
+            this.btnCifras.Text = "Ver cifras";
+            this.btnCifras.UseSelectable = true;
+            this.btnCifras.Click += new System.EventHandler(this.btnCifras_Click);
+            // 
             // FrmPrincipal
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 465);
+            this.ClientSize = new System.Drawing.Size(986, 467);
+            this.Controls.Add(this.btnCifras);
             this.Controls.Add(this.tblAgregarDocumentos);
             this.Controls.Add(this.lblSuperior);
             this.Controls.Add(this.lblSubtitulo);
@@ -384,8 +397,8 @@ namespace Formularios
             this.tblMenu.ResumeLayout(false);
             this.tblCuerpo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridDocumentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).EndInit();
             this.tblAgregarDocumentos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarPorCodebar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,6 +426,7 @@ namespace Formularios
         private MetroFramework.Controls.MetroButton btnAgregarArticulo;
         private MetroFramework.Controls.MetroButton btnAgregarLibro;
         private System.Windows.Forms.TableLayoutPanel tblAgregarDocumentos;
+        private MetroFramework.Controls.MetroButton btnCifras;
         //private System.Windows.Forms.BindingSource documentoBindingSource;
     }
 }
