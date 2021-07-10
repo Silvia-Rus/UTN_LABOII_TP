@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Serializador;
+using System.Threading;
+
 
 namespace Formularios
 {
@@ -22,6 +24,7 @@ namespace Formularios
         string ultimoPresionado;
         DataGridViewButtonColumn button;
         FrmDocumento frmAlta;
+        public Thread refrescarLabel;
 
         #region Controles
         /// <summary>
@@ -33,6 +36,8 @@ namespace Formularios
             this.procesador = new Procesador("Procesador");
             listaFiltrada = new List<Documento>();
             button =  new DataGridViewButtonColumn();
+            refrescarLabel = new Thread(RefrescarLabelCifras);
+            refrescarLabel.Start();
         }
         /// <summary>
         /// Carga el formato del botón y desserializa los registros de prueba.
@@ -44,7 +49,7 @@ namespace Formularios
             FormatoButton(gridDocumentos, button);
             List<Documento> listaDeserializadora = new List<Documento>();
             Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
-            
+
             try
             {
                 miVariable.Importar(Environment.CurrentDirectory + @"\ImportXml\Inicio.xml", out listaDeserializadora);
@@ -57,6 +62,7 @@ namespace Formularios
             this.procesador.Documentos = listaDeserializadora;
             ultimoPresionado = "btnTodos";
             RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
+            
         }
         /// <summary>
         /// Muestra la grilla con todos los documentos en el sistema. Cambia el último botón presionado.
@@ -211,14 +217,12 @@ namespace Formularios
                                
             RecargarDatagridSegunBoton();
         }
-
-
         /// <summary>
         /// Descarga un listado en formato xml todos los registros de los documentos aprobados.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnInformes_Click(object sender, EventArgs e)
+        private void btnExportarXml_Click(object sender, EventArgs e)
         {
             try
             {
@@ -237,6 +241,17 @@ namespace Formularios
             {
                 MessageBox.Show(exc.Message);
             }         
+        }
+        /// <summary>
+        /// Lanza un formulario con las cifras relacionadas con el trabajo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCifras_Click(object sender, EventArgs e)
+        {
+            listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
+            FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaFiltrada);
+            frmEstadisticas.ShowDialog();
         }
         /// Busca en la lista de documentos el barcode introducido en el label de texto.
         /// </summary>
@@ -443,12 +458,57 @@ namespace Formularios
                 form.Fuente = docAux.Fuente;
             }
         }
-
-        private void btnCifras_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Construye el texto que se muestra en el label de cifras.
+        /// </summary>
+        /// <returns>String con el texto que se debe mostrar en el label de cifras.</returns>
+        private string TextoLabelCifras()
         {
-            listaFiltrada = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado);
-            FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaFiltrada);
-            frmEstadisticas.ShowDialog();
+            string aprobados = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Aprobado).Count.ToString();
+            string distribuir = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Distribuir).Count.ToString();
+            string escanear = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Escanear).Count.ToString();
+            string guillotinar = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Guillotinar).Count.ToString();
+            string revisar = procesador.ListaFiltrada(procesador.Documentos, PasosProceso.Revisar).Count.ToString();
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"{distribuir} en distribuir. {escanear} en el escáner. {guillotinar} en la guillotina. {revisar} en revisión. {aprobados} aprobados. ");
+            return sb.ToString();
+        }
+        /// <summary>
+        /// Método que refresca el texto que aparece en el label de cifras.
+        /// </summary>
+        public void RefrescarLabelCifras()
+        {
+            while(true)
+            {
+                Thread.Sleep(100);
+
+                if (lblTextoCifras.InvokeRequired)
+                {
+                    lblTextoCifras.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                       lblTextoCifras.Text = TextoLabelCifras();
+                    }
+                    );
+                }
+                else
+                {
+                    lblTextoCifras.Text = TextoLabelCifras();
+
+                }
+            }                      
+        }
+        /// <summary>
+        /// Aborta el hilo y cierrael formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(refrescarLabel.IsAlive)
+            {
+                refrescarLabel.Abort();
+            }
         }
     }
 }
