@@ -33,14 +33,14 @@ namespace Formularios
             this.lblFondoTotalDocumentos = new MetroFramework.Drawing.Html.HtmlLabel();
             this.lblTxtTotalDocumentos = new System.Windows.Forms.Label();
             this.lblFondoTotalPaginas = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.lblTxtTotalPaginas = new System.Windows.Forms.Label();
             this.lblCifraTotalPaginas = new System.Windows.Forms.Label();
+            this.lblTxtTotalPaginas = new System.Windows.Forms.Label();
             this.lblFondoTotalArticulos = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.lblFondoTotalLibros = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.lblCifraTotalArticulos = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblTxtTotalArticulos = new System.Windows.Forms.Label();
+            this.lblCifraTotalArticulos = new System.Windows.Forms.Label();
+            this.lblFondoTotalLibros = new MetroFramework.Drawing.Html.HtmlLabel();
             this.lblTxtTotalLibros = new System.Windows.Forms.Label();
+            this.lblCifraTotalLibros = new System.Windows.Forms.Label();
             this.lblFondoTotalDocumentos.SuspendLayout();
             this.lblFondoTotalPaginas.SuspendLayout();
             this.lblFondoTotalArticulos.SuspendLayout();
@@ -62,7 +62,7 @@ namespace Formularios
             // lblFondoTotalDocumentos
             // 
             this.lblFondoTotalDocumentos.AutoScroll = true;
-            this.lblFondoTotalDocumentos.AutoScrollMinSize = new System.Drawing.Size(10, 10);
+            this.lblFondoTotalDocumentos.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.lblFondoTotalDocumentos.AutoSize = false;
             this.lblFondoTotalDocumentos.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblFondoTotalDocumentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -87,7 +87,7 @@ namespace Formularios
             // lblFondoTotalPaginas
             // 
             this.lblFondoTotalPaginas.AutoScroll = true;
-            this.lblFondoTotalPaginas.AutoScrollMinSize = new System.Drawing.Size(10, 10);
+            this.lblFondoTotalPaginas.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.lblFondoTotalPaginas.AutoSize = false;
             this.lblFondoTotalPaginas.BackColor = System.Drawing.Color.Salmon;
             this.lblFondoTotalPaginas.Controls.Add(this.lblCifraTotalPaginas);
@@ -96,17 +96,6 @@ namespace Formularios
             this.lblFondoTotalPaginas.Name = "lblFondoTotalPaginas";
             this.lblFondoTotalPaginas.Size = new System.Drawing.Size(271, 109);
             this.lblFondoTotalPaginas.TabIndex = 5;
-            // 
-            // lblTxtTotalPaginas
-            // 
-            this.lblTxtTotalPaginas.AutoSize = true;
-            this.lblTxtTotalPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTxtTotalPaginas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTxtTotalPaginas.Location = new System.Drawing.Point(13, 18);
-            this.lblTxtTotalPaginas.Name = "lblTxtTotalPaginas";
-            this.lblTxtTotalPaginas.Size = new System.Drawing.Size(139, 75);
-            this.lblTxtTotalPaginas.TabIndex = 0;
-            this.lblTxtTotalPaginas.Text = "Número de\r\npáginas \r\ndigitalizadas:";
             // 
             // lblCifraTotalPaginas
             // 
@@ -119,10 +108,21 @@ namespace Formularios
             this.lblCifraTotalPaginas.TabIndex = 1;
             this.lblCifraTotalPaginas.Text = "0";
             // 
+            // lblTxtTotalPaginas
+            // 
+            this.lblTxtTotalPaginas.AutoSize = true;
+            this.lblTxtTotalPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTxtTotalPaginas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTxtTotalPaginas.Location = new System.Drawing.Point(13, 18);
+            this.lblTxtTotalPaginas.Name = "lblTxtTotalPaginas";
+            this.lblTxtTotalPaginas.Size = new System.Drawing.Size(139, 75);
+            this.lblTxtTotalPaginas.TabIndex = 0;
+            this.lblTxtTotalPaginas.Text = "Número de\r\npáginas \r\ndigitalizadas:";
+            // 
             // lblFondoTotalArticulos
             // 
             this.lblFondoTotalArticulos.AutoScroll = true;
-            this.lblFondoTotalArticulos.AutoScrollMinSize = new System.Drawing.Size(10, 10);
+            this.lblFondoTotalArticulos.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.lblFondoTotalArticulos.AutoSize = false;
             this.lblFondoTotalArticulos.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lblFondoTotalArticulos.Controls.Add(this.lblTxtTotalArticulos);
@@ -131,41 +131,6 @@ namespace Formularios
             this.lblFondoTotalArticulos.Name = "lblFondoTotalArticulos";
             this.lblFondoTotalArticulos.Size = new System.Drawing.Size(132, 105);
             this.lblFondoTotalArticulos.TabIndex = 6;
-            // 
-            // lblFondoTotalLibros
-            // 
-            this.lblFondoTotalLibros.AutoScroll = true;
-            this.lblFondoTotalLibros.AutoScrollMinSize = new System.Drawing.Size(10, 10);
-            this.lblFondoTotalLibros.AutoSize = false;
-            this.lblFondoTotalLibros.BackColor = System.Drawing.Color.Thistle;
-            this.lblFondoTotalLibros.Controls.Add(this.lblTxtTotalLibros);
-            this.lblFondoTotalLibros.Controls.Add(this.label6);
-            this.lblFondoTotalLibros.Location = new System.Drawing.Point(336, 202);
-            this.lblFondoTotalLibros.Name = "lblFondoTotalLibros";
-            this.lblFondoTotalLibros.Size = new System.Drawing.Size(132, 105);
-            this.lblFondoTotalLibros.TabIndex = 7;
-            // 
-            // lblCifraTotalArticulos
-            // 
-            this.lblCifraTotalArticulos.AutoSize = true;
-            this.lblCifraTotalArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCifraTotalArticulos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCifraTotalArticulos.Location = new System.Drawing.Point(38, 12);
-            this.lblCifraTotalArticulos.Name = "lblCifraTotalArticulos";
-            this.lblCifraTotalArticulos.Size = new System.Drawing.Size(57, 61);
-            this.lblCifraTotalArticulos.TabIndex = 0;
-            this.lblCifraTotalArticulos.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(41, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 61);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "0";
             // 
             // lblTxtTotalArticulos
             // 
@@ -178,6 +143,30 @@ namespace Formularios
             this.lblTxtTotalArticulos.TabIndex = 1;
             this.lblTxtTotalArticulos.Text = "Artículos";
             // 
+            // lblCifraTotalArticulos
+            // 
+            this.lblCifraTotalArticulos.AutoSize = true;
+            this.lblCifraTotalArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCifraTotalArticulos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCifraTotalArticulos.Location = new System.Drawing.Point(38, 12);
+            this.lblCifraTotalArticulos.Name = "lblCifraTotalArticulos";
+            this.lblCifraTotalArticulos.Size = new System.Drawing.Size(57, 61);
+            this.lblCifraTotalArticulos.TabIndex = 0;
+            this.lblCifraTotalArticulos.Text = "0";
+            // 
+            // lblFondoTotalLibros
+            // 
+            this.lblFondoTotalLibros.AutoScroll = true;
+            this.lblFondoTotalLibros.AutoScrollMinSize = new System.Drawing.Size(10, 0);
+            this.lblFondoTotalLibros.AutoSize = false;
+            this.lblFondoTotalLibros.BackColor = System.Drawing.Color.Thistle;
+            this.lblFondoTotalLibros.Controls.Add(this.lblTxtTotalLibros);
+            this.lblFondoTotalLibros.Controls.Add(this.lblCifraTotalLibros);
+            this.lblFondoTotalLibros.Location = new System.Drawing.Point(336, 202);
+            this.lblFondoTotalLibros.Name = "lblFondoTotalLibros";
+            this.lblFondoTotalLibros.Size = new System.Drawing.Size(132, 105);
+            this.lblFondoTotalLibros.TabIndex = 7;
+            // 
             // lblTxtTotalLibros
             // 
             this.lblTxtTotalLibros.AutoSize = true;
@@ -189,7 +178,18 @@ namespace Formularios
             this.lblTxtTotalLibros.TabIndex = 1;
             this.lblTxtTotalLibros.Text = "Libros";
             // 
-            // FrmEstadísticas
+            // lblCifraTotalLibros
+            // 
+            this.lblCifraTotalLibros.AutoSize = true;
+            this.lblCifraTotalLibros.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCifraTotalLibros.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCifraTotalLibros.Location = new System.Drawing.Point(41, 12);
+            this.lblCifraTotalLibros.Name = "lblCifraTotalLibros";
+            this.lblCifraTotalLibros.Size = new System.Drawing.Size(57, 61);
+            this.lblCifraTotalLibros.TabIndex = 0;
+            this.lblCifraTotalLibros.Text = "0";
+            // 
+            // FrmEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -198,9 +198,10 @@ namespace Formularios
             this.Controls.Add(this.lblFondoTotalArticulos);
             this.Controls.Add(this.lblFondoTotalPaginas);
             this.Controls.Add(this.lblFondoTotalDocumentos);
-            this.Name = "FrmEstadísticas";
+            this.Name = "FrmEstadisticas";
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "BlaBlaBla en Cifras";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmEstadisticas_FormClosing);
             this.Load += new System.EventHandler(this.FrmEstadísticas_Load);
             this.lblFondoTotalDocumentos.ResumeLayout(false);
             this.lblFondoTotalDocumentos.PerformLayout();
@@ -226,6 +227,6 @@ namespace Formularios
         private System.Windows.Forms.Label lblCifraTotalArticulos;
         private MetroFramework.Drawing.Html.HtmlLabel lblFondoTotalLibros;
         private System.Windows.Forms.Label lblTxtTotalLibros;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCifraTotalLibros;
     }
 }
