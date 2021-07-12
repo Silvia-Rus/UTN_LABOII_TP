@@ -160,7 +160,7 @@ namespace Formularios
                 {
                     BD.DocumentosDAO.GuardarDocumentos("Articulo", miDoc.Titulo, miDoc.Autor, miDoc.Anio, miDoc.NumeroPaginas, miDoc.Id,
                                                         miDoc.Barcode, miDoc.Notas, miDoc.EstadoEncuadernacion, miDoc.FaseProceso,
-                                                        miDoc.FechaCarga, miDoc.FechaDistribucion, miDoc.FechaGuillotinado, miDoc.FechaEscaneo, miDoc.FechaRevision, miDoc.FechaAprobacion,
+                                                        miDoc.FechaCarga.ToString(), miDoc.FechaDistribucion.ToString(), miDoc.FechaGuillotinado.ToString(), miDoc.FechaEscaneo.ToString(), miDoc.FechaRevision.ToString(), miDoc.FechaAprobacion.ToString(),
                                                         txtFuenteDocumento.Text);
                     this.DialogResult = DialogResult.OK;
 
@@ -191,9 +191,9 @@ namespace Formularios
             if (!(miDoc is null))
             {
                 BD.DocumentosDAO.GuardarDocumentos("Libro", miDoc.Titulo, miDoc.Autor, miDoc.Anio, miDoc.NumeroPaginas, miDoc.Id,
-                                    miDoc.Barcode, miDoc.Notas, miDoc.EstadoEncuadernacion, miDoc.FaseProceso,
-                                    miDoc.FechaCarga, miDoc.FechaDistribucion, miDoc.FechaGuillotinado, miDoc.FechaEscaneo, miDoc.FechaRevision, miDoc.FechaAprobacion,
-                                    "");
+                                                         miDoc.Barcode, miDoc.Notas, miDoc.EstadoEncuadernacion, miDoc.FaseProceso,
+                                                         miDoc.FechaCarga.ToString(), miDoc.FechaDistribucion.ToString(), miDoc.FechaGuillotinado.ToString(), miDoc.FechaEscaneo.ToString(), miDoc.FechaRevision.ToString(), miDoc.FechaAprobacion.ToString(),
+                                                         txtFuenteDocumento.Text);
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -224,6 +224,7 @@ namespace Formularios
                                            txtFuenteDocumento.Text))
                 {
                     this.DialogResult = DialogResult.OK;
+                    BD.DocumentosDAO.ActualizaDocumentos(miDoc);
                 }           
             }
             else if (miDoc is Libro)
@@ -240,6 +241,8 @@ namespace Formularios
                                             cmbEncuadernacionDocumento.SelectedIndex))
                 {
                     this.DialogResult = DialogResult.OK;
+                    BD.DocumentosDAO.ActualizaDocumentos(miDoc);
+
                 }
 
             }

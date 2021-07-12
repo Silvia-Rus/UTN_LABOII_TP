@@ -113,7 +113,7 @@ namespace Entidades
         /// <summary>
         /// Get y set de la fecha de introducción del documento. Solo se puede setear desde el constructor por defecto de cada documento.
         /// </summary>
-        public DateTime FechaCarga  { set { this.FechaCarga = value; } get { return this.fechaCarga; } }
+        public DateTime FechaCarga  { set { this.fechaCarga = value; } get { return this.fechaCarga; } }
         /// <summary>
         /// Get y set de la fecha de distribución.
         /// </summary>
@@ -143,8 +143,13 @@ namespace Entidades
         /// </summary>
         public Documento()
         {
-            //this.pasoProceso = PasosProceso.Distribuir;
-            //this.fechaCarga = DateTime.Now;
+            this.pasoProceso = PasosProceso.Distribuir;
+            this.FechaCarga = DateTime.Now;
+            this.FechaAprobacion = DateTime.MinValue;
+            this.FechaDistribucion = DateTime.MinValue;
+            this.FechaEscaneo = DateTime.MinValue;
+            this.FechaGuillotinado = DateTime.MinValue;
+            this.FechaRevision = DateTime.MinValue;
 
         }
         /// <summary>
@@ -417,7 +422,7 @@ namespace Entidades
         /// </summary>
         /// <param name="a">Documento del cual queremos imprimir los datos.</param>
         /// <returns>String con los datos.</returns>
-        public static string ImprimirDocumento(Documento a)
+        /*public static string ImprimirDocumento(Documento a)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Tipo: {a.TipoDeDocumentoString}");
@@ -432,7 +437,7 @@ namespace Entidades
             sb.AppendLine($"Fecha de carga: {a.FechaCarga}");
             return sb.ToString();
 
-        }
+        }*/
         /// <summary>
         /// Imprime las fechas del proceso.
         /// </summary>

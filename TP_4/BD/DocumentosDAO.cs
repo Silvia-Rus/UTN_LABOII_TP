@@ -17,16 +17,15 @@ namespace BD
         private static SqlCommand command;
         private static string connectionString = "Server = .; Database=BlaBlaBla; Trusted_Connection=true";
 
+        /// <summary>
+        /// Sincroniza una base de datos con la aplicación.
+        /// </summary>
+        /// <returns></returns>
         public static List<Documento> GetAllDocumentos()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(//$"SELECT TipoDeDocumento, Barcode, Titulo, Autor, AnioPublicacion, NumeroPaginas, Id, Notas, Fuente " +
-                                                       //$"EstadoEncuadernacion, PasoProceso, " +
-                                                       //$"FechaCarga, FechaDistribucion, FechaGuillotinado, FechaEscaneo, FechaRevision, FechaAprobacion " +
-                                                       //$"FROM Documentos", 
-                                                       $"SELECT * FROM Documentos",
-                                                       connection))
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Documentos", connection))
                 {
                     try
                     {
@@ -36,11 +35,7 @@ namespace BD
                         using (SqlDataReader dataReader = cmd.ExecuteReader())
                         {
                             while (dataReader.Read())
-                            {
-                                                           
-                                
-
-                                //if (dataReader["TipoDeDocumento"].ToString().Equals("Libro"))
+                            {                                                          
                                 switch(dataReader["TipoDeDocumento"].ToString())
                                 {
                                     case "Libro":
@@ -84,12 +79,8 @@ namespace BD
                                             
                                         };
                                         listaDocumentos.Add(articulo);
-                                        break;                               
-                                
+                                        break;                                                              
                                 }
-
-                               
-
                             }
                         }
                         return listaDocumentos;
@@ -97,8 +88,7 @@ namespace BD
                     catch (Exception ex)
                     {
                         Debug.WriteLine(ex.Message);
-                        throw ex;
-                       
+                        throw ex;                     
                     }
                     finally
                     {
@@ -110,10 +100,30 @@ namespace BD
                 }
             }
         }
-
+        /// <summary>
+        /// Añade los datos de un documento nuevo a la base de datos.
+        /// </summary>
+        /// <param name="tipoDeDocumento"></param>
+        /// <param name="titulo"></param>
+        /// <param name="autor"></param>
+        /// <param name="anio"></param>
+        /// <param name="numeroPaginas"></param>
+        /// <param name="id"></param>
+        /// <param name="barcode"></param>
+        /// <param name="notas"></param>
+        /// <param name="estadoEncuadernacion"></param>
+        /// <param name="pasoProceso"></param>
+        /// <param name="fechaCarga"></param>
+        /// <param name="fechaDistribucion"></param>
+        /// <param name="fechaGuillotinado"></param>
+        /// <param name="fechaEscaneo"></param>
+        /// <param name="fechaRevision"></param>
+        /// <param name="fechaAprobacion"></param>
+        /// <param name="fuente"></param>
+        /// <returns></returns>
         public static bool GuardarDocumentos(string tipoDeDocumento, string titulo, string autor, short anio, short numeroPaginas, string id, int barcode, string notas,
                                       Encuadernacion estadoEncuadernacion, PasosProceso pasoProceso,
-                                      DateTime fechaCarga, DateTime fechaDistribucion, DateTime fechaGuillotinado, DateTime fechaEscaneo, DateTime fechaRevision, DateTime fechaAprobacion,
+                                      string fechaCarga, string fechaDistribucion, string fechaGuillotinado, string fechaEscaneo, string fechaRevision, string fechaAprobacion,
                                       string fuente)
         {
 
@@ -125,16 +135,10 @@ namespace BD
                 command.Connection = connection;
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "INSERT INTO Documentos (TipoDeDocumento, Barcode, Titulo, Autor, AnioPublicacion, NumeroPaginas, Id, Notas, Fuente," +
-                                                               "EstadoEncuadernacion, PasoProceso," +
-                                                               "FechaCarga, FechaDistribucion, FechaGuillotinado, FechaEscaneo, FechaRevision, FechaAprobacion ) " +
-                                                               "VALUES (@TipoDocumento, @Barcode, @Titulo, @Autor, @AnioPublicacion,@NumeroPaginas, @Id, @Notas, @Fuente," +
-                                                               "@EstadoEncuadernacion, @PasoProceso," +
-                                                               "@FechaCarga, @FechaDistribucion, @FechaGuillotinado, @FechaEscaneo, @FechaRevision, @FechaAprobacion," +
-                                                               "@Fuente);";
+                command.CommandText = "INSERT INTO Documentos (TipoDeDocumento,Barcode,Titulo,Autor,AnioPublicacion,NumeroPaginas,[Id],Notas,Fuente,EstadoEncuadernacion,pasoProceso, FechaCarga,FechaDistribucion,FechaGuillotinado,FechaEscaneo,FechaRevision,FechaAprobacion) " +
+                    "VALUES (@TipoDocumento,@Barcode,@Titulo,@Autor,@AnioPublicacion,@NumeroPaginas,@Id,@Notas,@Fuente,@EstadoEncuadernacion,@PasoProceso,@FechaCarga,@FechaDistribucion,@FechaGuillotinado,@FechaEscaneo,@FechaRevision,@FechaAprobacion)";
                
                 command.Parameters.AddWithValue("@TipoDocumento", tipoDeDocumento);
-                                                 //lo que hay en la tabla, lo que entra por parámetro
                 command.Parameters.AddWithValue("@Barcode", barcode);
                 command.Parameters.AddWithValue("@Titulo", titulo);
                 command.Parameters.AddWithValue("@Autor", autor);
@@ -145,7 +149,7 @@ namespace BD
                 command.Parameters.AddWithValue("@EstadoEncuadernacion", estadoEncuadernacion);
                 command.Parameters.AddWithValue("@PasoProceso", pasoProceso);
                 command.Parameters.AddWithValue("@FechaCarga", fechaCarga);
-                command.Parameters.AddWithValue("@FechaDistribución", fechaDistribucion);
+                command.Parameters.AddWithValue("@FechaDistribucion", fechaDistribucion);
                 command.Parameters.AddWithValue("@FechaGuillotinado", fechaGuillotinado);
                 command.Parameters.AddWithValue("@FechaEscaneo", fechaEscaneo);
                 command.Parameters.AddWithValue("@FechaRevision", fechaRevision);
@@ -171,42 +175,42 @@ namespace BD
 
             return retorno;
         }
-
+        /// <summary>
+        /// Actualiza los datos de un documento preexistente que entra por parámetro.
+        /// </summary>
+        /// <param name="documento"></param>
+        /// <returns></returns>
         public static bool ActualizaDocumentos(Documento documento)
         {
             bool retorno = false;
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
 
-                    SqlCommand command = new SqlCommand();
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.Connection = connection;
+                command = new SqlCommand();
+                connection = new SqlConnection(connectionString);
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
 
-                    command.CommandText = $"UPDATE [Documentos] " +
-                                          $"SET titulo = @Titulo, autor = @Autor, anio = @AnioPublicacion, numeroPaginas = @NumeroPaginas, id = @Id, notas = @Notas," +
-                                          $"estadoEncuadernacion = @EstadoEncuadernacion" +
-                                          $"fuente = @Fuente " +
-                                          $"WHERE Barcode = @Barcode";
+                command.CommandText = $"UPDATE [Documentos] " +
+                                          $"SET titulo = @Titulo, autor = @Autor, anioPublicacion = @AnioPublicacion, numeroPaginas = @NumeroPaginas, id = @Id, notas = @Notas," +
+                                          $"estadoEncuadernacion = @EstadoEncuadernacion, pasoProceso = @PasoProceso" +
+                                          $" WHERE barcode = @Barcode";
 
-                    command.Parameters.AddWithValue("@Titulo", documento.Titulo);
-                    command.Parameters.AddWithValue("@Autor", documento.Autor);
-                    command.Parameters.AddWithValue("@AnioPublicacion", documento.Anio);
-                    command.Parameters.AddWithValue("@NumeroPaginas", documento.NumeroPaginas);
-                    command.Parameters.AddWithValue("@Id", documento.Id);
-                    command.Parameters.AddWithValue("@Notas", documento.Notas);
-                    command.Parameters.AddWithValue("@EstadoEncuadernacion", documento.EstadoEncuadernacion);
-                    if(documento is Articulo)
-                    {
-                        Articulo aux = (Articulo)documento;
-                        command.Parameters.AddWithValue("@Fuente", aux.Fuente);
-                    }
-                   
-                    retorno = true;
+                command.Parameters.AddWithValue("@Titulo", documento.Titulo);
+                command.Parameters.AddWithValue("@Autor", documento.Autor);
+                command.Parameters.AddWithValue("@AnioPublicacion", documento.Anio);
+                command.Parameters.AddWithValue("@NumeroPaginas", documento.NumeroPaginas);
+                command.Parameters.AddWithValue("@Id", documento.Id);
+                command.Parameters.AddWithValue("@Notas", documento.Notas);
+                command.Parameters.AddWithValue("@EstadoEncuadernacion", documento.EstadoEncuadernacion);
+                command.Parameters.AddWithValue("@PasoProceso", documento.FaseProceso);
+                command.Parameters.AddWithValue("@Barcode", documento.Barcode);
 
-                }
+                connection.Open();
+                command.ExecuteNonQuery();
+
+                retorno = true;
+                
             }
             catch (Exception ex)
             {
@@ -220,7 +224,54 @@ namespace BD
                 }
             }
             return retorno;
+        }
+        /// <summary>
+        /// Actualiza las fechas de un documento preexistente.
+        /// </summary>
+        /// <param name="documento"></param>
+        /// <returns></returns>
+        public static bool ActualizaFechas(Documento documento)
+        {
+            bool retorno = false;
+            try
+            {
 
+                command = new SqlCommand();
+                connection = new SqlConnection(connectionString);
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"UPDATE [Documentos] " +
+                                          $"SET fechaCarga = @FechaCarga, fechaDistribucion = @FechaDistribucion, fechaGuillotinado = @FechaGuillotinado, fechaEscaneo = @FechaEscaneo, fechaRevision = @FechaRevision, fechaAprobacion = @FechaRevision, pasoProceso = @PasoProceso"  +
+                                          $" WHERE barcode = @Barcode";
+
+                command.Parameters.AddWithValue("@FechaCarga", documento.FechaCarga.ToString());
+                command.Parameters.AddWithValue("@FechaDistribucion", documento.FechaDistribucion.ToString());
+                command.Parameters.AddWithValue("@FechaEscaneo", documento.FechaEscaneo.ToString());
+                command.Parameters.AddWithValue("@FechaGuillotinado", documento.FechaGuillotinado.ToString());
+                command.Parameters.AddWithValue("@FechaRevision", documento.FechaRevision.ToString());
+                command.Parameters.AddWithValue("@FechaAprobacion", documento.FechaAprobacion.ToString());
+                command.Parameters.AddWithValue("@PasoProceso", documento.FaseProceso);
+                command.Parameters.AddWithValue("@Barcode", documento.Barcode);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+
+                retorno = true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+            return retorno;
         }
 
     }

@@ -211,12 +211,13 @@ namespace Formularios
                         {
                             Procesador.Revisar(aux, false);
                             MessageBox.Show("El documento vuelve al escaner.");
-                        }
+                        }                       
                     }
                     else
                     {
                         Procesador.Proceso(aux);
                     }
+                    BD.DocumentosDAO.ActualizaFechas(aux);
                 }
                 else
                 {
