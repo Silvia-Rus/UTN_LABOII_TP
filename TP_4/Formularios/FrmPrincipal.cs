@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using Entidades;
 using Serializador;
 using System.Threading;
+using BD;
+using System.Diagnostics;
+
 
 
 namespace Formularios
@@ -46,8 +49,17 @@ namespace Formularios
         /// <param name="e"></param>
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+
             FormatoButton(gridDocumentos, button);
-            List<Documento> listaDeserializadora = new List<Documento>();
+            try
+            {
+                procesador.Documentos = DocumentosDAO.GetAllDocumentos();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Problema al cargar la base de datos");
+            }
+            /*List<Documento> listaDeserializadora = new List<Documento>();
             Xml<List<Documento>> miVariable = new Xml<List<Documento>>();
 
             try
@@ -59,7 +71,8 @@ namespace Formularios
                MessageBox.Show(exc.Message);
             }
 
-            this.procesador.Documentos = listaDeserializadora;
+            this.procesador.Documentos = listaDeserializadora;*/
+
             ultimoPresionado = "btnTodos";
             RefrescarDatagrid(gridDocumentos, PasosProceso.Todos);
             
@@ -311,7 +324,7 @@ namespace Formularios
             //int index = datagrid.Columns["FaseProceso"].Index;
             datagrid.Columns["NumeroPaginas"].Visible = false;
             datagrid.Columns["Notas"].Visible = false;
-            datagrid.Columns["FechaIntroduccion"].Visible = false;
+            datagrid.Columns["FechaCarga"].Visible = false;
             datagrid.Columns["FechaDistribucion"].Visible = false;
             datagrid.Columns["FechaGuillotinado"].Visible = false;
             datagrid.Columns["FechaEscaneo"].Visible = false;

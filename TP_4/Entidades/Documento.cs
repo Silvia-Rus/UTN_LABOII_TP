@@ -27,7 +27,7 @@ namespace Entidades
         private string notas;
         private Encuadernacion estadoEncuadernacion;
         private PasosProceso pasoProceso;
-        private DateTime fechaIntroduccion;
+        private DateTime fechaCarga;
         private DateTime fechaDistribucion;
         private DateTime fechaGuillotinado;
         private DateTime fechaEscaneo;
@@ -113,7 +113,7 @@ namespace Entidades
         /// <summary>
         /// Get y set de la fecha de introducción del documento. Solo se puede setear desde el constructor por defecto de cada documento.
         /// </summary>
-        public DateTime FechaIntroduccion  { set { this.FechaIntroduccion = value; } get { return this.fechaIntroduccion; } }
+        public DateTime FechaCarga  { set { this.FechaCarga = value; } get { return this.fechaCarga; } }
         /// <summary>
         /// Get y set de la fecha de distribución.
         /// </summary>
@@ -143,8 +143,8 @@ namespace Entidades
         /// </summary>
         public Documento()
         {
-            this.pasoProceso = PasosProceso.Distribuir;
-            this.fechaIntroduccion = DateTime.Now;
+            //this.pasoProceso = PasosProceso.Distribuir;
+            //this.fechaCarga = DateTime.Now;
 
         }
         /// <summary>
@@ -308,12 +308,6 @@ namespace Entidades
             }
             return retorno;
         }
-
-
-
-
-
-
         /// <summary>
         /// Valida todos los datos que entran por parámetro.
         /// </summary>
@@ -435,7 +429,7 @@ namespace Entidades
             sb.AppendLine($"Barcode: {a.Barcode}");
             sb.AppendLine($"Enc: {a.EstadoEncuadernacion}");
             sb.AppendLine($"Fase proceso: {a.FaseProceso}");
-            sb.AppendLine($"Fecha de carga: {a.FechaIntroduccion}");
+            sb.AppendLine($"Fecha de carga: {a.FechaCarga}");
             return sb.ToString();
 
         }
@@ -447,7 +441,7 @@ namespace Entidades
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"Fecha de carga: {this.fechaIntroduccion}.");
+                sb.AppendLine($"Fecha de carga: {this.fechaCarga}.");
                 if(this.FechaDistribucion != DateTime.MinValue)
                 {
                     sb.AppendLine($"Fecha de distribución: {this.FechaDistribucion}.");

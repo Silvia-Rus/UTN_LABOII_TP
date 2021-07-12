@@ -158,7 +158,12 @@ namespace Formularios
                                                                 txtFuenteDocumento.Text);
                 if(!(miDoc is null))
                 {
+                    BD.DocumentosDAO.GuardarDocumentos("Articulo", miDoc.Titulo, miDoc.Autor, miDoc.Anio, miDoc.NumeroPaginas, miDoc.Id,
+                                                        miDoc.Barcode, miDoc.Notas, miDoc.EstadoEncuadernacion, miDoc.FaseProceso,
+                                                        miDoc.FechaCarga, miDoc.FechaDistribucion, miDoc.FechaGuillotinado, miDoc.FechaEscaneo, miDoc.FechaRevision, miDoc.FechaAprobacion,
+                                                        txtFuenteDocumento.Text);
                     this.DialogResult = DialogResult.OK;
+
                 }
                 else
                 {
@@ -185,6 +190,10 @@ namespace Formularios
                                                 cmbEncuadernacionDocumento.SelectedIndex);
             if (!(miDoc is null))
             {
+                BD.DocumentosDAO.GuardarDocumentos("Libro", miDoc.Titulo, miDoc.Autor, miDoc.Anio, miDoc.NumeroPaginas, miDoc.Id,
+                                    miDoc.Barcode, miDoc.Notas, miDoc.EstadoEncuadernacion, miDoc.FaseProceso,
+                                    miDoc.FechaCarga, miDoc.FechaDistribucion, miDoc.FechaGuillotinado, miDoc.FechaEscaneo, miDoc.FechaRevision, miDoc.FechaAprobacion,
+                                    "");
                 this.DialogResult = DialogResult.OK;
             }
             else

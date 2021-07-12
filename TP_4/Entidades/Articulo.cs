@@ -16,6 +16,8 @@ namespace Entidades
         public string Fuente { get { return this.fuente; } set { this.fuente = value; } }
 
         #region Constructores
+
+
         /// <summary>
         /// Constructor por defecto.
         /// </summary>

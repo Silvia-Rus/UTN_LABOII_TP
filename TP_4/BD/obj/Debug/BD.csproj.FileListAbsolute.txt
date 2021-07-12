@@ -1,0 +1,11 @@
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\BD.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\BD.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\Entidades.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\Serializador.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\Entidades.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\bin\Debug\Serializador.pdb
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\obj\Debug\BD.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\obj\Debug\BD.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\obj\Debug\BD.csproj.CopyComplete
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\obj\Debug\BD.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\BD\obj\Debug\BD.pdb

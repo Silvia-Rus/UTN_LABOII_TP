@@ -144,6 +144,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BD\BD.csproj">
+      <Project>{2deceba9-02b0-4de2-8936-854ccc327bcd}</Project>
+      <Name>BD</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Consola\Consola.csproj">
       <Project>{96ff915b-dc78-4247-8f9d-3171a52ba495}</Project>
       <Name>Consola</Name>
@@ -159,15 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lupa.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Yoda02_23226.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pngegg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\anadir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,3 +54,5 @@ C:\Users\Silvia Rus\source\repos\TP_3_4\Formularios\obj\Debug\Formularios.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Formularios\obj\Debug\Formularios.exe
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Formularios\obj\Debug\Formularios.pdb
 \\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Formularios\obj\Debug\Formularios.FrmEstadisticas.resources
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Formularios\bin\Debug\BD.dll
+\\vmware-host\Shared Folders\Escritorio\PROGR 2\tp_laboratorio_2\TP_4\Formularios\bin\Debug\BD.pdb
